@@ -1,0 +1,244 @@
+.footer {
+  width: 100%;
+  background: linear-gradient(135deg, $primary-color 0%, $primary-light 100%);
+  padding: 4rem 0;
+
+  @include respond-to(tablet) {
+    padding: 5rem 0;
+  }
+
+  @include respond-to(desktop) {
+    padding: 6rem 0;
+  }
+
+  @include respond-to(large) {
+    padding: 7rem 0;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+
+    @include respond-to(mobile) {
+      gap: 3.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    @include respond-to(tablet) {
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    @include respond-to(desktop) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5rem;
+      margin-bottom: 5rem;
+    }
+
+    @include respond-to(large) {
+      gap: 6rem;
+      margin-bottom: 6rem;
+    }
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include respond-to(mobile) {
+      gap: 2.5rem;
+    }
+
+    @include respond-to(tablet) {
+      gap: 3rem;
+    }
+
+    @include respond-to(desktop) {
+      gap: 3.5rem;
+    }
+
+    @include respond-to(large) {
+      gap: 4rem;
+    }
+  }
+
+  &__phone {
+    color: $text-light;
+    font-size: $font-lg;
+    font-weight: 600;
+    @include uppercase-text;
+    line-height: 1.2;
+
+    @include respond-to(mobile) {
+      font-size: $font-xl;
+    }
+
+    @include respond-to(tablet) {
+      font-size: $font-2xl;
+    }
+
+    @include respond-to(desktop) {
+      font-size: $font-3xl;
+    }
+
+    @include respond-to(large) {
+      font-size: $font-4xl;
+    }
+  }
+
+  &__email {
+    color: $text-light;
+    font-size: $font-lg;
+    font-weight: 600;
+    @include uppercase-text;
+    text-decoration: underline;
+    line-height: 1.2;
+    transition: all $transition-normal $ease-out;
+
+    &:hover {
+      color: $text-light;
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    @include respond-to(mobile) {
+      font-size: $font-xl;
+    }
+
+    @include respond-to(tablet) {
+      font-size: $font-2xl;
+    }
+
+    @include respond-to(desktop) {
+      font-size: $font-3xl;
+    }
+
+    @include respond-to(large) {
+      font-size: $font-4xl;
+    }
+  }
+
+  &__address {
+    color: $text-light;
+    font-size: $font-base;
+    font-weight: 500;
+    @include uppercase-text;
+    font-style: normal;
+    line-height: 1.4;
+
+    @include respond-to(mobile) {
+      font-size: $font-lg;
+    }
+
+    @include respond-to(tablet) {
+      font-size: $font-xl;
+    }
+
+    @include respond-to(desktop) {
+      font-size: $font-2xl;
+    }
+
+    @include respond-to(large) {
+      font-size: $font-3xl;
+    }
+
+    div {
+      margin-bottom: 0.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @include respond-to(mobile) {
+      gap: 2rem;
+    }
+
+    @include respond-to(tablet) {
+      gap: 2.5rem;
+    }
+
+    @include respond-to(desktop) {
+      gap: 3rem;
+    }
+
+    @include respond-to(large) {
+      gap: 3.5rem;
+    }
+  }
+
+  &__menu-item {
+    color: $text-light;
+    font-size: $font-lg;
+    font-weight: 600;
+    @include uppercase-text;
+    cursor: pointer;
+    background: none;
+    border: none;
+    text-align: left;
+    @include transition-colors;
+    padding: 0.5rem 0;
+    border-radius: $radius;
+    transition: all $transition-normal $ease-out;
+
+    &:hover {
+      color: $text-light;
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(4px);
+    }
+
+    @include respond-to(mobile) {
+      font-size: $font-xl;
+    }
+
+    @include respond-to(tablet) {
+      font-size: $font-2xl;
+    }
+
+    @include respond-to(desktop) {
+      font-size: $font-3xl;
+    }
+
+    @include respond-to(large) {
+      font-size: $font-4xl;
+    }
+  }
+
+  &__logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include respond-to(desktop) {
+      justify-content: flex-end;
+    }
+  }
+
+  &__logo {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    filter: brightness(0) invert(1);
+
+    @include respond-to(mobile) {
+      max-width: 350px;
+    }
+
+    @include respond-to(tablet) {
+      max-width: 400px;
+    }
+
+    @include respond-to(desktop) {
+      max-width: 443px;
+    }
+  }
+}

@@ -1,0 +1,457 @@
+.products {
+  width: 100%;
+  margin: 0 auto 5rem;
+  padding: 3rem 0;
+
+  @include respond-to(tablet) {
+    margin-bottom: 6rem;
+    padding: 4rem 0;
+  }
+
+  @include respond-to(desktop) {
+    margin-bottom: 7rem;
+    padding: 5rem 0;
+  }
+
+  @include respond-to(large) {
+    margin-bottom: 9rem;
+    padding: 6rem 0;
+  }
+
+  &__title {
+    color: $text-dark;
+    text-align: center;
+    font-size: $font-2xl;
+    font-weight: 700;
+    @include uppercase-text;
+    margin-bottom: 3rem;
+    line-height: 1.2;
+
+    @include respond-to(mobile) {
+      font-size: $font-3xl;
+      margin-bottom: 4rem;
+    }
+
+    @include respond-to(tablet) {
+      font-size: $font-4xl;
+      margin-bottom: 5rem;
+    }
+
+    @include respond-to(desktop) {
+      font-size: $font-5xl;
+      margin-bottom: 6rem;
+    }
+
+    @include respond-to(large) {
+      font-size: $font-6xl;
+      margin-bottom: 7rem;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 100%;
+
+    @include respond-to(mobile) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+
+    @include respond-to(tablet) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+
+    @include respond-to(desktop) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3.5rem;
+    }
+
+    @include respond-to(large) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4rem;
+    }
+
+    @include respond-to(xl) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4.5rem;
+    }
+  }
+
+  &__card {
+    width: 100%;
+    height: 280px;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-lg;
+    background: white;
+    position: relative;
+    transition: all $transition-normal $ease-out;
+    overflow: hidden;
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: $shadow-xl;
+    }
+
+    @include respond-to(mobile) {
+      height: 320px;
+    }
+
+    @include respond-to(tablet) {
+      height: 350px;
+    }
+
+    @include respond-to(desktop) {
+      height: 380px;
+    }
+
+    @include respond-to(large) {
+      height: 400px;
+    }
+  }
+
+  &__card-content {
+    padding: 2rem;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include respond-to(mobile) {
+      padding: 2.5rem;
+    }
+
+    @include respond-to(tablet) {
+      padding: 3rem;
+    }
+  }
+
+  &__card-image-area {
+    position: relative;
+    width: 100%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  &__card-image-bg {
+    width: 80%;
+    height: 70%;
+    background: linear-gradient(135deg, $background-light 0%, white 100%);
+    border-radius: $radius-lg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: $shadow-md;
+  }
+
+  &__card-image-placeholder {
+    width: 60%;
+    height: 40%;
+    background: linear-gradient(135deg, $border-light 0%, #e5e7eb 100%);
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $text-muted;
+    font-size: $font-sm;
+    font-weight: 500;
+  }
+
+  &__card-title {
+    color: $text-dark;
+    text-align: center;
+    font-size: $font-base;
+    font-weight: 600;
+    @include uppercase-text;
+    line-height: 1.3;
+    margin: 0;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include respond-to(mobile) {
+      font-size: $font-lg;
+    }
+
+    @include respond-to(tablet) {
+      font-size: $font-xl;
+    }
+
+    @include respond-to(desktop) {
+      font-size: $font-2xl;
+    }
+  }
+
+  &__cta-card {
+    width: 100%;
+    height: 280px;
+    border-radius: $radius-xl;
+    background: linear-gradient(135deg, $primary-color 0%, $primary-light 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2.5rem;
+    box-shadow: $shadow-lg;
+    transition: all $transition-normal $ease-out;
+    overflow: hidden;
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: $shadow-xl;
+    }
+
+    @include respond-to(mobile) {
+      height: 320px;
+      gap: 3rem;
+      padding: 3rem;
+    }
+
+    @include respond-to(tablet) {
+      height: 350px;
+      gap: 3.5rem;
+      padding: 3.5rem;
+    }
+
+    @include respond-to(desktop) {
+      height: 380px;
+      gap: 4rem;
+      padding: 4rem;
+    }
+
+    @include respond-to(large) {
+      height: 400px;
+      gap: 4.5rem;
+      padding: 4.5rem;
+    }
+  }
+
+  &__cta-button {
+    width: 100%;
+    max-width: 220px;
+    height: 3.5rem;
+    border-radius: $radius-xl;
+    background: white;
+    color: $text-dark;
+    font-size: $font-base;
+    font-weight: 600;
+    @include uppercase-text;
+    border: none;
+    cursor: pointer;
+    transition: all $transition-normal $ease-out;
+    box-shadow: $shadow-md;
+
+    &:hover {
+      background: $background-light;
+      transform: translateY(-2px);
+      box-shadow: $shadow-lg;
+    }
+
+    @include respond-to(mobile) {
+      font-size: $font-lg;
+      height: 4rem;
+      max-width: 240px;
+    }
+
+    @include respond-to(tablet) {
+      font-size: $font-xl;
+      height: 4.5rem;
+      max-width: 260px;
+    }
+
+    @include respond-to(desktop) {
+      font-size: $font-2xl;
+      height: 5rem;
+      max-width: 280px;
+    }
+  }
+}
+
+// Product Card styles
+.product-card {
+  width: 100%;
+  height: 300px;
+  border-radius: $radius-xl;
+  background: white;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+              0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+    .product-card__overlay {
+      opacity: 1;
+    }
+
+    .product-card__image-container {
+      transform: scale(1.1);
+    }
+
+    .product-card__abstract-shape {
+      transform: rotate(225deg);
+    }
+  }
+
+  @include respond-to(mobile) {
+    height: 320px;
+  }
+
+  @include respond-to(tablet) {
+    height: 340px;
+  }
+
+  @include respond-to(desktop) {
+    height: 360px;
+  }
+
+  &__content {
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__image-area {
+    position: relative;
+    width: 100%;
+    height: 75%;
+    overflow: hidden;
+    background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+  }
+
+  &__image-container {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__image-placeholder {
+    width: 60%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__abstract-shape {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 0%, 
+                                     rgba(255, 255, 255, 0.4) 50%, 
+                                     rgba(255, 255, 255, 0.2) 100%);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    transform: rotate(45deg);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 20%;
+      width: 30%;
+      height: 30%;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 20%;
+      right: 20%;
+      width: 20%;
+      height: 20%;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+    }
+  }
+
+  &__info {
+    padding: 0.75rem;
+    background: white;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    color: $text-dark;
+    text-align: center;
+    @include uppercase-text;
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    &-main {
+      font-size: $font-base;
+      font-weight: 600;
+
+      @include respond-to(tablet) {
+        font-size: $font-lg;
+      }
+    }
+
+    &-model {
+      font-size: $font-sm;
+      font-weight: 700;
+      color: $primary-color;
+
+      @include respond-to(tablet) {
+        font-size: $font-base;
+      }
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+                              rgba($primary-color, 0.9) 0%, 
+                              rgba($secondary-color, 0.9) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &__view-details {
+    color: white;
+    font-weight: 600;
+    font-size: $font-base;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}

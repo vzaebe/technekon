@@ -1,0 +1,150 @@
+.benefits {
+  width: 100%;
+  margin: 0 auto 4rem;
+  padding: 2rem 0;
+
+  @include respond-to(tablet) {
+    margin-bottom: 5rem;
+    padding: 3rem 0;
+  }
+
+  @include respond-to(desktop) {
+    margin-bottom: 6rem;
+    padding: 4rem 0;
+  }
+
+  @include respond-to(large) {
+    margin-bottom: 8rem;
+    padding: 5rem 0;
+  }
+
+  &__title {
+    color: $text-dark;
+    text-align: center;
+    font-size: $font-2xl;
+    font-weight: 600;
+    @include uppercase-text;
+    line-height: 1.2;
+    margin-bottom: 3rem;
+
+    @include respond-to(mobile) {
+      font-size: $font-3xl;
+      margin-bottom: 3.5rem;
+    }
+
+    @include respond-to(tablet) {
+      font-size: $font-4xl;
+      margin-bottom: 4rem;
+    }
+
+    @include respond-to(desktop) {
+      font-size: $font-5xl;
+      margin-bottom: 4.5rem;
+    }
+
+    @include respond-to(large) {
+      font-size: $font-6xl;
+      margin-bottom: 5rem;
+    }
+
+    &-prefix {
+      color: $text-dark;
+    }
+
+    &-highlight {
+      color: $primary-color;
+    }
+
+    &-suffix {
+      color: $text-dark;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 100%;
+
+    @include respond-to(mobile) {
+      gap: 2.5rem;
+    }
+
+    @include respond-to(tablet) {
+      gap: 3rem;
+    }
+
+    @include respond-to(desktop) {
+      gap: 3.5rem;
+    }
+
+    @include respond-to(large) {
+      gap: 4rem;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-md;
+    transition: all $transition-normal $ease-out;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+    }
+
+    @include respond-to(mobile) {
+      gap: 1.25rem;
+      padding: 2rem;
+    }
+
+    @include respond-to(tablet) {
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+      padding: 2.5rem;
+    }
+
+    @include respond-to(desktop) {
+      gap: 2.5rem;
+      padding: 3rem;
+    }
+
+    @include respond-to(large) {
+      gap: 3rem;
+      padding: 3.5rem;
+    }
+  }
+
+  &__item-text {
+    color: $text-dark;
+    font-size: $font-lg;
+    font-weight: 500;
+    @include uppercase-text;
+    line-height: 1.4;
+    margin: 0;
+
+    @include respond-to(mobile) {
+      font-size: $font-xl;
+    }
+
+    @include respond-to(tablet) {
+      font-size: $font-2xl;
+      flex: 1;
+    }
+
+    @include respond-to(desktop) {
+      font-size: $font-3xl;
+    }
+
+    @include respond-to(large) {
+      font-size: $font-4xl;
+    }
+  }
+}

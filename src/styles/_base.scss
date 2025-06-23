@@ -1,0 +1,92 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family:
+    "Inter",
+    -apple-system,
+    "Roboto",
+    "Helvetica",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  overflow-x: hidden;
+  font-size: 12px;
+  background: $background-light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+  background: transparent;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  @include respond-to(mobile) {
+    max-width: 640px;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  @include respond-to(tablet) {
+    max-width: 768px;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  @include respond-to(desktop) {
+    max-width: 1024px;
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+  }
+
+  @include respond-to(large) {
+    max-width: 1280px;
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  @include respond-to(xl) {
+    max-width: 1536px;
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
