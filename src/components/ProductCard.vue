@@ -32,8 +32,6 @@ defineProps<Props>();
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/variables";
-
 .product-card {
   width: 100%;
   height: 300px;

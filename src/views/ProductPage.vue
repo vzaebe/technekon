@@ -87,7 +87,7 @@ const relatedProducts = [
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import "../styles/variables.scss";
 
 .product-page {
   background-color: #fff;

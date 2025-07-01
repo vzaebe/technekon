@@ -1,17 +1,21 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import { fileURLToPath, URL } from "url";
 
 export default defineConfig({
   base: '/techecon/',
   plugins: [vue()],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
-    },
+      '@': './src'
+    }
   },
   css: {
     devSourcemap: true,
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "./src/styles/variables.scss";`
+      }
+    }
   },
   build: {
     cssCodeSplit: false,
@@ -19,7 +23,7 @@ export default defineConfig({
     assetsDir: 'assets',
     rollupOptions: {
       output: {
-        assetFileNames: (assetInfo: { name?: string }) => {
+        assetFileNames: (assetInfo) => {
           if (assetInfo.name?.endsWith('.css')) {
             return 'assets/[name].[hash].css';
           }
