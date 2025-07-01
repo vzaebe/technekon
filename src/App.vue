@@ -1,13 +1,10 @@
 <template>
-  <div id="app">
-    <HomePage />
-  </div>
+  <router-view />
 </template>
 
 <script setup lang="ts">
-import HomePage from "@/views/HomePage.vue";
 </script>
 
 <style lang="scss">
-@import "./styles/main.scss";
+@import './styles/main.scss';
 </style>
