@@ -49,7 +49,6 @@
 </template>
 
 <script setup lang="ts">
-import type { Ref } from 'vue'
 import { ref, onMounted } from 'vue'
 
 const titleRef = ref<HTMLElement | null>(null)
