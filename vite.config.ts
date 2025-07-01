@@ -9,6 +9,7 @@ export default defineConfig({
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
+    extensions: ['.js', '.ts', '.vue']
   },
   css: {
     devSourcemap: true,
@@ -23,6 +24,8 @@ export default defineConfig({
           }
           return 'assets/[name].[hash][extname]';
         },
+        chunkFileNames: 'assets/[name].[hash].js',
+        entryFileNames: 'assets/[name].[hash].js',
       },
     },
   },
