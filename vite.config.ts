@@ -16,11 +16,12 @@ export default defineConfig({
   build: {
     cssCodeSplit: false,
     outDir: 'dist',
+    assetsDir: 'assets',
     rollupOptions: {
       output: {
         assetFileNames: (assetInfo: { name?: string }) => {
           if (assetInfo.name?.endsWith('.css')) {
-            return 'assets/styles.[hash].css';
+            return 'assets/[name].[hash].css';
           }
           return 'assets/[name].[hash][extname]';
         },
