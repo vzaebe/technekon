@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
-  base: '/techecon/',
+  base: '/technekon/',
   plugins: [vue()],
   resolve: {
     alias: {
