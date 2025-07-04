@@ -285,7 +285,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, reactive, computed, nextTick } from 'vue'
+import { onMounted, ref, reactive, computed } from 'vue'
 import AppHeader from '@/components/AppHeader.vue'
 import AppFooter from '@/components/AppFooter.vue'
 import AOS from 'aos'
@@ -447,7 +447,7 @@ const handleImageHover = (index: number) => {
   hoveredImage.value = index
 }
 
-const handleImageLeave = (index: number) => {
+const handleImageLeave = (_index: number) => {
   hoveredImage.value = -1
 }
 
@@ -461,7 +461,7 @@ const animateAvatar = (n: number) => {
   console.log('Animating avatar:', n)
 }
 
-const animateStat = (stat: any, index: number) => {
+const animateStat = (_stat: any, index: number) => {
   if (!animatedStats.value.includes(index)) {
     animatedStats.value.push(index)
     setTimeout(() => {
