@@ -149,7 +149,7 @@ const handleNavClick = (item: string) => {
 
     &-item {
       color: $text-dark;
-      font-size: $font-xl;
+      font-size: 0.75rem;
       font-weight: 500;
       @include uppercase-text;
       cursor: pointer;
@@ -157,22 +157,22 @@ const handleNavClick = (item: string) => {
       border: none;
       @include transition-colors;
       white-space: nowrap;
-      padding: 0.75rem 0;
+      padding: 0.5rem 0;
       
       &:hover {
         color: $primary-color;
       }
 
       @include respond-to(large) {
-        font-size: $font-2xl;
+        font-size: 0.875rem;
       }
       
       @include respond-to(xl) {
-        font-size: $font-3xl;
+        font-size: 1rem;
       }
 
       @include respond-to(xxl) {
-        font-size: $font-4xl;
+        font-size: 1.125rem;
       }
     }
   }
@@ -194,6 +194,47 @@ const handleNavClick = (item: string) => {
     &--bottom {
       margin-top: 0;
       margin-bottom: 0;
+    }
+  }
+
+  &__mobile-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+
+    @include respond-to(desktop) {
+      display: none;
+    }
+
+    &-item {
+      color: $text-dark;
+      font-size: 0.75rem;
+      font-weight: 500;
+      @include uppercase-text;
+      cursor: pointer;
+      background: none;
+      border: none;
+      @include transition-colors;
+      
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    &-button {
+      color: $text-dark;
+      font-size: 1.5rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: none;
+      border: none;
+      @include transition-colors;
+      
+      &:hover {
+        color: $primary-color;
+      }
     }
   }
 }

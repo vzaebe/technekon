@@ -1,98 +1,134 @@
 <template>
   <section class="contact">
+    <div class="contact__background">
+      <div class="contact__decorative-circle contact__decorative-circle--1"></div>
+      <div class="contact__decorative-circle contact__decorative-circle--2"></div>
+      <div class="contact__decorative-circle contact__decorative-circle--3"></div>
+    </div>
+    
     <div class="container">
-      <h2 class="contact__title" ref="titleRef" :class="{ 'fade-in': isTitleVisible }">
-        <span>ОСТАЛИСЬ ВОПРОСЫ?</span>
-        <br />
-        <span>СВЯЖИТЕСЬ С НАМИ!</span>
-      </h2>
+      <div class="contact__content">
+        <div class="contact__info" ref="titleRef" :class="{ 'fade-in': isTitleVisible }">
+          <h2 class="contact__title">
+            <span class="contact__title-main">ОСТАЛИСЬ ВОПРОСЫ?</span>
+            <span class="contact__title-sub">Свяжитесь с нами и мы поможем!</span>
+          </h2>
+          <div class="contact__description">
+            <p>Наши специалисты готовы ответить на любые вопросы и предоставить подробную консультацию по нашему оборудованию.</p>
+          </div>
+        </div>
 
-      <form class="contact__form" @submit.prevent="handleSubmit" ref="formRef" :class="{ 'slide-in': isFormVisible }">
-        <div class="contact__fields">
-          <div class="contact__field">
-            <label class="contact__label" for="contact-name">Имя</label>
-            <div class="contact__input-container">
-              <input
-                id="contact-name"
-                v-model="name"
-                type="text"
-                placeholder="Ваше имя"
-                class="contact__input"
-                required
-                :disabled="status === 'success'"
-              />
+        <div class="contact__form-wrapper">
+          <form class="contact__form" @submit.prevent="handleSubmit" ref="formRef" :class="{ 'slide-in': isFormVisible }">
+            <div class="contact__form-header">
+              <h3>Напишите нам</h3>
+              <p>Заполните форму и мы свяжемся с вами в ближайшее время</p>
             </div>
-          </div>
-          <div class="contact__field">
-            <label class="contact__label" for="contact-email">Email</label>
-            <div class="contact__input-container">
-              <input
-                id="contact-email"
-                v-model="email"
-                type="email"
-                placeholder="Email"
-                class="contact__input"
-                required
-                :disabled="status === 'success'"
-              />
+            
+            <div class="contact__fields">
+              <div class="contact__field-group">
+                <div class="contact__field">
+                  <label class="contact__label" for="contact-name">Имя *</label>
+                  <div class="contact__input-container">
+                    <input
+                      id="contact-name"
+                      v-model="name"
+                      type="text"
+                      placeholder="Введите ваше имя"
+                      class="contact__input"
+                      required
+                      :disabled="status === 'success'"
+                    />
+                  </div>
+                </div>
+                <div class="contact__field">
+                  <label class="contact__label" for="contact-email">Email *</label>
+                  <div class="contact__input-container">
+                    <input
+                      id="contact-email"
+                      v-model="email"
+                      type="email"
+                      placeholder="example@email.com"
+                      class="contact__input"
+                      required
+                      :disabled="status === 'success'"
+                    />
+                  </div>
+                </div>
+              </div>
+              
+              <div class="contact__field">
+                <label class="contact__label" for="contact-phone">Телефон</label>
+                <div class="contact__input-container">
+                  <input
+                    id="contact-phone"
+                    v-model="phone"
+                    type="tel"
+                    placeholder="+7 (999) 123-45-67"
+                    class="contact__input"
+                    :disabled="status === 'success'"
+                  />
+                </div>
+              </div>
+              
+              <div class="contact__field">
+                <label class="contact__label" for="contact-message">Сообщение</label>
+                <div class="contact__input-container contact__input-container--textarea">
+                  <textarea
+                    id="contact-message"
+                    v-model="message"
+                    placeholder="Расскажите о ваших потребностях или задайте вопрос..."
+                    class="contact__textarea"
+                    rows="4"
+                    :disabled="status === 'success'"
+                  ></textarea>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="contact__field">
-            <label class="contact__label" for="contact-phone">Телефон</label>
-            <div class="contact__input-container">
-              <input
-                id="contact-phone"
-                v-model="phone"
-                type="tel"
-                placeholder="Телефон"
-                class="contact__input"
-                :disabled="status === 'success'"
-              />
+            
+            <div class="contact__actions">
+              <button
+                class="contact__submit"
+                type="submit"
+                :disabled="status === 'success' || status === 'loading'"
+                @mouseenter="buttonHovered = true"
+                @mouseleave="buttonHovered = false"
+                :class="{ 'button-hover': buttonHovered }"
+              >
+                <span v-if="status === 'loading'" class="loader"></span>
+                <span v-else class="contact__submit-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 21L23 12L2 3V10L17 12L2 14V21Z" fill="currentColor"/>
+                  </svg>
+                </span>
+                <span class="contact__submit-text">
+                  {{ status === 'loading' ? 'Отправляем...' : 'Отправить сообщение' }}
+                </span>
+              </button>
             </div>
-          </div>
-          <div class="contact__field">
-            <label class="contact__label" for="contact-message">Сообщение</label>
-            <div class="contact__input-container contact__input-container--textarea">
-              <textarea
-                id="contact-message"
-                v-model="message"
-                placeholder="Ваш вопрос или сообщение..."
-                class="contact__textarea"
-                rows="3"
-                :disabled="status === 'success'"
-              ></textarea>
-            </div>
-          </div>
+            
+            <transition name="fade">
+              <div v-if="status === 'success'" class="contact__status contact__status--success">
+                <div class="contact__status-icon">✓</div>
+                <div>
+                  <strong>Спасибо за обращение!</strong>
+                  <p>Мы получили ваше сообщение и свяжемся с вами в ближайшее время.</p>
+                </div>
+              </div>
+            </transition>
+            
+            <transition name="fade">
+              <div v-if="status === 'error'" class="contact__status contact__status--error">
+                <div class="contact__status-icon">!</div>
+                <div>
+                  <strong>Ошибка отправки</strong>
+                  <p>Произошла ошибка при отправке сообщения. Попробуйте ещё раз.</p>
+                </div>
+              </div>
+            </transition>
+          </form>
         </div>
-        <div class="contact__actions">
-          <button
-            class="contact__submit"
-            type="submit"
-            :disabled="status === 'success' || status === 'loading'"
-            @mouseenter="buttonHovered = true"
-            @mouseleave="buttonHovered = false"
-            :class="{ 'button-hover': buttonHovered }"
-          >
-            <span v-if="status === 'loading'" class="loader"></span>
-            <span v-else>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="send-icon">
-                <path d="M2 21L23 12L2 3V10L17 12L2 14V21Z" fill="#2ad0a2"/>
-              </svg>
-            </span>
-            <span class="contact__submit-text">Отправить</span>
-          </button>
-        </div>
-        <transition name="fade">
-          <div v-if="status === 'success'" class="contact__status contact__status--success">
-            Спасибо! Мы свяжемся с вами.
-          </div>
-        </transition>
-        <transition name="fade">
-          <div v-if="status === 'error'" class="contact__status contact__status--error">
-            Ошибка. Попробуйте ещё раз.
-          </div>
-        </transition>
-      </form>
+      </div>
     </div>
   </section>
 </template>
