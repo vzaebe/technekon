@@ -67,31 +67,31 @@
 
   &__phone {
     color: $text-light;
-    font-size: $font-lg;
+    font-size: calc($font-subtitle / 2);
     font-weight: 600;
     @include uppercase-text;
     line-height: 1.2;
 
     @include respond-to(mobile) {
-      font-size: $font-xl;
+      font-size: calc($font-section-title / 2);
     }
 
     @include respond-to(tablet) {
-      font-size: $font-2xl;
+      font-size: calc($font-page-title / 2);
     }
 
     @include respond-to(desktop) {
-      font-size: $font-3xl;
+      font-size: calc($font-hero-subtitle / 2);
     }
 
     @include respond-to(large) {
-      font-size: $font-4xl;
+      font-size: calc($font-hero-title / 2);
     }
   }
 
   &__email {
     color: $text-light;
-    font-size: $font-lg;
+    font-size: calc($font-subtitle / 2);
     font-weight: 600;
     @include uppercase-text;
     text-decoration: underline;
@@ -105,44 +105,44 @@
     }
 
     @include respond-to(mobile) {
-      font-size: $font-xl;
+      font-size: calc($font-section-title / 2);
     }
 
     @include respond-to(tablet) {
-      font-size: $font-2xl;
+      font-size: calc($font-page-title / 2);
     }
 
     @include respond-to(desktop) {
-      font-size: $font-3xl;
+      font-size: calc($font-hero-subtitle / 2);
     }
 
     @include respond-to(large) {
-      font-size: $font-4xl;
+      font-size: calc($font-hero-title / 2);
     }
   }
 
   &__address {
     color: $text-light;
-    font-size: $font-base;
+    font-size: calc($font-body / 2);
     font-weight: 500;
     @include uppercase-text;
     font-style: normal;
     line-height: 1.4;
 
     @include respond-to(mobile) {
-      font-size: $font-lg;
+      font-size: calc($font-subtitle / 2);
     }
 
     @include respond-to(tablet) {
-      font-size: $font-xl;
+      font-size: calc($font-section-title / 2);
     }
 
     @include respond-to(desktop) {
-      font-size: $font-2xl;
+      font-size: calc($font-page-title / 2);
     }
 
     @include respond-to(large) {
-      font-size: $font-3xl;
+      font-size: calc($font-hero-subtitle / 2);
     }
 
     div {
@@ -178,7 +178,7 @@
 
   &__menu-item {
     color: $text-light;
-    font-size: $font-lg;
+    font-size: calc($font-subtitle / 2);
     font-weight: 600;
     @include uppercase-text;
     cursor: pointer;
@@ -197,19 +197,19 @@
     }
 
     @include respond-to(mobile) {
-      font-size: $font-xl;
+      font-size: calc($font-section-title / 2);
     }
 
     @include respond-to(tablet) {
-      font-size: $font-2xl;
+      font-size: calc($font-page-title / 2);
     }
 
     @include respond-to(desktop) {
-      font-size: $font-3xl;
+      font-size: calc($font-hero-subtitle / 2);
     }
 
     @include respond-to(large) {
-      font-size: $font-4xl;
+      font-size: calc($font-hero-title / 2);
     }
   }
 

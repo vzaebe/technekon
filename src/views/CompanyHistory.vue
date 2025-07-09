@@ -509,7 +509,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/variables.scss';
+@import '../styles/variables';
 
 .history-page {
   min-height: 100vh;

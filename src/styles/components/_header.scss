@@ -5,7 +5,8 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: $shadow-soft-md;
+  transition: box-shadow $transition-normal $ease-out;
 
   @include respond-to(tablet) {
     padding: 2rem 3rem;
@@ -65,26 +66,26 @@
     position: absolute;
     right: 0;
     color: $text-dark;
-    font-size: $font-sm;
+    font-size: $font-body-small;
     font-weight: 400;
     @include uppercase-text;
     text-align: right;
     line-height: 1.4;
     
     @include respond-to(mobile) {
-      font-size: $font-base;
+      font-size: $font-body;
     }
     
     @include respond-to(tablet) {
-      font-size: $font-lg;
+      font-size: $font-subtitle;
     }
     
     @include respond-to(desktop) {
-      font-size: $font-xl;
+      font-size: $font-section-title;
     }
 
     @include respond-to(large) {
-      font-size: $font-2xl;
+      font-size: $font-page-title;
     }
 
     div {
@@ -147,7 +148,7 @@
 
     &-item {
       color: $text-dark;
-      font-size: $font-3xl;
+      font-size: $font-menu;
       font-weight: 500;
       @include uppercase-text;
       cursor: pointer;
@@ -162,15 +163,15 @@
       }
 
       @include respond-to(large) {
-        font-size: $font-4xl;
+        font-size: $font-hero-title;
       }
       
       @include respond-to(xl) {
-        font-size: $font-5xl;
+        font-size: $font-display;
       }
 
       @include respond-to(xxl) {
-        font-size: $font-6xl;
+        font-size: $font-display;
       }
     }
   }
@@ -185,7 +186,7 @@
 
     &-item {
       color: $text-dark;
-      font-size: $font-base;
+      font-size: $font-body;
       font-weight: 400;
       @include uppercase-text;
       background: none;
@@ -193,16 +194,16 @@
       padding: 0.75rem 0;
 
       @include respond-to(mobile) {
-        font-size: $font-lg;
+        font-size: $font-subtitle;
       }
 
       @include respond-to(tablet) {
-        font-size: $font-xl;
+        font-size: $font-section-title;
       }
     }
 
     &-button {
-      font-size: $font-2xl;
+      font-size: $font-page-title;
       color: $text-dark;
       background: none;
       border: none;
@@ -216,11 +217,11 @@
       }
 
       @include respond-to(mobile) {
-        font-size: $font-3xl;
+        font-size: $font-hero-subtitle;
       }
 
       @include respond-to(tablet) {
-        font-size: $font-4xl;
+        font-size: $font-hero-title;
       }
     }
   }

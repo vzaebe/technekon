@@ -1,1 +1,30 @@
- 
+// Global styles for product cards to enhance shadows
+.product-card {
+  @include elegant-card;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: $shadow-floating;
+  }
+}
+
+// Additional product card variations
+.product-card--featured {
+  @include floating-element;
+  border: 2px solid $primary-color;
+  
+  &:hover {
+    box-shadow: $shadow-primary-lg, $glow-primary;
+  }
+}
+
+.product-card--compact {
+  @include soft-card;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-soft-lg;
+  }
+} 

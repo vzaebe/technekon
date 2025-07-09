@@ -6,7 +6,7 @@
       <div class="contact__decorative-circle contact__decorative-circle--3"></div>
     </div>
     
-    <div class="container">
+    <div class="container-header-width">
       <div class="contact__content">
         <div class="contact__info" ref="titleRef" :class="{ 'fade-in': isTitleVisible }">
           <h2 class="contact__title">
@@ -17,14 +17,8 @@
             <p>Наши специалисты готовы ответить на любые вопросы и предоставить подробную консультацию по нашему оборудованию.</p>
           </div>
         </div>
-
         <div class="contact__form-wrapper">
           <form class="contact__form" @submit.prevent="handleSubmit" ref="formRef" :class="{ 'slide-in': isFormVisible }">
-            <div class="contact__form-header">
-              <h3>Напишите нам</h3>
-              <p>Заполните форму и мы свяжемся с вами в ближайшее время</p>
-            </div>
-            
             <div class="contact__fields">
               <div class="contact__field-group">
                 <div class="contact__field">
@@ -85,7 +79,6 @@
                 </div>
               </div>
             </div>
-            
             <div class="contact__actions">
               <button
                 class="contact__submit"
@@ -106,7 +99,6 @@
                 </span>
               </button>
             </div>
-            
             <transition name="fade">
               <div v-if="status === 'success'" class="contact__status contact__status--success">
                 <div class="contact__status-icon">✓</div>
@@ -116,7 +108,6 @@
                 </div>
               </div>
             </transition>
-            
             <transition name="fade">
               <div v-if="status === 'error'" class="contact__status contact__status--error">
                 <div class="contact__status-icon">!</div>

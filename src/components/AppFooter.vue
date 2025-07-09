@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <div class="container">
+    <div class="container-header-width">
       <div class="footer__content">
         <!-- Left Column - Contact Info -->
         <div class="footer__contact">

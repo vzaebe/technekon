@@ -1,6 +1,6 @@
 <template>
   <section class="about">
-    <div class="container">
+    <div class="container-header-width">
       <h2 class="about__title" ref="titleRef" :class="{ 'fade-in': isTitleVisible }">
         <span class="about__title-prefix">О </span>
         <span class="about__title-highlight">ЧЁМ</span>

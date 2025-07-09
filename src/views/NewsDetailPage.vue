@@ -342,7 +342,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/variables.scss';
+@import '../styles/variables';
 
 .news-detail-page {
   min-height: 100vh;
@@ -758,7 +758,7 @@ onMounted(() => {
     transition: all 0.3s ease;
     
     &:hover {
-      background: darken($primary-color, 10%);
+      background: #22b085;
       transform: translateY(-2px);
       box-shadow: 0 10px 25px rgba(42, 208, 162, 0.3);
     }
@@ -817,7 +817,7 @@ onMounted(() => {
     color: white;
     
     &:hover {
-      background: darken(#0088cc, 10%);
+      background: #006da8;
     }
   }
   
@@ -826,7 +826,7 @@ onMounted(() => {
     color: white;
     
     &:hover {
-      background: darken(#25d366, 10%);
+      background: #1faa52;
     }
   }
   
@@ -835,7 +835,7 @@ onMounted(() => {
     color: white;
     
     &:hover {
-      background: darken(#ea4335, 10%);
+      background: #c73e1d;
     }
   }
 }

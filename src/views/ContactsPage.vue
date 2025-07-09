@@ -2,12 +2,14 @@
   <div class="contacts-page">
     <AppHeader />
 
-    <main class="contacts-main">
-      <section class="contacts-hero" data-aos="fade-down">
-        <h1 class="contacts-title">Контакты</h1>
-        <p class="contacts-subtitle">Мы всегда готовы помочь и ответить на ваши вопросы</p>
-      </section>
+    <!-- Используем PageBanner для страницы контактов -->
+    <PageBanner 
+      :title-lines="['КОНТАКТЫ', 'ТЕХНЕКОНА']"
+      subtitle="Мы всегда готовы помочь и ответить на ваши вопросы"
+      theme="contacts"
+    />
 
+    <main class="contacts-main">
       <section class="contacts-grid" data-aos="fade-up" data-aos-delay="200">
         <!-- Sales Contact Card -->
         <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
@@ -24,7 +26,9 @@
         <!-- Support Contact Card -->
         <div class="contact-card" data-aos="fade-up" data-aos-delay="400">
           <div class="contact-icon">
-            <span class="icon-symbol">🛠️</span>
+                            <span class="icon-symbol">
+                  <SupportIcon />
+                </span>
           </div>
           <h3 class="contact-type">Служба поддержки</h3>
           <p class="contact-description">Техническая поддержка и сервис</p>
@@ -102,8 +106,10 @@
 <script setup lang="ts">
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
+import SupportIcon from '@/components/icons/SupportIcon.vue';
 import { onMounted, ref } from 'vue';
 import AOS from 'aos';
+import PageBanner from '@/components/PageBanner.vue'; // Added import for PageBanner
 
 // Declare Yandex Maps types
 declare global {
@@ -193,7 +199,7 @@ onMounted(async () => {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/variables.scss';
+@import '../styles/variables';
 
 .contacts-page {
   min-height: 100vh;
@@ -225,27 +231,27 @@ onMounted(async () => {
 }
 
 .contacts-title {
-  font-size: $font-4xl;
+  font-size: $font-hero-title;
   font-weight: 600;
   color: $text-dark;
   margin-bottom: $space-4;
   
   @include respond-to(tablet) {
-    font-size: $font-5xl;
+    font-size: $font-display;
   }
   
   @include respond-to(desktop) {
-    font-size: $font-6xl;
+    font-size: $font-display;
   }
 }
 
 .contacts-subtitle {
-  font-size: $font-lg;
+  font-size: $font-subtitle;
   color: $text-muted;
   margin: 0;
   
   @include respond-to(tablet) {
-    font-size: $font-xl;
+    font-size: $font-section-title;
   }
 }
 
@@ -296,36 +302,36 @@ onMounted(async () => {
   margin: 0 auto $space-4;
   
   .icon-symbol {
-    font-size: $font-3xl;
+    font-size: $font-hero-subtitle;
     filter: grayscale(1) brightness(0) invert(1);
   }
 }
 
 .contact-type {
-  font-size: $font-xl;
+  font-size: $font-section-title;
   font-weight: 600;
   color: $text-dark;
   margin-bottom: $space-2;
   
   @include respond-to(tablet) {
-    font-size: $font-2xl;
+    font-size: $font-page-title;
   }
 }
 
 .contact-description {
-  font-size: $font-base;
+  font-size: $font-body;
   color: $text-muted;
   margin-bottom: $space-4;
   line-height: 1.5;
   
   @include respond-to(tablet) {
-    font-size: $font-lg;
+    font-size: $font-subtitle;
   }
 }
 
 .contact-link {
   display: inline-block;
-  font-size: $font-lg;
+  font-size: $font-subtitle;
   font-weight: 600;
   color: $primary-color;
   text-decoration: none;
@@ -334,7 +340,7 @@ onMounted(async () => {
   transition: all $transition-normal $ease-out;
   
   @include respond-to(tablet) {
-    font-size: $font-xl;
+    font-size: $font-section-title;
   }
   
   &:hover {
@@ -353,14 +359,14 @@ onMounted(async () => {
 }
 
 .section-title {
-  font-size: $font-3xl;
+  font-size: $font-hero-subtitle;
   font-weight: 600;
   color: $text-dark;
   text-align: center;
   margin-bottom: $space-8;
   
   @include respond-to(tablet) {
-    font-size: $font-4xl;
+    font-size: $font-hero-title;
   }
 }
 
@@ -400,20 +406,20 @@ onMounted(async () => {
   margin-bottom: $space-4;
   
   .icon-symbol {
-    font-size: $font-2xl;
+    font-size: $font-page-title;
     filter: grayscale(1) brightness(0) invert(1);
   }
 }
 
 .address-type {
-  font-size: $font-xl;
+  font-size: $font-section-title;
   font-weight: 600;
   color: $text-dark;
   margin-bottom: $space-3;
 }
 
 .address-text {
-  font-size: $font-lg;
+  font-size: $font-subtitle;
   color: $text-muted;
   line-height: 1.6;
   margin: 0;
@@ -433,11 +439,11 @@ onMounted(async () => {
 .note-content {
   p {
     margin: 0;
-    font-size: $font-lg;
+    font-size: $font-subtitle;
     color: $text-muted;
     
     @include respond-to(tablet) {
-      font-size: $font-xl;
+      font-size: $font-section-title;
     }
   }
 }
@@ -492,29 +498,29 @@ onMounted(async () => {
   justify-content: center;
   
   h3 {
-    font-size: $font-2xl;
+    font-size: $font-page-title;
     font-weight: 600;
     color: $text-dark;
     margin-bottom: $space-3;
     
     @include respond-to(tablet) {
-      font-size: $font-3xl;
+      font-size: $font-hero-subtitle;
     }
   }
   
   p {
-    font-size: $font-lg;
+    font-size: $font-subtitle;
     color: $text-muted;
     margin-bottom: $space-2;
     line-height: 1.5;
     
     @include respond-to(tablet) {
-      font-size: $font-xl;
+      font-size: $font-section-title;
     }
   }
   
   .map-note {
-    font-size: $font-base;
+    font-size: $font-body;
     color: $primary-color;
     font-weight: 500;
     margin-top: $space-3;
@@ -522,7 +528,7 @@ onMounted(async () => {
     border-top: 1px solid $border-light;
     
     @include respond-to(tablet) {
-      font-size: $font-lg;
+      font-size: $font-subtitle;
     }
   }
 }
@@ -538,7 +544,7 @@ onMounted(async () => {
   background: linear-gradient(135deg, rgba($primary-color, 0.05), rgba($secondary-color, 0.05));
   
   p {
-    font-size: $font-lg;
+    font-size: $font-subtitle;
     color: $text-muted;
     margin-bottom: $space-2;
     
@@ -557,11 +563,11 @@ onMounted(async () => {
   }
   
   .contacts-title {
-    font-size: $font-3xl;
+    font-size: $font-hero-subtitle;
   }
   
   .contacts-subtitle {
-    font-size: $font-base;
+    font-size: $font-body;
   }
   
   .contact-card,
@@ -575,26 +581,26 @@ onMounted(async () => {
     height: 50px;
     
     .icon-symbol {
-      font-size: $font-2xl;
+      font-size: $font-page-title;
     }
   }
   
   .contact-type,
   .address-type {
-    font-size: $font-lg;
+    font-size: $font-subtitle;
   }
   
   .contact-description,
   .address-text {
-    font-size: $font-base;
+    font-size: $font-body;
   }
   
   .contact-link {
-    font-size: $font-lg;
+    font-size: $font-subtitle;
   }
   
   .section-title {
-    font-size: $font-2xl;
+    font-size: $font-page-title;
   }
   
   .contacts-note {
@@ -602,7 +608,7 @@ onMounted(async () => {
   }
   
   .note-content p {
-    font-size: $font-base;
+    font-size: $font-body;
   }
   
   /* Map mobile optimizations */
@@ -614,17 +620,17 @@ onMounted(async () => {
     padding: $space-4;
     
     h3 {
-      font-size: $font-xl;
+      font-size: $font-section-title;
       margin-bottom: $space-2;
     }
     
     p {
-      font-size: $font-base;
+      font-size: $font-body;
       margin-bottom: $space-1;
     }
     
     .map-note {
-      font-size: $font-sm;
+      font-size: $font-menu;
       margin-top: $space-2;
       padding-top: $space-2;
     }
@@ -634,10 +640,10 @@ onMounted(async () => {
     padding: $space-6;
     
     p {
-      font-size: $font-base;
+      font-size: $font-body;
       
       &:first-child {
-        font-size: $font-lg;
+        font-size: $font-subtitle;
       }
     }
   }

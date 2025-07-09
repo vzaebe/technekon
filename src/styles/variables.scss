@@ -13,21 +13,22 @@ $shadow-color: rgba(42, 208, 162, 0.2);
 // New colors for better design
 $accent-gradient-1: #2ad0a2;
 $accent-gradient-2: #86ffdd;
-$background-light: #fcfcfd;
+$background-light: white;
 $border-light: #e2e8f0;
 $text-muted: #64748b;
 
-// Font sizes (уменьшены для отображения как при 50% зуме)
-$font-xs: 0.5rem;     // 8px
-$font-sm: 0.625rem;   // 10px
-$font-base: 0.75rem;  // 12px
-$font-lg: 0.875rem;   // 14px
-$font-xl: 1rem;       // 16px
-$font-2xl: 1.25rem;   // 20px
-$font-3xl: 1.5rem;    // 24px
-$font-4xl: 1.875rem;  // 30px
-$font-5xl: 2.25rem;   // 36px
-$font-6xl: 3rem;      // 48px
+// Font sizes - семантическая система
+$font-copyright: 0.6rem;      // ~9.6px - копирайт, мелкие сноски
+$font-caption: 0.75rem;       // ~12px - подписи, вспомогательный текст
+$font-menu: 0.75rem;          // ~12px - навигационное меню
+$font-body-small: 0.875rem;   // ~14px - мелкий основной текст
+$font-body: 1rem;             // ~16px - основной текст
+$font-subtitle: 1.125rem;     // ~18px - подзаголовки
+$font-section-title: 1.25rem; // ~20px - заголовки секций
+$font-page-title: 1.5rem;     // ~24px - заголовки страниц
+$font-hero-subtitle: 1.875rem; // ~30px - подзаголовки в hero
+$font-hero-title: 2.25rem;    // ~36px - заголовки в hero
+$font-display: 3rem;          // ~48px - большие декоративные заголовки
 
 // Spacing scale (увеличена для большего воздуха)
 $space-1: 0.25rem;
@@ -78,12 +79,32 @@ $radius-xl: 1.5rem;
 $radius-2xl: 2rem;
 $radius-3xl: 3rem;
 
-// Shadow variables
+// Enhanced Shadow variables with stylish effects
 $shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 $shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 $shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 $shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+// Stylish colored shadows
+$shadow-primary: 0 8px 25px -5px rgba($primary-color, 0.3), 0 4px 10px -2px rgba($primary-color, 0.15);
+$shadow-primary-lg: 0 15px 35px -5px rgba($primary-color, 0.4), 0 8px 15px -3px rgba($primary-color, 0.2);
+$shadow-secondary: 0 8px 25px -5px rgba($secondary-color, 0.3), 0 4px 10px -2px rgba($secondary-color, 0.15);
+$shadow-accent: 0 8px 25px -5px rgba($primary-accent, 0.3), 0 4px 10px -2px rgba($primary-accent, 0.15);
+
+// Soft elegant shadows
+$shadow-soft: 0 2px 15px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.04);
+$shadow-soft-md: 0 4px 20px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+$shadow-soft-lg: 0 8px 30px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.08);
+
+// Dramatic shadows for standout elements
+$shadow-dramatic: 0 12px 40px rgba(0, 0, 0, 0.2), 0 6px 18px rgba(0, 0, 0, 0.1);
+$shadow-floating: 0 25px 50px rgba(0, 0, 0, 0.15), 0 12px 25px rgba(0, 0, 0, 0.08);
+
+// Glow effects
+$glow-primary: 0 0 20px rgba($primary-color, 0.4), 0 0 40px rgba($primary-color, 0.2);
+$glow-secondary: 0 0 20px rgba($secondary-color, 0.4), 0 0 40px rgba($secondary-color, 0.2);
+$glow-white: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.1);
 
 // Mixins
 @mixin respond-to($breakpoint) {
@@ -162,6 +183,10 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 
 
 @mixin transition-colors {
   transition: color $transition-normal $ease-out;
+}
+
+@mixin transition-all {
+  transition: all $transition-normal $ease-out;
 }
 
 // Animation mixins
@@ -269,5 +294,60 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+// New stylish shadow mixins
+@mixin elegant-card {
+  background: white;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-soft;
+  transition: all $transition-normal $ease-out;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-soft-lg;
+  }
+}
+
+@mixin floating-element {
+  box-shadow: $shadow-floating;
+  transition: all $transition-normal $ease-out;
+  
+  &:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: $shadow-dramatic;
+  }
+}
+
+@mixin primary-glow {
+  box-shadow: $shadow-primary;
+  transition: all $transition-normal $ease-out;
+  
+  &:hover {
+    box-shadow: $shadow-primary-lg, $glow-primary;
+    transform: translateY(-3px);
+  }
+}
+
+@mixin soft-card {
+  background: white;
+  border-radius: $radius-md;
+  box-shadow: $shadow-soft;
+  transition: all $transition-normal $ease-out;
+}
+
+@mixin stylish-button {
+  box-shadow: $shadow-md;
+  transition: all $transition-normal $ease-out;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-primary;
+  }
+  
+  &:active {
+    transform: translateY(0);
+    box-shadow: $shadow-sm;
   }
 }

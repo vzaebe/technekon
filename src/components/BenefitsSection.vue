@@ -1,6 +1,6 @@
 <template>
   <section class="benefits">
-    <div class="container">
+    <div class="container-header-width">
       <div class="benefits__content">
         <h2 class="benefits__title">
           <span class="benefits__title-prefix">ЧТО ТАКОЕ </span>

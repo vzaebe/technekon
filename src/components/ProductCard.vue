@@ -14,8 +14,8 @@
       </div>
       <div class="product-card__info">
         <div class="product-card__title">
-          <div class="product-card__title-main">Виброанализатор</div>
-          <div class="product-card__title-model">STD-500</div>
+          <div class="product-card__title-main">{{ title }}</div>
+          <div class="product-card__title-model">{{ model }}</div>
         </div>
       </div>
     </div>
@@ -25,6 +25,7 @@
 <script setup lang="ts">
 interface Props {
   title: string;
+  model: string;
   imageUrl?: string;
 }
 
@@ -32,6 +33,8 @@ defineProps<Props>();
 </script>
 
 <style lang="scss" scoped>
+@import "../styles/variables";
+
 .product-card {
   width: 100%;
   height: 300px;
@@ -41,13 +44,11 @@ defineProps<Props>();
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
-              0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: $shadow-soft-md;
 
   &:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    box-shadow: $shadow-floating, $shadow-primary;
 
     .product-card__overlay {
       opacity: 1;
@@ -168,21 +169,21 @@ defineProps<Props>();
     gap: 0.25rem;
 
     &-main {
-      font-size: $font-base;
+      font-size: $font-body;
       font-weight: 600;
 
       @include respond-to(tablet) {
-        font-size: $font-lg;
+        font-size: $font-subtitle;
       }
     }
 
     &-model {
-      font-size: $font-sm;
+      font-size: $font-menu;
       font-weight: 700;
       color: $primary-color;
 
       @include respond-to(tablet) {
-        font-size: $font-base;
+        font-size: $font-body;
       }
     }
   }
@@ -206,7 +207,7 @@ defineProps<Props>();
   &__view-details {
     color: white;
     font-weight: 600;
-    font-size: $font-base;
+    font-size: $font-body;
     text-transform: uppercase;
     letter-spacing: 1px;
   }

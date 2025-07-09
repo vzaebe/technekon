@@ -2,6 +2,13 @@
   <div class="about-company-page">
     <AppHeader />
 
+    <!-- Используем PageBanner для страницы "О компании" -->
+    <PageBanner 
+      :title-lines="['О КОМПАНИИ', 'ТЕХНЕКОН']"
+      subtitle="30+ лет инноваций в области вибродиагностики"
+      theme="about"
+    />
+
     <!-- Animated Background -->
     <div class="wave-background">
       <div class="wave wave-1"></div>
@@ -10,41 +17,6 @@
     </div>
 
     <main class="about-main">
-      <!-- Hero Section with Vibration Effect -->
-      <section class="hero" data-aos="fade-down">
-        <div class="hero-content">
-          <div class="vibration-indicator">
-            <div class="pulse-ring"></div>
-            <div class="pulse-ring delay-1"></div>
-            <div class="pulse-ring delay-2"></div>
-            <div class="diagnostic-icon">⚡</div>
-          </div>
-          <h1 class="hero-title">
-            <span class="glitch" data-text="О КОМПАНИИ">О КОМПАНИИ</span>
-          </h1>
-          <p class="hero-subtitle">
-            <span class="typewriter">30+ лет инноваций в области вибродиагностики</span>
-          </p>
-          <div class="frequency-bars">
-            <div class="bar" v-for="i in 20" :key="i" :style="{ animationDelay: i * 0.1 + 's' }"></div>
-          </div>
-        </div>
-        <div class="floating-diagnostics">
-          <div class="diagnostic-chart chart-1">
-            <div class="chart-line"></div>
-            <div class="chart-data">Normal</div>
-          </div>
-          <div class="diagnostic-chart chart-2">
-            <div class="chart-line warning"></div>
-            <div class="chart-data">Warning</div>
-          </div>
-          <div class="diagnostic-chart chart-3">
-            <div class="chart-line danger"></div>
-            <div class="chart-data">Critical</div>
-          </div>
-        </div>
-      </section>
-
       <!-- Live Statistics Dashboard -->
       <section class="live-stats" data-aos="zoom-in">
         <div class="stats-header">
@@ -59,7 +31,9 @@
         <div class="stats-grid">
           <div v-for="stat in liveStats" :key="stat.id" class="stat-widget" :data-aos="'flip-left'" :data-aos-delay="stat.id * 100">
             <div class="widget-header">
-              <div class="widget-icon">{{ stat.icon }}</div>
+              <div class="widget-icon">
+                <component :is="stat.icon" />
+              </div>
               <div class="widget-status" :class="stat.status"></div>
             </div>
             <div class="widget-value">{{ stat.value }}</div>
@@ -132,7 +106,9 @@
           </div>
           <div class="presence-stats">
             <div class="presence-stat" v-for="stat in presenceStats" :key="stat.label">
-              <div class="stat-icon">{{ stat.icon }}</div>
+              <div class="stat-icon">
+                <component :is="stat.icon" />
+              </div>
               <div class="stat-number">{{ stat.value }}</div>
               <div class="stat-label">{{ stat.label }}</div>
             </div>
@@ -460,7 +436,9 @@
           </div>
           <div class="contact-methods">
             <div class="contact-method" v-for="method in contactMethods" :key="method.type">
-              <div class="method-icon">{{ method.icon }}</div>
+              <div class="method-icon">
+                <component :is="method.icon" />
+              </div>
               <div class="method-info">
                 <div class="method-label">{{ method.label }}</div>
                 <div class="method-value">{{ method.value }}</div>
@@ -479,8 +457,22 @@
 /// <reference types="vue" />
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
+import PowerIcon from '@/components/icons/PowerIcon.vue';
+import AnalyticsIcon from '@/components/icons/AnalyticsIcon.vue';
+import SearchIcon from '@/components/icons/SearchIcon.vue';
+import TargetIcon from '@/components/icons/TargetIcon.vue';
+import TrendIcon from '@/components/icons/TrendIcon.vue';
+import GlobalIcon from '@/components/icons/GlobalIcon.vue';
+import MobileIcon from '@/components/icons/MobileIcon.vue';
+import FactoryIcon from '@/components/icons/FactoryIcon.vue';
+import HandshakeIcon from '@/components/icons/HandshakeIcon.vue';
+import SafetyIcon from '@/components/icons/SafetyIcon.vue';
+import PhoneIcon from '@/components/icons/PhoneIcon.vue';
+import EmailIcon from '@/components/icons/EmailIcon.vue';
+import ChatIcon from '@/components/icons/ChatIcon.vue';
 import { onMounted, ref } from 'vue';
 import AOS from 'aos';
+import PageBanner from '@/components/PageBanner.vue';
 
 const activeFact = ref<number | null>(null);
 const activeStory = ref<number>(0);
@@ -509,10 +501,10 @@ const getValueIcon = (index: number): string => {
 
 // Live Statistics
 const liveStats = [
-  { id: 1, icon: '📊', value: '15,847', label: 'Активных систем', status: 'normal', trend: 'up', change: '+12' },
-  { id: 2, icon: '⚡', value: '99.8%', label: 'Время работы', status: 'excellent', trend: 'up', change: '+0.2' },
-  { id: 3, icon: '🔍', value: '2,456', label: 'Диагностик сегодня', status: 'normal', trend: 'up', change: '+8' },
-  { id: 4, icon: '🛡️', value: '0', label: 'Критических событий', status: 'excellent', trend: 'down', change: '-100' }
+  { id: 1, icon: 'AnalyticsIcon', value: '15,847', label: 'Активных систем', status: 'normal', trend: 'up', change: '+12' },
+  { id: 2, icon: 'PowerIcon', value: '99.8%', label: 'Время работы', status: 'excellent', trend: 'up', change: '+0.2' },
+  { id: 3, icon: 'SearchIcon', value: '2,456', label: 'Диагностик сегодня', status: 'normal', trend: 'up', change: '+8' },
+  { id: 4, icon: 'SafetyIcon', value: '0', label: 'Критических событий', status: 'excellent', trend: 'down', change: '-100' }
 ];
 
 // Team Experts
@@ -568,10 +560,10 @@ const globalLocations = [
 ];
 
 const presenceStats = [
-  { icon: '🌍', value: '45+', label: 'стран' },
-  { icon: '🏭', value: '1500+', label: 'заводов' },
-  { icon: '🤝', value: '5000+', label: 'клиентов' },
-  { icon: '📈', value: '98%', label: 'удовлетворенность' }
+  { icon: 'GlobalIcon', value: '45+', label: 'стран' },
+  { icon: 'FactoryIcon', value: '1500+', label: 'заводов' },
+  { icon: 'HandshakeIcon', value: '5000+', label: 'клиентов' },
+  { icon: 'TrendIcon', value: '98%', label: 'удовлетворенность' }
 ];
 
 // Success Stories
@@ -699,10 +691,10 @@ const partnershipBenefits = [
 
 // Contact Methods
 const contactMethods = [
-  { type: 'phone', icon: '📞', label: 'Телефон', value: '+7 (499) 744-60-17' },
-  { type: 'email', icon: '📧', label: 'Email', value: 'sales@tehnekon.ru' },
-  { type: 'telegram', icon: '💬', label: 'Telegram', value: '@tehnekon_support' },
-  { type: 'whatsapp', icon: '📱', label: 'WhatsApp', value: '+7 (999) 123-45-67' }
+  { type: 'phone', icon: 'PhoneIcon', label: 'Телефон', value: '+7 (499) 744-60-17' },
+  { type: 'email', icon: 'EmailIcon', label: 'Email', value: 'sales@tehnekon.ru' },
+  { type: 'telegram', icon: 'ChatIcon', label: 'Telegram', value: '@tehnekon_support' },
+  { type: 'whatsapp', icon: 'MobileIcon', label: 'WhatsApp', value: '+7 (999) 123-45-67' }
 ];
 
 interface Fact { id: number; number: string; label: string }
@@ -762,7 +754,7 @@ const hideLocationInfo = () => {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/variables.scss';
+@import '../styles/variables';
 
 .about-company-page {
   min-height: 100vh;
@@ -2809,7 +2801,7 @@ const hideLocationInfo = () => {
     color: white;
     
     &:hover {
-      background: lighten($primary-color, 10%);
+      background: #4ddab8;
     }
   }
   

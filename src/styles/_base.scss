@@ -1,3 +1,5 @@
+@import "variables";
+
 html,
 body {
   margin: 0;
@@ -25,7 +27,7 @@ body {
 #app {
   width: 100%;
   min-height: 100vh;
-  background: transparent;
+  background: white;
   overflow-x: hidden;
 }
 
@@ -86,6 +88,29 @@ button {
 
   @include respond-to(xl) {
     max-width: 1536px;
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+.container-header-width {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  @include respond-to(tablet) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  @include respond-to(desktop) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  @include respond-to(large) {
     padding-left: 5rem;
     padding-right: 5rem;
   }
@@ -196,4 +221,87 @@ button {
 
 .animate-bounce {
   animation: bounce 1s infinite;
+}
+
+// Глобальные стили для шрифтов
+.font-copyright {
+  font-size: $font-copyright;
+}
+
+.font-caption {
+  font-size: $font-caption;
+}
+
+.font-menu {
+  font-size: $font-menu;
+}
+
+.font-body-small {
+  font-size: $font-body-small;
+}
+
+.font-body {
+  font-size: $font-body;
+}
+
+.font-subtitle {
+  font-size: $font-subtitle;
+}
+
+.font-section-title {
+  font-size: $font-section-title;
+}
+
+.font-page-title {
+  font-size: $font-page-title;
+}
+
+.font-hero-subtitle {
+  font-size: $font-hero-subtitle;
+}
+
+.font-hero-title {
+  font-size: $font-hero-title;
+}
+
+.font-display {
+  font-size: $font-display;
+}
+
+// Global stylish shadow styles for common elements
+.card,
+.panel,
+.widget {
+  @include soft-card;
+}
+
+.btn,
+.button {
+  @include stylish-button;
+}
+
+// Global shadow enhancement for interactive elements
+img:hover,
+.image:hover {
+  transition: all $transition-normal $ease-out;
+  transform: translateY(-2px);
+  box-shadow: $shadow-soft;
+}
+
+// General layout enhancements
+.section {
+  position: relative;
+}
+
+.content-box {
+  @include soft-card;
+  padding: $space-6;
+}
+
+.elevated-element {
+  @include floating-element;
+}
+
+.highlighted-card {
+  @include primary-glow;
 }

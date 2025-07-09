@@ -2,46 +2,14 @@
   <div class="service-offers-page">
     <AppHeader />
 
-    <main class="offers-main">
-      <!-- Hero Section -->
-      <section class="hero-section" data-aos="fade-down">
-        <div class="hero-bg">
-          <div class="floating-particles">
-            <div class="particle" v-for="n in 20" :key="n" 
-                 :style="{ 
-                   left: Math.random() * 100 + '%', 
-                   animationDelay: Math.random() * 3 + 's',
-                   animationDuration: (3 + Math.random() * 4) + 's'
-                 }"></div>
-          </div>
-        </div>
-        <div class="hero-content">
-          <div class="hero-badge" data-aos="zoom-in" data-aos-delay="200">⚡ РЕВОЛЮЦИОННЫЕ РЕШЕНИЯ</div>
-          <h1 class="hero-title" data-aos="fade-up" data-aos-delay="400">
-            Промышленные <span class="gradient-text">услуги</span><br>
-            нового поколения
-          </h1>
-          <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="600">
-            Увеличьте эффективность производства на <strong>85%</strong> с помощью 
-            ИИ-диагностики и автоматизации от Технекон
-          </p>
-          <div class="hero-stats" data-aos="fade-up" data-aos-delay="800">
-            <div class="stat-item">
-              <div class="stat-number">1000+</div>
-              <div class="stat-label">довольных клиентов</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">99.7%</div>
-              <div class="stat-label">точность диагностики</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">24/7</div>
-              <div class="stat-label">техподдержка</div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <!-- Используем PageBanner для страницы спецпредложений -->
+    <PageBanner 
+      :title-lines="['УСЛУГИ', 'ТЕХНЕКОНА']"
+      subtitle="Промышленные услуги нового поколения. Увеличьте эффективность производства на 85% с помощью ИИ-диагностики и автоматизации"
+      theme="offers"
+    />
 
+    <main class="offers-main">
       <!-- Services Grid -->
       <section class="services-grid">
         <div v-for="(service, index) in services" :key="service.id" class="service-wrapper">
@@ -50,26 +18,28 @@
                @click="toggle(service.id)"
                :data-aos="'fade-up'" 
                :data-aos-delay="index * 100">
-            
-            <!-- Service Header -->
-            <div class="service-header">
-              <div class="service-icon">
-                <div class="icon-bg" :style="{ background: service.gradient }"></div>
-                <span class="icon-symbol">{{ service.icon }}</span>
-              </div>
-              <div class="service-basic-info">
-                <h3 class="service-title" v-html="service.title"></h3>
-                <p class="service-tagline">{{ service.tagline }}</p>
-                <div class="service-price">
-                  <span class="price-label">от</span>
-                  <span class="price-value">{{ service.price }}</span>
-                  <span class="price-period">₽/мес</span>
+            <SectionHeader>
+              <template #icon>
+                <div class="service-icon">
+                  <div class="icon-bg" :style="{ background: service.gradient }"></div>
+                  <span class="icon-symbol">{{ service.icon }}</span>
                 </div>
-              </div>
+              </template>
+              <template #title>
+                <div class="service-basic-info">
+                  <h3 class="service-title" v-html="service.title"></h3>
+                  <p class="service-tagline">{{ service.tagline }}</p>
+                  <div class="service-price">
+                    <span class="price-label">от</span>
+                    <span class="price-value">{{ service.price }}</span>
+                    <span class="price-period">₽/мес</span>
+                  </div>
+                </div>
+              </template>
               <div class="expand-indicator" :class="{ 'open': openId === service.id }">
                 <span class="arrow">▼</span>
               </div>
-            </div>
+            </SectionHeader>
 
             <!-- Service Details (Expanded) -->
             <transition name="slide-down">
@@ -154,7 +124,9 @@
           </p>
           <div class="cta-features">
             <div class="cta-feature">
-              <span class="feature-icon">⚡</span>
+              <span class="feature-icon">
+              <PowerIcon />
+            </span>
               <span>Быстрый ROI</span>
             </div>
             <div class="cta-feature">
@@ -182,7 +154,18 @@
 import { ref, onMounted } from 'vue'
 import AppHeader from '@/components/AppHeader.vue'
 import AppFooter from '@/components/AppFooter.vue'
+import PageBanner from '@/components/PageBanner.vue'
 import AOS from 'aos'
+import SectionHeader from '@/components/SectionHeader.vue'
+import PowerIcon from '@/components/icons/PowerIcon.vue'
+import GearIcon from '@/components/icons/GearIcon.vue'
+import DiamondIcon from '@/components/icons/DiamondIcon.vue'
+import MonitorIcon from '@/components/icons/MonitorIcon.vue'
+import CurrencyIcon from '@/components/icons/CurrencyIcon.vue'
+import TrendIcon from '@/components/icons/TrendIcon.vue'
+import CircleIcon from '@/components/icons/CircleIcon.vue'
+
+import DotCircleIcon from '@/components/icons/DotCircleIcon.vue'
 
 interface ServiceBenefit {
   icon: string
@@ -216,7 +199,7 @@ const services: Service[] = [
     title: 'ИИ-диагностика <span class="accent">оборудования</span>',
     tagline: 'Предсказывайте поломки за 3 недели до их возникновения',
     price: '89 000',
-    icon: '⚡',
+    icon: 'PowerIcon',
     gradient: 'linear-gradient(135deg, #2ad0a2 0%, #86ffdd 100%)',
     features: [
       'Установка 50+ беспроводных датчиков вибрации',
@@ -228,17 +211,17 @@ const services: Service[] = [
     ],
     benefits: [
       {
-        icon: '₽',
+        icon: 'CurrencyIcon',
         title: 'Экономия до 15 млн ₽/год',
         description: 'За счет предотвращения внеплановых простоев'
       },
       {
-        icon: '↗',
+        icon: 'TrendIcon',
         title: '+40% эффективности',
         description: 'Оптимизация графиков обслуживания'
       },
       {
-        icon: '●',
+        icon: 'CircleIcon',
         title: '99.7% точность',
         description: 'Прогнозирования критических состояний'
       }
@@ -257,7 +240,7 @@ const services: Service[] = [
     title: 'Роботизация <span class="accent">производства</span>',
     tagline: 'Автоматизируйте сложные процессы с ROI 250%',
     price: '350 000',
-    icon: '⚙',
+    icon: 'GearIcon',
     gradient: 'linear-gradient(135deg, #00f026 0%, #2ad0a2 100%)',
     features: [
       'Проектирование роботизированной линии',
@@ -298,7 +281,7 @@ const services: Service[] = [
     title: 'Цифровая <span class="accent">трансформация</span>',
     tagline: 'Превратите ваш завод в предприятие Индустрии 4.0',
     price: '180 000',
-    icon: '◆',
+    icon: 'DiamondIcon',
     gradient: 'linear-gradient(135deg, #86ffdd 0%, #00ffb8 100%)',
     features: [
       'Аудит текущих процессов и IT-архитектуры',
@@ -339,7 +322,7 @@ const services: Service[] = [
     title: 'Удаленный <span class="accent">мониторинг</span>',
     tagline: 'Следите за оборудованием с любой точки мира',
     price: '45 000',
-    icon: '◈',
+    icon: 'MonitorIcon',
     gradient: 'linear-gradient(135deg, #2ad0a2 0%, #00ffb8 100%)',
     features: [
       'Облачная платформа мониторинга',
@@ -394,7 +377,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/variables.scss';
+@import '../styles/variables';
 
 .service-offers-page {
   min-height: 100vh;
@@ -543,107 +526,6 @@ onMounted(() => {
     transform: scale(1.01);
     box-shadow: 0 25px 50px rgba(42, 208, 162, 0.2);
     border-color: $primary-color;
-  }
-}
-
-.service-header {
-  padding: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  position: relative;
-
-  .service-icon {
-    position: relative;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .icon-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-radius: 20px;
-      opacity: 0.1;
-    }
-
-    .icon-symbol {
-      font-size: 2.5rem;
-      position: relative;
-      z-index: 2;
-      color: $primary-color;
-      font-weight: bold;
-    }
-  }
-
-  .service-basic-info {
-    flex: 1;
-
-    .service-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: $text-dark;
-
-      .accent {
-        color: $primary-color;
-      }
-    }
-
-    .service-tagline {
-      color: #666;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-
-    .service-price {
-      display: flex;
-      align-items: baseline;
-      gap: 0.5rem;
-
-      .price-label {
-        font-size: 0.9rem;
-        color: #666;
-      }
-
-      .price-value {
-        font-size: 2rem;
-        font-weight: 700;
-        color: $primary-color;
-      }
-
-      .price-period {
-        font-size: 0.9rem;
-        color: #666;
-      }
-    }
-  }
-
-  .expand-indicator {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, $primary-color, $primary-accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
-    box-shadow: 0 4px 15px rgba(42, 208, 162, 0.3);
-
-    .arrow {
-      color: white;
-      font-size: 1.5rem;
-      font-weight: bold;
-      transition: transform 0.3s ease;
-    }
-
-    &.open {
-      transform: rotate(180deg);
-    }
   }
 }
 

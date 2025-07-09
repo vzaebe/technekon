@@ -21,29 +21,29 @@
   }
 
   &__title {
-    font-size: $font-2xl;
+    font-size: $font-page-title;
     font-weight: 600;
     margin-bottom: 3rem;
     line-height: 1.2;
     text-align: center;
 
     @include respond-to(mobile) {
-      font-size: $font-3xl;
+      font-size: $font-hero-subtitle;
       margin-bottom: 3.5rem;
     }
 
     @include respond-to(tablet) {
-      font-size: $font-4xl;
+      font-size: $font-hero-title;
       margin-bottom: 4rem;
     }
 
     @include respond-to(desktop) {
-      font-size: $font-5xl;
+      font-size: $font-display;
       margin-bottom: 4.5rem;
     }
 
     @include respond-to(large) {
-      font-size: $font-6xl;
+      font-size: $font-display;
       margin-bottom: 5rem;
     }
 
@@ -62,27 +62,27 @@
 
   &__content {
     color: $text-dark;
-    font-size: $font-base;
+    font-size: $font-body;
     line-height: 1.6;
     max-width: 100%;
     margin: 0 auto;
 
     @include respond-to(mobile) {
-      font-size: $font-lg;
+      font-size: $font-subtitle;
     }
 
     @include respond-to(tablet) {
-      font-size: $font-xl;
+      font-size: $font-section-title;
       max-width: 90%;
     }
 
     @include respond-to(desktop) {
-      font-size: $font-2xl;
+      font-size: $font-page-title;
       max-width: 80%;
     }
 
     @include respond-to(large) {
-      font-size: $font-3xl;
+      font-size: $font-hero-subtitle;
       max-width: 70%;
     }
 
@@ -102,7 +102,7 @@
 
   &__cta {
     color: $secondary-color;
-    font-size: $font-lg;
+    font-size: $font-subtitle;
     font-weight: 600;
     @include uppercase-text;
     @include transition-colors;
@@ -113,25 +113,27 @@
     padding: 1rem 2rem;
     border-radius: $radius-lg;
     transition: all $transition-normal $ease-out;
+    box-shadow: $shadow-soft;
 
     &:hover {
       color: $primary-color;
       background: rgba(42, 208, 162, 0.1);
       transform: translateY(-2px);
+      box-shadow: $shadow-primary;
     }
 
     @include respond-to(mobile) {
-      font-size: $font-xl;
+      font-size: $font-section-title;
       margin-top: 3.5rem;
     }
 
     @include respond-to(tablet) {
-      font-size: $font-2xl;
+      font-size: $font-page-title;
       margin-top: 4rem;
     }
 
     @include respond-to(desktop) {
-      font-size: $font-3xl;
+      font-size: $font-hero-subtitle;
       margin-top: 4.5rem;
     }
   }

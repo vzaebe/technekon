@@ -2,17 +2,21 @@
   <div class="services-page">
     <AppHeader />
 
-    <main class="services-main">
-      <!-- Hero Title -->
-      <section class="services-hero" data-aos="fade-down">
-        <h1 class="services-title">Инструкции, обновления прошивок,<br/>симуляторы устройств, программное обеспечение, утилиты</h1>
-      </section>
+    <!-- Используем PageBanner для страницы услуг -->
+    <PageBanner 
+      :title-lines="['СЕРВИС', 'ТЕХНЕКОНА']"
+      subtitle="Инструкции, обновления прошивок, симуляторы устройств, программное обеспечение, утилиты"
+      theme="services"
+    />
 
+    <main class="services-main">
       <!-- Search and Controls -->
       <section class="search-section" data-aos="fade-up">
         <div class="search-container">
           <div class="search-box">
-            <span class="search-icon">🔍</span>
+                          <span class="search-icon">
+                <SearchIcon />
+              </span>
             <input 
               v-model="searchQuery" 
               type="text" 
@@ -36,30 +40,18 @@
       <section v-if="searchQuery && filteredResults.length > 0" class="search-results" data-aos="fade-up">
         <h3 class="results-title">Результаты поиска</h3>
         <div class="results-grid">
-          <div v-for="result in filteredResults" :key="`${result.serviceId}-${result.doc.name}`" class="result-card">
-            <div class="result-header">
-              <span class="result-category">{{ result.serviceTitle }}</span>
-              <span class="doc-type-badge" :class="getDocType(result.doc.name)">
-                {{ getDocTypeLabel(result.doc.name) }}
-              </span>
-            </div>
-            <h4 class="result-title">{{ result.doc.name }}</h4>
-            <div class="result-meta">
-              <span class="file-size">{{ result.doc.size || '2.1 МБ' }}</span>
-              <span class="file-date">{{ result.doc.date || '15.01.2024' }}</span>
-              <span v-if="result.doc.isNew" class="new-badge">НОВЫЙ</span>
-            </div>
-            <div class="result-actions">
-              <button @click="downloadFile(result.doc)" class="download-btn primary">
-                <span class="download-icon">⬇</span>
-                Скачать
-              </button>
-              <button @click="previewFile(result.doc)" class="preview-btn">
-                <span class="preview-icon">👁</span>
-                Просмотр
-              </button>
-            </div>
-          </div>
+          <DocumentCard
+            v-for="result in filteredResults"
+            :key="`${result.serviceId}-${result.doc.name}`"
+            :title="result.doc.name"
+            :category="result.serviceTitle"
+            :size="result.doc.size || '2.1 МБ'"
+            :date="result.doc.date || '15.01.2024'"
+            :type="getDocType(result.doc.name)"
+            :is-new="result.doc.isNew"
+            @download="downloadFile(result.doc)"
+            @preview="previewFile(result.doc)"
+          />
         </div>
       </section>
 
@@ -74,52 +66,48 @@
 
       <!-- Services List (when not searching) -->
       <section v-else class="services-list">
-        <div
+        <AnimatedGroup
           v-for="(service, idx) in services"
           :key="service.id"
-          class="service-item"
-          :data-aos="'fade-up'"
-          :data-aos-delay="idx * 150"
+          :is-expanded="isOpen(service.id)"
+          @toggle="(isOpenValue) => handleServiceToggle(service.id, isOpenValue)"
+          :style="{ '--delay': `${idx * 0.15}s` }"
+          class="service-animated-group"
         >
-          <button class="service-toggle" @click="toggle(service.id)">
-            <span class="arrow" :class="{ open: isOpen(service.id) }">▶</span>
-            <div class="service-header">
-              <span v-html="service.title" class="service-title-text"></span>
-              <span class="docs-count">{{ service.docs.length }} документов</span>
+          <template #header="{ isOpen }">
+            <div class="service-header-content">
+              <span class="arrow" :class="{ open: isOpen }">▶</span>
+              <SectionHeader :class="{ 'arrow-rotated': isOpen }">
+                <template #title>
+                  <span v-html="service.title" class="service-title-text"></span>
+                </template>
+                <DocsCount :count="service.docs.length" label="документ(ов)" />
+              </SectionHeader>
             </div>
-          </button>
-
-          <transition name="slide-fade">
-            <div v-if="isOpen(service.id)" class="service-docs">
+          </template>
+          
+          <template #content>
+            <div class="service-docs">
               <div class="docs-grid">
-                <div v-for="doc in service.docs" :key="doc.name" class="doc-card">
-                  <div class="doc-header">
-                    <span class="doc-icon" :class="getDocType(doc.name)">
-                      {{ getDocIcon(doc.name) }}
-                    </span>
-                    <div class="doc-info">
-                      <h4 class="doc-name">{{ doc.name }}</h4>
-                      <div class="doc-meta">
-                        <span class="file-size">{{ doc.size || '2.1 МБ' }}</span>
-                        <span class="file-date">{{ doc.date || '15.01.2024' }}</span>
-                        <span v-if="doc.isNew" class="new-badge">НОВЫЙ</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="doc-actions">
-                    <button @click="downloadFile(doc)" class="download-btn primary">
-                      <span class="download-icon">⬇</span>
-                      Скачать
-                    </button>
-                    <button @click="previewFile(doc)" class="preview-btn">
-                      <span class="preview-icon">👁</span>
-                    </button>
-                  </div>
-                </div>
+                <AnimatedCard
+                  v-for="(doc, docIdx) in service.docs"
+                  :key="doc.name"
+                  :delay="docIdx * 0.1"
+                >
+                  <DocumentCard
+                    :title="doc.name"
+                    :size="doc.size || '2.1 МБ'"
+                    :date="doc.date || '15.01.2024'"
+                    :type="getDocType(doc.name)"
+                    :is-new="doc.isNew"
+                    @download="downloadFile(doc)"
+                    @preview="previewFile(doc)"
+                  />
+                </AnimatedCard>
               </div>
             </div>
-          </transition>
-        </div>
+          </template>
+        </AnimatedGroup>
       </section>
     </main>
 
@@ -131,8 +119,19 @@
 import { ref, computed } from 'vue'
 import AppHeader from '@/components/AppHeader.vue'
 import AppFooter from '@/components/AppFooter.vue'
+import PageBanner from '@/components/PageBanner.vue'
 import AOS from 'aos'
 import { onMounted } from 'vue'
+import SectionHeader from '@/components/SectionHeader.vue'
+import DocsCount from '@/components/DocsCount.vue'
+import DocumentCard from '@/components/DocumentCard.vue'
+import AnimatedGroup from '@/components/AnimatedGroup.vue'
+import AnimatedCard from '@/components/AnimatedCard.vue'
+import SearchIcon from '@/components/icons/SearchIcon.vue'
+import SettingsIcon from '@/components/icons/SettingsIcon.vue'
+import ComputerIcon from '@/components/icons/ComputerIcon.vue'
+import DocumentIcon from '@/components/icons/DocumentIcon.vue'
+
 
 interface Doc { 
   name: string; 
@@ -184,6 +183,14 @@ const toggle = (id: number) => {
     openIds.value.delete(id)
   } else {
     openIds.value.add(id)
+  }
+}
+
+const handleServiceToggle = (id: number, isOpenValue: boolean) => {
+  if (isOpenValue) {
+    openIds.value.add(id)
+  } else {
+    openIds.value.delete(id)
   }
 }
 
@@ -245,10 +252,10 @@ const getDocTypeLabel = (name: string) => {
 const getDocIcon = (name: string) => {
   const type = getDocType(name)
   const icons = {
-    firmware: '⚙️',
-    software: '💻',
-    manual: '📖',
-    document: '📄'
+    firmware: 'SettingsIcon',
+    software: 'ComputerIcon',
+    manual: 'DocumentIcon',
+    document: 'DocumentIcon'
   }
   return icons[type as keyof typeof icons]
 }
@@ -268,7 +275,7 @@ onMounted(() => AOS.refresh())
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/variables.scss';
+@import '../styles/variables';
 
 .services-page {
   min-height: 100vh;
@@ -370,7 +377,7 @@ onMounted(() => AOS.refresh())
   transition: background-color 0.3s ease;
   
   &:hover {
-    background: darken($primary-color, 10%);
+    background: #22b085;
   }
 }
 
@@ -463,46 +470,33 @@ onMounted(() => AOS.refresh())
   max-width: 1200px;
   margin: 0 auto;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
-.service-item + .service-item {
-  margin-top: 2rem;
+.service-animated-group {
+  animation-delay: var(--delay, 0s);
 }
 
-.service-toggle {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  color: $text-dark;
-  cursor: pointer;
+.service-header-content {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   width: 100%;
-  padding: 1.2rem;
-  border-radius: $radius;
-  transition: background-color 0.3s ease;
-  
-  &:hover {
-    background: #f8f9fa;
-  }
 }
+
+// Убираем старые стили service-toggle и service-item
 
 .arrow {
   display: inline-block;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   color: $primary-color;
   font-size: 1rem;
-}
-.arrow.open {
-  transform: rotate(90deg);
-}
-
-.service-header {
-  flex: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  
+  &.open {
+    transform: rotate(90deg);
+  }
 }
 
 .service-title-text {
@@ -523,8 +517,8 @@ onMounted(() => AOS.refresh())
 
 // Documents
 .service-docs {
-  margin-top: 1rem;
-  padding: 0 1rem;
+  margin-top: 0;
+  padding: 0;
 }
 
 .docs-grid {
@@ -533,152 +527,20 @@ onMounted(() => AOS.refresh())
   gap: 1rem;
 }
 
-.doc-card {
-  background: white;
-  border-radius: $radius;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  padding: 1.25rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-  }
+// Стили для результатов поиска
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
 }
 
-.doc-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+// Стили для поворота стрелочки в SectionHeader
+:deep(.arrow-rotated .section-header__icon svg) {
+  transform: rotate(90deg);
 }
 
-.doc-icon {
-  font-size: 1.5rem;
-  
-  &.firmware { filter: hue-rotate(240deg); }
-  &.software { filter: hue-rotate(120deg); }
-  &.manual { filter: hue-rotate(30deg); }
-}
-
-.doc-info {
-  flex: 1;
-}
-
-.doc-name {
-  font-size: 1.05rem;
-  color: $text-dark;
-  margin: 0 0 0.5rem 0;
-  line-height: 1.3;
-}
-
-.doc-meta, .result-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  
-  .file-size, .file-date {
-    font-size: 0.9rem;
-    color: $text-gray;
-  }
-}
-
-.new-badge, .doc-type-badge {
-  font-size: 0.7rem;
-  padding: 0.2rem 0.4rem;
-  border-radius: 4px;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.new-badge {
-  background: #e7f5e7;
-  color: #2d7d2d;
-}
-
-.doc-type-badge {
-  &.firmware {
-    background: #e3f2fd;
-    color: #1565c0;
-  }
-  &.software {
-    background: #f3e5f5;
-    color: #7b1fa2;
-  }
-  &.manual {
-    background: #fff3e0;
-    color: #ef6c00;
-  }
-  &.document {
-    background: #f5f5f5;
-    color: #666;
-  }
-}
-
-// Actions
-.doc-actions, .result-actions {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-.download-btn {
-  background: $primary-color;
-  color: white;
-  border: none;
-  padding: 0.65rem 1.2rem;
-  border-radius: $radius;
-  cursor: pointer;
-  font-size: 0.95rem;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  transition: background-color 0.3s ease;
-  
-  &:hover {
-    background: darken($primary-color, 10%);
-  }
-  
-  .download-icon {
-    font-size: 0.9rem;
-  }
-}
-
-.preview-btn {
-  background: transparent;
-  color: $text-gray;
-  border: 1px solid #e5e7eb;
-  padding: 0.65rem;
-  border-radius: $radius;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    color: $text-dark;
-    border-color: $text-gray;
-  }
-  
-  .preview-icon {
-    font-size: 0.9rem;
-  }
-}
-
-// Animations
-.slide-fade-enter-active {
-  transition: all 0.3s ease-out;
-}
-
-.slide-fade-leave-active {
-  transition: all 0.3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateY(-10px);
-  opacity: 0;
+:deep(.section-header__icon svg) {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 // Responsive
@@ -704,14 +566,27 @@ onMounted(() => AOS.refresh())
     padding: 1rem;
   }
   
-  .service-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-  
   .doc-actions, .result-actions {
     flex-direction: column;
+  }
+  
+  .doc-card {
+    .doc-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .doc-actions {
+      margin-left: 0;
+      width: 100%;
+      justify-content: stretch;
+      
+      .download-btn {
+        flex: 1;
+        justify-content: center;
+      }
+    }
   }
 }
 
@@ -724,9 +599,16 @@ onMounted(() => AOS.refresh())
     font-size: 1.1rem;
   }
   
+  .doc-card {
+    padding: 1.5rem;
+  }
+  
   .doc-header {
-    flex-direction: column;
-    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .doc-meta {
+    gap: 0.5rem;
   }
 }
 </style> 

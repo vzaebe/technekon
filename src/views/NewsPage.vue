@@ -2,15 +2,14 @@
   <div class="news-page">
     <AppHeader />
 
-    <main class="news-main">
-      <!-- Page Header -->
-      <section class="page-header" data-aos="fade-down">
-        <div class="container">
-          <h1 class="page-title">Новости Технекон</h1>
-          <p class="page-subtitle">Последние события и достижения компании</p>
-        </div>
-      </section>
+    <!-- Используем PageBanner для страницы новостей -->
+    <PageBanner 
+      :title-lines="['НОВОСТИ', 'ТЕХНЕКОНА']"
+      subtitle="Последние события и достижения компании"
+      theme="news"
+    />
 
+    <main class="news-main">
       <!-- News Grid -->
       <section class="news-grid" data-aos="fade-up">
         <div class="container">
@@ -66,15 +65,11 @@ import { ref, onMounted } from 'vue';
 import AOS from 'aos';
 import AppHeader from '@/components/AppHeader.vue';
 import AppFooter from '@/components/AppFooter.vue';
-
-interface NewsItem {
-  id: number;
-  title: string;
-  date: string;
-  content: string[];
-}
+import PageBanner from '@/components/PageBanner.vue';
+import { newsList as newsData } from '@/data/news';
 
 const expandedNews = ref<number[]>([]);
+const newsList = ref(newsData);
 
 const toggleNews = (id: number) => {
   const index = expandedNews.value.indexOf(id);
@@ -85,67 +80,13 @@ const toggleNews = (id: number) => {
   }
 };
 
-// Five fictional news items about Tehnekon
-const newsList = ref<NewsItem[]>([
-  {
-    id: 1,
-    title: 'Технекон запускает инновационную линию промышленной роботизации',
-    date: '15 января 2025',
-    content: [
-      'Компания Технекон объявила о запуске новой линии роботизированных станков для автоматизации тяжелых производственных процессов.',
-      'Новая серия оборудована собственной интеллектуальной системой контроля качества и уже прошла первые испытания на заводе-партнёре в Казани.',
-      'Ожидается, что новое оборудование повысит эффективность производства на 40% и снизит количество брака до минимума.'
-    ],
-  },
-  {
-    id: 2,
-    title: 'Технекон подписал стратегическое соглашение с университетом ИТМО',
-    date: '2 февраля 2025',
-    content: [
-      'Стороны договорились о совместных исследованиях в области аддитивных технологий и высокопрочных композитов.',
-      'Студенты и аспиранты университета смогут проходить практику на производственных площадках Технекон.',
-      'Партнёрство также предусматривает создание совместной лаборатории по разработке материалов нового поколения.'
-    ],
-  },
-  {
-    id: 3,
-    title: 'Новый сервисный центр Технекон открыт в Новосибирске',
-    date: '18 марта 2025',
-    content: [
-      'Центр станет ключевым хабом по обслуживанию оборудования для предприятий Сибири и Дальнего Востока.',
-      'Ожидается, что благодаря новому центру время реакции на заявки сократится до 24 часов.',
-      'В центре работают 25 высококвалифицированных специалистов, готовых оказать техническую поддержку 24/7.'
-    ],
-  },
-  {
-    id: 4,
-    title: 'Технекон представил экосистему Industry 4.0 на выставке «Металлообработка-2025»',
-    date: '5 мая 2025',
-    content: [
-      'На стенде компании посетители увидели комплексное решение по цифровизации цехов, включающее IoT-датчики и облачную аналитику.',
-      'Разработки Технекон вызвали интерес крупных машиностроительных холдингов.',
-      'Компания получила более 50 коммерческих предложений от потенциальных партнёров и клиентов.'
-    ],
-  },
-  {
-    id: 5,
-    title: 'Технекон снизил углеродный след производства на 30%',
-    date: '22 июня 2025',
-    content: [
-      'Компания продолжает реализовывать ESG-стратегию и объявила итоги первого года программы энергоэффективности.',
-      'Экономия электроэнергии составила более 4 млн кВт⋅ч, что эквивалентно годовому потреблению небольшого посёлка.',
-      'Внедрение замкнутого цикла охлаждения стало ключевым фактором достижения этих результатов.'
-    ],
-  },
-]);
-
 onMounted(() => {
   AOS.refresh();
 });
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/variables.scss';
+@import '../styles/variables';
 
 .news-page {
   min-height: 100vh;
@@ -162,26 +103,6 @@ onMounted(() => {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
-}
-
-.page-header {
-  background: linear-gradient(135deg, $primary-color 0%, $primary-light 100%);
-  color: white;
-  padding: 6rem 0 4rem;
-  text-align: center;
-
-  .page-title {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .page-subtitle {
-    font-size: 1.25rem;
-    opacity: 0.9;
-    font-weight: 300;
-  }
 }
 
 .news-grid {

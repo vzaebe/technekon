@@ -1,6 +1,6 @@
 <template>
   <section class="partners">
-    <div class="container partners__container">
+    <div class="container-header-width partners__container">
       <h2 class="partners__title">НАШИ ПАРТНЁРЫ</h2>
 
       <div class="partners__grid">

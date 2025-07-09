@@ -23,6 +23,7 @@
     bottom: 0;
     overflow: hidden;
     z-index: 1;
+    pointer-events: none;
   }
 
   &__decorative-circle {
@@ -105,7 +106,6 @@
 
     @include respond-to(tablet) {
       text-align: center;
-      order: 2;
     }
   }
 
@@ -114,7 +114,7 @@
 
     &-main {
       display: block;
-      font-size: clamp(3rem, 6vw, 5rem);
+      font-size: clamp(3.5rem, 7vw, 5.5rem);
       font-weight: 800;
       color: $text-secondary;
       text-shadow: none;
@@ -125,7 +125,7 @@
 
     &-sub {
       display: block;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-size: clamp(2rem, 3.5vw, 2.7rem);
       font-weight: 500;
       color: $text-gray;
       line-height: 1.3;
@@ -136,24 +136,22 @@
     margin-bottom: 3rem;
 
     p {
-      font-size: 1.4rem;
+      font-size: 1.7rem;
       line-height: 1.6;
       color: $text-gray;
       margin: 0;
     }
   }
 
-
-
   &__form-wrapper {
     position: relative;
   }
 
   &__form {
-    background: #ffffff;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fdfa 100%);
     border-radius: 2rem;
     padding: 3rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 5px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07), 0 1.5px 4px rgba(0,0,0,0.04);
     opacity: 0;
     transform: translateY(50px);
     transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
@@ -166,7 +164,6 @@
     @include respond-to(tablet) {
       padding: 2rem;
       border-radius: 1.5rem;
-      order: 1;
     }
 
     @include respond-to(mobile) {
@@ -176,21 +173,7 @@
   }
 
   &__form-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-
-    h3 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: $text-secondary;
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      color: $text-gray;
-      font-size: 1.1rem;
-      margin: 0;
-    }
+    display: none;
   }
 
   &__fields {
@@ -216,7 +199,7 @@
   }
 
   &__label {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: $text-secondary;
     margin-bottom: 0.5rem;
@@ -257,7 +240,7 @@
     border: none;
     background: transparent;
     padding: 0 1rem;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     color: $text-dark;
     outline: none;
     font-family: inherit;
@@ -288,14 +271,14 @@
     gap: 0.5rem;
     padding: 0 2rem;
     height: 3.5rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 600;
     color: #ffffff;
     background: linear-gradient(135deg, #2ad0a2, #86ffdd);
     border: none;
     border-radius: 1rem;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(42, 208, 162, 0.3);
+    box-shadow: $shadow-primary;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
@@ -303,7 +286,7 @@
     &:hover,
     &.button-hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(42, 208, 162, 0.4);
+      box-shadow: $shadow-primary-lg, $glow-primary;
 
       .contact__submit-icon {
         transform: translateX(3px);
@@ -341,7 +324,7 @@
     gap: 1rem;
     padding: 1.5rem;
     border-radius: 1rem;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
 
     &--success {
       background: linear-gradient(135deg, #e6fff6, #f0fff9);

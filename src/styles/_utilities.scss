@@ -197,6 +197,47 @@
 .shadow-lg { box-shadow: $shadow-lg; }
 .shadow-xl { box-shadow: $shadow-xl; }
 
+// Stylish shadows
+.shadow-soft { box-shadow: $shadow-soft; }
+.shadow-soft-md { box-shadow: $shadow-soft-md; }
+.shadow-soft-lg { box-shadow: $shadow-soft-lg; }
+.shadow-primary { box-shadow: $shadow-primary; }
+.shadow-primary-lg { box-shadow: $shadow-primary-lg; }
+.shadow-secondary { box-shadow: $shadow-secondary; }
+.shadow-accent { box-shadow: $shadow-accent; }
+.shadow-dramatic { box-shadow: $shadow-dramatic; }
+.shadow-floating { box-shadow: $shadow-floating; }
+
+// Glow effects
+.glow-primary { box-shadow: $glow-primary; }
+.glow-secondary { box-shadow: $glow-secondary; }
+.glow-white { box-shadow: $glow-white; }
+
+// Interactive shadow effects
+.hover-lift {
+  @include hover-lift;
+}
+
+.elegant-card {
+  @include elegant-card;
+}
+
+.floating-element {
+  @include floating-element;
+}
+
+.primary-glow {
+  @include primary-glow;
+}
+
+.soft-card {
+  @include soft-card;
+}
+
+.stylish-button {
+  @include stylish-button;
+}
+
 // Цвета
 .text-primary { color: $primary-color; }
 .text-secondary { color: $text-secondary; }
@@ -238,4 +279,105 @@
   .xl\:text-left { text-align: left; }
   .xl\:text-center { text-align: center; }
   .xl\:text-right { text-align: right; }
+} 
+
+// Icon styles for consistent display
+.icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  svg {
+    width: 1.2em;
+    height: 1.2em;
+    color: currentColor;
+    transition: all 0.2s ease;
+  }
+}
+
+.feature-icon,
+.widget-icon,
+.stat-icon,
+.advantage-icon,
+.parameter-icon,
+.method-icon,
+.diagnostic-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  svg {
+    width: 1.5em;
+    height: 1.5em;
+    color: currentColor;
+    transition: all 0.2s ease;
+  }
+}
+
+// Larger icons for hero sections
+.hero-badge,
+.hero-icon {
+  svg {
+    width: 1.8em;
+    height: 1.8em;
+  }
+}
+
+// Icon hover effects
+.icon-hover {
+  &:hover {
+    svg {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+  }
+}
+
+// Icon animations
+@keyframes icon-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.icon-pulse {
+  svg {
+    animation: icon-pulse 2s ease-in-out infinite;
+  }
+}
+
+// Icon colors
+.icon-primary {
+  svg {
+    color: $primary-color;
+  }
+}
+
+.icon-secondary {
+  svg {
+    color: $secondary-color;
+  }
+}
+
+.icon-accent {
+  svg {
+    color: $primary-accent;
+  }
+}
+
+.icon-light {
+  svg {
+    color: $primary-light;
+  }
+}
+
+.icon-dark {
+  svg {
+    color: $text-dark;
+  }
+}
+
+.icon-gray {
+  svg {
+    color: $text-gray;
+  }
 } 
