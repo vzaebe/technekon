@@ -47,7 +47,7 @@ const productItems: Product[] = [
     title: "Виброанализатор",
     model: "STD-3300",
     slug: "std-3300",
-    imageUrl: "/src/assets/products/STD-3300.png"
+            imageUrl: new URL('@/assets/products/STD-3300.png', import.meta.url).href
   },
   { 
     id: 2, 

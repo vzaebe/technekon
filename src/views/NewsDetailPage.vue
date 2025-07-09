@@ -53,7 +53,7 @@
             <article class="article-content" data-aos="fade-up">
               <!-- Featured Image -->
               <div class="featured-image" data-aos="zoom-in">
-                <img src="/src/assets/products/STD-3300.png" alt="Роботизированный станок Технекон" />
+                <img src="@/assets/products/STD-3300.png" alt="Роботизированный станок Технекон" />
                 <div class="image-caption">
                   Новый роботизированный станок серии STD-3300 на производственной линии
                 </div>
@@ -267,23 +267,23 @@ const currentImageIndex = ref(0);
 
 const galleryImages = ref([
   {
-    thumb: '/src/assets/products/STD-3300.png',
-    full: '/src/assets/products/STD-3300.png',
+    thumb: new URL('@/assets/products/STD-3300.png', import.meta.url).href,
+    full: new URL('@/assets/products/STD-3300.png', import.meta.url).href,
     caption: 'Роботизированный станок STD-3300 в работе'
   },
   {
-    thumb: '/src/assets/3d abstraction.svg',
-    full: '/src/assets/3d abstraction.svg',
+    thumb: new URL('@/assets/3d abstraction.svg', import.meta.url).href,
+    full: new URL('@/assets/3d abstraction.svg', import.meta.url).href,
     caption: 'Система управления производством'
   },
   {
-    thumb: '/src/assets/products/STD-3300.png',
-    full: '/src/assets/products/STD-3300.png',
+    thumb: new URL('@/assets/products/STD-3300.png', import.meta.url).href,
+    full: new URL('@/assets/products/STD-3300.png', import.meta.url).href,
     caption: 'Интерфейс системы мониторинга'
   },
   {
-    thumb: '/src/assets/3d abstraction.svg',
-    full: '/src/assets/3d abstraction.svg',
+    thumb: new URL('@/assets/3d abstraction.svg', import.meta.url).href,
+    full: new URL('@/assets/3d abstraction.svg', import.meta.url).href,
     caption: 'Производственная линия после модернизации'
   }
 ]);
@@ -392,7 +392,7 @@ onMounted(() => {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('/src/assets/3d abstraction.svg') center/cover no-repeat;
+    background: url('@/assets/3d abstraction.svg') center/cover no-repeat;
     opacity: 0.1;
     mix-blend-mode: overlay;
   }

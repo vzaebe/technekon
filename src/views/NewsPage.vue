@@ -162,7 +162,7 @@ onMounted(() => {
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('/src/assets/3d abstraction.svg') center/cover no-repeat;
+              background: url('@/assets/3d abstraction.svg') center/cover no-repeat;
       opacity: 0.3;
       mix-blend-mode: overlay;
     }

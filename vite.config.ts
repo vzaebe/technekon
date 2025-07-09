@@ -27,6 +27,10 @@ export default defineConfig({
           if (assetInfo.name?.endsWith('.css')) {
             return 'assets/[name].[hash].css';
           }
+          // Сохраняем оригинальные имена для изображений
+          if (assetInfo.name?.match(/\.(png|jpg|jpeg|gif|svg|webp)$/)) {
+            return 'assets/images/[name][extname]';
+          }
           return 'assets/[name].[hash][extname]';
         },
         chunkFileNames: 'assets/[name].[hash].js',
@@ -34,4 +38,5 @@ export default defineConfig({
       },
     },
   },
+  assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg', '**/*.webp'],
 });

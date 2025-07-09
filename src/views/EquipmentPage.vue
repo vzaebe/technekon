@@ -78,7 +78,7 @@ interface Item { name: string; image: string; slug: string }
 interface Group { id: number; title: string; items: Item[] }
 
 const placeholder = '/placeholder.svg'
-const std = '/src/assets/products/STD-3300.png'
+const std = new URL('@/assets/products/STD-3300.png', import.meta.url).href
 
 const groups: Group[] = [
   {

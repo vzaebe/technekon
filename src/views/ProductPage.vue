@@ -613,7 +613,7 @@ const productsDatabase = {
   'std-3300': {
     title: 'ВИБРОАНАЛИЗАТОР',
     model: 'STD-3300',
-    imageUrl: '/src/assets/products/STD-3300.png',
+    imageUrl: new URL('@/assets/products/STD-3300.png', import.meta.url).href,
     description: 'Профессиональное оборудование для диагностики промышленных систем'
   },
   'std-500': {
@@ -660,10 +660,10 @@ const activeFeature = ref(-1);
 
 // Данные для связанных продуктов
 const relatedProducts = [
-  { id: 1, title: "ВИБРОАНАЛИЗАТОР", model: "STD-500", slug: "std-500", imageUrl: "/placeholder.svg" },
-  { id: 2, title: "ВИБРОАНАЛИЗАТОР", model: "STD-1000", slug: "std-1000", imageUrl: "/placeholder.svg" },
-  { id: 3, title: "СИСТЕМА МОНИТОРИНГА", model: "SMS-100", slug: "sms-100", imageUrl: "/placeholder.svg" },
-  { id: 4, title: "ДАТЧИК ВИБРАЦИИ", model: "VS-200", slug: "vs-200", imageUrl: "/placeholder.svg" },
+  { id: 1, title: "ВИБРОАНАЛИЗАТОР", model: "STD-500", slug: "std-500", imageUrl: "/public/placeholder.svg" },
+  { id: 2, title: "ВИБРОАНАЛИЗАТОР", model: "STD-1000", slug: "std-1000", imageUrl: "/public/placeholder.svg" },
+  { id: 3, title: "СИСТЕМА МОНИТОРИНГА", model: "SMS-100", slug: "sms-100", imageUrl: "/public/placeholder.svg" },
+  { id: 4, title: "ДАТЧИК ВИБРАЦИИ", model: "VS-200", slug: "vs-200", imageUrl: "/public/placeholder.svg" },
 ];
 
 // Ключевые технические фишки
