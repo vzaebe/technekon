@@ -1,1 +1,0 @@
-import{p as e,c as s,k as t,E as o,o as n,_ as d}from"./index.CaIHwlhu.js";const r={name:"AnimatedCard"},l=e({...r,props:{delay:{default:0}},setup(i){return(a,c)=>(n(),s("div",{class:"animated-card",style:t({animationDelay:`${a.delay}s`,transitionDelay:`${a.delay*.5}s`})},[o(a.$slots,"default",{},void 0)],4))}}),_=d(l,[["__scopeId","data-v-6d3477aa"]]);export{_ as A};
