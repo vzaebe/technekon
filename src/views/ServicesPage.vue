@@ -128,9 +128,6 @@ import DocumentCard from '@/components/DocumentCard.vue'
 import AnimatedGroup from '@/components/AnimatedGroup.vue'
 import AnimatedCard from '@/components/AnimatedCard.vue'
 import SearchIcon from '@/components/icons/SearchIcon.vue'
-import SettingsIcon from '@/components/icons/SettingsIcon.vue'
-import ComputerIcon from '@/components/icons/ComputerIcon.vue'
-import DocumentIcon from '@/components/icons/DocumentIcon.vue'
 
 
 interface Doc { 
@@ -177,14 +174,6 @@ const searchQuery = ref('')
 const allExpanded = computed(() => openIds.value.size === services.length)
 
 const isOpen = (id: number) => openIds.value.has(id)
-
-const toggle = (id: number) => {
-  if (openIds.value.has(id)) {
-    openIds.value.delete(id)
-  } else {
-    openIds.value.add(id)
-  }
-}
 
 const handleServiceToggle = (id: number, isOpenValue: boolean) => {
   if (isOpenValue) {
@@ -236,28 +225,6 @@ const getDocType = (name: string) => {
   if (name.toLowerCase().includes('симулятор')) return 'software'
   if (name.toLowerCase().includes('руководство') || name.toLowerCase().includes('инструкция')) return 'manual'
   return 'document'
-}
-
-const getDocTypeLabel = (name: string) => {
-  const type = getDocType(name)
-  const labels = {
-    firmware: 'Прошивка',
-    software: 'ПО',
-    manual: 'Документация',
-    document: 'Документ'
-  }
-  return labels[type as keyof typeof labels]
-}
-
-const getDocIcon = (name: string) => {
-  const type = getDocType(name)
-  const icons = {
-    firmware: 'SettingsIcon',
-    software: 'ComputerIcon',
-    manual: 'DocumentIcon',
-    document: 'DocumentIcon'
-  }
-  return icons[type as keyof typeof icons]
 }
 
 const downloadFile = (doc: Doc) => {

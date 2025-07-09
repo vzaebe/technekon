@@ -112,7 +112,6 @@ const groups: Group[] = [
 ]
 
 const openId = ref<number | null>(1)
-const toggle = (id: number) => { openId.value = openId.value === id ? null : id }
 
 const handleGroupToggle = (id: number, isOpen: boolean) => {
   openId.value = isOpen ? id : null

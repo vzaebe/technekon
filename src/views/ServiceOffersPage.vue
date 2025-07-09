@@ -158,14 +158,6 @@ import PageBanner from '@/components/PageBanner.vue'
 import AOS from 'aos'
 import SectionHeader from '@/components/SectionHeader.vue'
 import PowerIcon from '@/components/icons/PowerIcon.vue'
-import GearIcon from '@/components/icons/GearIcon.vue'
-import DiamondIcon from '@/components/icons/DiamondIcon.vue'
-import MonitorIcon from '@/components/icons/MonitorIcon.vue'
-import CurrencyIcon from '@/components/icons/CurrencyIcon.vue'
-import TrendIcon from '@/components/icons/TrendIcon.vue'
-import CircleIcon from '@/components/icons/CircleIcon.vue'
-
-import DotCircleIcon from '@/components/icons/DotCircleIcon.vue'
 
 interface ServiceBenefit {
   icon: string
