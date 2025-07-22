@@ -58,76 +58,33 @@ const navigationItems = [
 <style lang="scss" scoped>
 @import "../styles/variables";
 
-.header__logo-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .header {
   width: 100%;
-  background: linear-gradient(135deg, $primary-color 0%, $primary-light 100%);
+  background: $background-light;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: $shadow-primary;
+  box-shadow: $shadow-soft-md;
   border: none;
+  transition: box-shadow $transition-normal $ease-out;
 
   &__container {
     width: 60%;
     margin: 0 auto;
     padding: 0 2rem;
-
-    @include respond-to(tablet) {
-      padding: 0 3rem;
-    }
-
-    @include respond-to(desktop) {
-      padding: 0 4rem;
-    }
-
-    @include respond-to(large) {
-      padding: 0 5rem;
-    }
+    @include respond-to(tablet) { padding: 0 3rem; }
+    @include respond-to(desktop) { padding: 0 4rem; }
+    @include respond-to(large) { padding: 0 5rem; }
   }
 
   &__divider {
     width: 100%;
     height: 3px;
-    background: rgba(255, 255, 255, 0.4);
+    background: linear-gradient(90deg, $primary-color 0%, $primary-accent 100%);
     border-radius: 2px;
-    
-    &--top {
-      margin-bottom: 1rem;
-      
-      @include respond-to(tablet) {
-        margin-bottom: 1.25rem;
-      }
-
-      @include respond-to(desktop) {
-        margin-bottom: 1.5rem;
-      }
-
-      @include respond-to(large) {
-        margin-bottom: 1.75rem;
-      }
-    }
-
-    &--bottom {
-      margin-top: 1rem;
-      
-      @include respond-to(tablet) {
-        margin-top: 1.25rem;
-      }
-
-      @include respond-to(desktop) {
-        margin-top: 1.5rem;
-      }
-
-      @include respond-to(large) {
-        margin-top: 1.75rem;
-      }
-    }
+    box-shadow: 0 2px 8px rgba($primary-color, 0.08);
+    &--top { margin-bottom: 1.25rem; }
+    &--bottom { margin-top: 1.25rem; }
   }
 
   &__top-row {
@@ -136,85 +93,65 @@ const navigationItems = [
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 1rem;
-    
-    @include respond-to(tablet) {
-      margin-bottom: 1.25rem;
-    }
-
-    @include respond-to(desktop) {
-      margin-bottom: 1.5rem;
-    }
-
-    @include respond-to(large) {
-      margin-bottom: 1.75rem;
-    }
+    margin-bottom: 1.25rem;
   }
 
   &__contact-info {
-    color: $text-light;
+    color: $text-dark;
     font-size: $font-body-small;
     font-weight: 500;
     @include uppercase-text;
     text-align: center;
     line-height: 1.4;
-    
-    @include respond-to(mobile) {
-      font-size: $font-body;
-    }
-    
+    @include respond-to(mobile) { font-size: $font-body; }
     @include respond-to(tablet) {
       position: absolute;
       right: 0;
       text-align: right;
       font-size: $font-subtitle;
     }
-    
-    @include respond-to(desktop) {
-      font-size: $font-section-title;
-    }
-
-    @include respond-to(large) {
-      font-size: $font-page-title;
-    }
-
+    @include respond-to(desktop) { font-size: $font-section-title; }
+    @include respond-to(large) { font-size: $font-page-title; }
     div {
       line-height: 1.2;
       margin-bottom: 0.25rem;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      text-shadow: none;
+      &:last-child { margin-bottom: 0; }
+    }
+  }
 
-      &:last-child {
-        margin-bottom: 0;
-      }
+  &__logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: none;
+    transition: filter $transition-normal $ease-out;
+    &:hover {
+      filter: drop-shadow(0 0 8px $primary-color);
     }
   }
 
   &__navigation {
     display: none;
-
     @include respond-to(desktop) {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      gap: 0.75rem;
+      gap: 1rem;
       width: 100%;
-      margin: 0 auto;
-      margin-bottom: 1rem;
+      margin: 0 auto 1.25rem auto;
     }
-    
     @include respond-to(large) {
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1.25rem;
-    }
-
-    @include respond-to(xl) {
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 1.25rem;
       margin-bottom: 1.5rem;
     }
-
+    @include respond-to(xl) {
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
     &-item {
-      color: $text-light;
+      color: $text-dark;
       font-size: $font-subtitle;
       font-weight: 600;
       letter-spacing: -0.02em;
@@ -223,29 +160,37 @@ const navigationItems = [
       cursor: pointer;
       background: none;
       border: none;
-      @include transition-colors;
+      @include transition-all;
       padding: 0.5rem 0.25rem;
       text-decoration: none;
       display: block;
       border-radius: $radius;
-      transition: all $transition-normal $ease-out;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-      
+      box-shadow: none;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 0;
+        height: 0;
+        background: radial-gradient(circle, rgba($primary-color,0.15) 0%, rgba($primary-accent,0.10) 100%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width $transition-slow $ease-in-out, height $transition-slow $ease-in-out;
+        z-index: -1;
+      }
       &:hover, &.active, &.exact-active {
-        color: $text-light;
-        background: rgba(255, 255, 255, 0.25);
-        transform: translateY(-2px);
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-      }
-
-      @include respond-to(large) {
-        font-size: $font-section-title;
-        padding: 0.75rem 0.5rem;
-      }
-      
-      @include respond-to(xl) {
-        font-size: $font-page-title;
-        padding: 0.75rem 0.75rem;
+        color: $primary-color;
+        background: none;
+        box-shadow: 0 2px 12px 0 rgba($primary-color, 0.10);
+        &::after {
+          width: 220%;
+          height: 220%;
+        }
+        transform: translateY(-2px) scale(1.04);
       }
     }
   }
@@ -256,13 +201,9 @@ const navigationItems = [
     align-items: center;
     width: 100%;
     padding: 0.5rem 0;
-
-    @include respond-to(desktop) {
-      display: none;
-    }
-
+    @include respond-to(desktop) { display: none; }
     &-item {
-      color: $text-light;
+      color: $text-dark;
       font-size: $font-menu;
       font-weight: 600;
       letter-spacing: -0.02em;
@@ -274,37 +215,68 @@ const navigationItems = [
       cursor: pointer;
       background: none;
       border: none;
-      @include transition-colors;
+      @include transition-all;
       text-decoration: none;
       padding: 0.5rem 0.75rem;
       border-radius: $radius;
-      transition: all $transition-normal $ease-out;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-      
+      position: relative;
+      z-index: 1;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 0;
+        height: 0;
+        background: radial-gradient(circle, rgba($primary-color,0.15) 0%, rgba($primary-accent,0.10) 100%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width $transition-slow $ease-in-out, height $transition-slow $ease-in-out;
+        z-index: -1;
+      }
       &:hover {
-        color: $text-light;
-        background: rgba(255, 255, 255, 0.25);
-        transform: translateY(-1px);
+        color: $primary-color;
+        background: none;
+        &::after {
+          width: 220%;
+          height: 220%;
+        }
+        transform: translateY(-1px) scale(1.04);
       }
     }
-
     &-button {
-      color: $text-light;
+      color: $text-dark;
       font-size: 1.5rem;
       font-weight: 600;
       cursor: pointer;
       background: none;
       border: none;
-      @include transition-colors;
+      @include transition-all;
       padding: 0.5rem 0.75rem;
       border-radius: $radius;
-      transition: all $transition-normal $ease-out;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-      
+      position: relative;
+      z-index: 1;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 0;
+        height: 0;
+        background: radial-gradient(circle, rgba($primary-color,0.15) 0%, rgba($primary-accent,0.10) 100%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width $transition-slow $ease-in-out, height $transition-slow $ease-in-out;
+        z-index: -1;
+      }
       &:hover {
-        color: $text-light;
-        background: rgba(255, 255, 255, 0.25);
-        transform: translateY(-1px);
+        color: $primary-color;
+        background: none;
+        &::after {
+          width: 220%;
+          height: 220%;
+        }
+        transform: translateY(-1px) scale(1.04);
       }
     }
   }

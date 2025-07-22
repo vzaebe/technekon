@@ -294,6 +294,14 @@ onMounted(() => {
     position: relative;
     opacity: 0;
     transform: translateY(30px);
+    // Remove any box-shadow and border on hover
+    box-shadow: none !important;
+    border: none !important;
+    border-width: none !important;
+    border-style: none !important;
+    border-color: none !important;
+    border-image: none !important;
+    outline: none !important;
     
     &.fade-in {
       animation: fadeInUp 0.8s ease-out forwards;
@@ -306,6 +314,13 @@ onMounted(() => {
     }
 
     &.image-hover {
+      box-shadow: none !important;
+      border: none !important;
+      border-width: none !important;
+      border-style: none !important;
+      border-color: none !important;
+      border-image: none !important;
+      outline: none !important;
       .about__image-glow {
         opacity: 1;
       }
@@ -321,6 +336,8 @@ onMounted(() => {
     width: 100%;
     height: 0;
     padding-bottom: 100%;
+    border: none !important;
+    outline: none !important;
   }
 
   &__image {

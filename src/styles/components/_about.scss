@@ -62,27 +62,27 @@
 
   &__content {
     color: $text-dark;
-    font-size: $font-body;
+    font-size: $font-body-small;
     line-height: 1.6;
     max-width: 100%;
     margin: 0 auto;
 
     @include respond-to(mobile) {
-      font-size: $font-subtitle;
+      font-size: $font-body;
     }
 
     @include respond-to(tablet) {
-      font-size: $font-section-title;
+      font-size: $font-subtitle;
       max-width: 90%;
     }
 
     @include respond-to(desktop) {
-      font-size: $font-page-title;
+      font-size: $font-section-title;
       max-width: 80%;
     }
 
     @include respond-to(large) {
-      font-size: $font-hero-subtitle;
+      font-size: $font-page-title;
       max-width: 70%;
     }
 

@@ -65,6 +65,10 @@ defineProps({
 });
 </script>
 
+<script lang="ts">
+export default {};
+</script>
+
 <style lang="scss" scoped>
 .tehnekon-compact-logo {
   width: 100%;

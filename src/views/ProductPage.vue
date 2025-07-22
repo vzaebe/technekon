@@ -1,6 +1,20 @@
 <template>
   <div class="product-page">
     <AppHeader />
+    
+    <!-- BREADCRUMB SECTION -->
+    <div class="breadcrumb-section">
+      <div class="breadcrumb-container">
+        <div class="breadcrumb">
+          <router-link to="/" class="breadcrumb-link">Главная</router-link>
+          <span class="breadcrumb-separator">→</span>
+          <router-link to="/equipment" class="breadcrumb-link">Продукция</router-link>
+          <span class="breadcrumb-separator">→</span>
+          <span class="breadcrumb-current">{{ currentProduct.title }} {{ currentProduct.model }}</span>
+        </div>
+      </div>
+    </div>
+
     <main class="main-content">
       <!-- HERO SECTION -->
       <div class="hero-section">
@@ -1061,17 +1075,26 @@ const startHeroAnimation = () => {
 };
 
 onMounted(() => {
-  // Прокручиваем в начало страницы
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  
-  // Запускаем анимацию спектра в героне
+  // Прокручиваем к описанию товара
+  setTimeout(() => {
+    const descriptionSection = document.getElementById('description-section');
+    if (descriptionSection) {
+      const headerHeight = 80; // Примерная высота фиксированного хедера
+      const offset = 40; // Дополнительный отступ
+      const targetPosition = descriptionSection.offsetTop - headerHeight - offset;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }, 200);
+
+  // Запускаем анимацию спектра в герое
   setTimeout(startHeroAnimation, 500);
-  
   // Инициализируем анимацию контента
   setTimeout(() => {
     contentVisible.value = true;
   }, 1000);
-  
   // Инициализируем фоновое изображение
   setTimeout(() => {
     const bgElement = document.querySelector('.applications-bg-image');
@@ -1080,8 +1103,6 @@ onMounted(() => {
       bgElement.style.opacity = '1';
     }
   }, 1500);
-  
-
 });
 
 onUnmounted(() => {
@@ -3655,5 +3676,58 @@ onUnmounted(() => {
   svg {
     transform: scale(1.1);
   }
+}
+
+/* BREADCRUMB SECTION */
+.breadcrumb-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(42, 208, 162, 0.1);
+}
+
+.breadcrumb-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.breadcrumb {
+  font-size: 0.9rem;
+  color: #64748b;
+  
+  .breadcrumb-link {
+    color: #64748b;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+    
+    &:hover {
+      color: #2ad0a2;
+    }
+  }
+  
+  .breadcrumb-separator {
+    margin: 0 0.75rem;
+    opacity: 0.6;
+    color: #94a3b8;
+  }
+  
+  .breadcrumb-current {
+    color: #2ad0a2;
+    font-weight: 600;
+  }
+}
+
+/* === УНИФИКАЦИЯ КОНТЕЙНЕРОВ === */
+.description-container,
+.advantages-container,
+.specs-container,
+.software-container,
+.documents-container,
+.features-container,
+.applications-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 </style>
