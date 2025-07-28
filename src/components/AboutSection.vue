@@ -112,8 +112,8 @@ onMounted(() => {
   overflow: hidden;
 
   &__title {
-    font-size: 4rem;
-    margin-bottom: 5rem;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.8s ease-out;
@@ -155,7 +155,7 @@ onMounted(() => {
     padding: 0 1.5rem;
 
     p {
-      font-size: 1.75rem;
+      font-size: 1.1rem;
       line-height: 1.4;
       margin-bottom: 0.75rem;
       opacity: 0;
@@ -168,7 +168,7 @@ onMounted(() => {
       }
 
       @media (min-width: 768px) {
-        font-size: 2rem;
+        font-size: 1.25rem;
         margin-bottom: 1rem;
       }
       

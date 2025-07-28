@@ -27,6 +27,7 @@
       </section>
     </main>
     <AppFooter />
+    <ScrollToTop />
   </div>
 </template>
 
@@ -40,6 +41,7 @@ import ContactSection from "@/components/ContactSection.vue";
 import PartnersSection from "@/components/PartnersSection.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import Divider from "@/components/Divider.vue";
+import ScrollToTop from "@/components/ScrollToTop.vue";
 </script>
 
 <style lang="scss" scoped>

@@ -46,11 +46,10 @@ import TehnekonLogo from "@/components/icons/TehnekonLogo.vue";
 
 const navigationItems = [
   { name: 'About', label: 'О КОМПАНИИ', path: '/about' },
-  { name: 'History', label: 'ИСТОРИЯ', path: '/history' },
   { name: 'Contacts', label: 'КОНТАКТЫ', path: '/contacts' },
-  { name: 'Equipment', label: 'ОБОРУДОВАНИЕ', path: '/equipment' },
+  { name: 'Equipment', label: 'ПРОДУКЦИЯ', path: '/equipment' },
   { name: 'News', label: 'НОВОСТИ', path: '/news' },
-  { name: 'Services', label: 'СЕРВИС', path: '/services' },
+  { name: 'Services', label: 'ТЕХНИЧЕСКАЯ ПОДДЕРЖКА', path: '/services' },
   { name: 'Offers', label: 'УСЛУГИ', path: '/offers' },
 ];
 </script>
@@ -98,20 +97,20 @@ const navigationItems = [
 
   &__contact-info {
     color: $text-dark;
-    font-size: $font-body-small;
+    font-size: $font-caption;
     font-weight: 500;
     @include uppercase-text;
     text-align: center;
     line-height: 1.4;
-    @include respond-to(mobile) { font-size: $font-body; }
+    @include respond-to(mobile) { font-size: $font-body-small; }
     @include respond-to(tablet) {
       position: absolute;
       right: 0;
       text-align: right;
-      font-size: $font-subtitle;
+      font-size: $font-body;
     }
-    @include respond-to(desktop) { font-size: $font-section-title; }
-    @include respond-to(large) { font-size: $font-page-title; }
+    @include respond-to(desktop) { font-size: $font-subtitle; }
+    @include respond-to(large) { font-size: $font-section-title; }
     div {
       line-height: 1.2;
       margin-bottom: 0.25rem;

@@ -58,6 +58,7 @@
     </main>
 
     <AppFooter />
+    <ScrollToTop />
   </div>
 </template>
 
@@ -72,6 +73,7 @@ import SectionHeader from '@/components/SectionHeader.vue'
 import DocsCount from '@/components/DocsCount.vue'
 import AnimatedGroup from '@/components/AnimatedGroup.vue'
 import AnimatedCard from '@/components/AnimatedCard.vue'
+import ScrollToTop from '@/components/ScrollToTop.vue'
 
 
 interface Item { name: string; image: string; slug: string }

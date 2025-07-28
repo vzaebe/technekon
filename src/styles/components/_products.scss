@@ -46,6 +46,11 @@
       font-size: $font-display;
       margin-bottom: 7rem;
     }
+    
+    &-highlight {
+      color: $primary-color;
+      font-weight: 900;
+    }
   }
 
   &__grid {

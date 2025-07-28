@@ -77,7 +77,7 @@
         </div>
         <div class="description-container">
           <div class="section-header">
-            <h2>Описание продукта</h2>
+            <h2>ОПИСАНИЕ <span class="title-highlight">ПРОДУКТА</span></h2>
             <p class="section-subtitle">Профессиональный виброанализатор для диагностики промышленного оборудования</p>
           </div>
           
@@ -147,7 +147,7 @@
         </div>
         <div class="features-container">
           <div class="section-header">
-            <h2>Ключевые технические особенности</h2>
+            <h2>КЛЮЧЕВЫЕ <span class="title-highlight">ТЕХНИЧЕСКИЕ</span> ОСОБЕННОСТИ</h2>
             <p class="section-subtitle">Уникальные возможности для профессиональной вибродиагностики</p>
           </div>
           
@@ -172,205 +172,8 @@
         </div>
       </div>
 
-      <!-- ADVANTAGES SECTION -->
-      <div class="advantages-section">
-        <div class="advantages-background">
-          <div class="floating-elements"></div>
-          <div class="gradient-overlay"></div>
-        </div>
-        <div class="advantages-container">
-          <div class="advantages-header">
-            <div class="main-title-wrapper">
-              <div class="title-accent">ТЕХНОЛОГИЧЕСКОЕ</div>
-              <h2 class="main-title">ПРЕИМУЩЕСТВА</h2>
-              <div class="title-model">STD-3300</div>
-            </div>
-            <p class="section-subtitle">Почему профессионалы выбирают именно этот анализатор</p>
-          </div>
-          
-          <div class="advantages-grid">
-            <AnimatedCard v-for="(advantage, index) in advantages" :key="index" :delay="index * 0.15">
-              <div class="advantage-card" 
-                   @mouseenter="activateAdvantage(index)" 
-                   @mouseleave="deactivateAdvantage(index)"
-                   :class="{ active: activeAdvantage === index }">
-                <div class="advantage-icon">
-                  <div class="icon-wrapper">
-                    <component :is="advantage.icon" class="icon" />
-                    <div class="icon-glow"></div>
-                  </div>
-                </div>
-                <div class="advantage-content">
-                  <h3>{{ advantage.title }}</h3>
-                  <p>{{ advantage.description }}</p>
-                  <div class="advantage-stats">
-                    <div class="stat" v-for="stat in advantage.stats" :key="stat.label">
-                      <span class="stat-value">{{ stat.value }}</span>
-                      <span class="stat-label">{{ stat.label }}</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="advantage-animation">
-                  <div class="ripple-effect"></div>
-                  <div class="particle-burst"></div>
-                </div>
-              </div>
-            </AnimatedCard>
-          </div>
-        </div>
-      </div>
-
-      <!-- APPLICATIONS SECTION -->
-      <div class="applications-section">
-        <div class="applications-background">
-          <div class="industry-pattern"></div>
-          <div class="applications-bg-image" :class="activeApplicationTab"></div>
-        </div>
-        <div class="applications-container">
-          <div class="section-header">
-            <h2>Области применения</h2>
-            <p class="section-subtitle">Профессиональные решения для критически важных отраслей</p>
-          </div>
-          
-          <div class="applications-tabs">
-            <button 
-              v-for="tab in applicationTabs" 
-              :key="tab.id"
-              class="application-tab"
-              :class="{ active: activeApplicationTab === tab.id }"
-              @click="setActiveApplicationTab(tab.id)"
-              @mouseenter="setHoverTab(tab.id)"
-              @mouseleave="setHoverTab(null)">
-              <div class="tab-content">
-                <div class="tab-title">{{ tab.title }}</div>
-                <div class="tab-subtitle">{{ tab.subtitle }}</div>
-              </div>
-            </button>
-          </div>
-          
-          <div class="application-content">
-            <Transition name="tab-content" mode="out-in">
-              <div :key="activeApplicationTab" class="tab-panel">
-                <div class="panel-description">
-                  <h3>{{ currentTab.title }}</h3>
-                  <p>{{ currentTab.description }}</p>
-                </div>
-                <div class="advantages-grid">
-                  <div v-for="(advantage, index) in currentTab.advantages" 
-                       :key="`${activeApplicationTab}-${index}`"
-                       class="advantage-item"
-                       :class="{ 'animate-in': contentVisible }"
-                       :style="{ animationDelay: `${index * 0.15}s` }">
-                    <div class="advantage-icon">
-                <component :is="advantage.icon" />
-              </div>
-                    <div class="advantage-content">
-                      <h4>{{ advantage.title }}</h4>
-                      <p>{{ advantage.description }}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Transition>
-          </div>
-        </div>
-      </div>
-
-      <!-- TECHNOLOGY COMPARISON -->
-      <div class="comparison-section">
-        <div class="comparison-background">
-          <div class="tech-hexagons"></div>
-        </div>
-        <div class="comparison-container">
-          <div class="section-header">
-            <div class="comparison-title-wrapper">
-              <div class="title-accent">ТЕХНОЛОГИЧЕСКОЕ</div>
-              <h2 class="comparison-main-title">ПРЕВОСХОДСТВО</h2>
-              <div class="title-model">STD-3300</div>
-            </div>
-            <p class="section-subtitle">Сравнение с стандартными решениями рынка</p>
-          </div>
-          
-          <div class="comparison-table">
-            <div class="comparison-header">
-              <div class="parameter-column">Параметр</div>
-              <div class="std-column">
-                <div class="column-title">STD-3300</div>
-                <div class="column-badge">Премиум</div>
-              </div>
-              <div class="standard-column">
-                <div class="column-title">Стандартные решения</div>
-              </div>
-            </div>
-            
-            <div class="comparison-row" 
-                 v-for="(comparison, index) in comparisons" 
-                 :key="index"
-                 @mouseenter="highlightComparison(index)"
-                 @mouseleave="unhighlightComparison(index)"
-                 :class="{ highlighted: highlightedComparison === index }">
-              <div class="parameter-cell">
-                <span class="parameter-icon">
-                  <component :is="comparison.icon" />
-                </span>
-                <span class="parameter-name">{{ comparison.parameter }}</span>
-              </div>
-              <div class="std-cell">
-                <span class="value advantage">{{ comparison.stdValue }}</span>
-                <div class="advantage-indicator">✓</div>
-              </div>
-              <div class="standard-cell">
-                <span class="value">{{ comparison.standardValue }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SOFTWARE COMPATIBILITY -->
-      <div class="software-section">
-        <div class="software-background">
-          <div class="code-lines"></div>
-        </div>
-        <div class="software-container">
-          <div class="section-header">
-            <h2>Программная совместимость</h2>
-            <p class="section-subtitle">Интеграция с профессиональными системами</p>
-          </div>
-          
-          <div class="software-grid">
-            <AnimatedCard :delay="0.1">
-              <div class="software-card">
-                <div class="software-icon">
-                  <ComputerIcon />
-                </div>
-                <div class="software-content">
-                  <h3>Вибродизайнер-Эксперт</h3>
-                  <p>Полная совместимость с диагностическим ПО</p>
-                  <div class="compatibility-badge">100% совместимость</div>
-                </div>
-              </div>
-            </AnimatedCard>
-
-            <AnimatedCard :delay="0.2">
-              <div class="software-card">
-                <div class="software-icon">
-                  <LinkIcon />
-                </div>
-                <div class="software-content">
-                  <h3>Системы мониторинга</h3>
-                  <p>Подключение к штатным системам виброконтроля</p>
-                  <div class="systems-list">
-                    <span class="system-badge">Bently Nevada</span>
-                    <span class="system-badge">Metrix</span>
-                    <span class="system-badge">SKF</span>
-                  </div>
-                </div>
-              </div>
-            </AnimatedCard>
-          </div>
-        </div>
-      </div>
+      <!-- ADVANTAGES SECTION - REMOVED FOR STD-3300, CAN BE REUSED FOR OTHER PRODUCTS -->
+      <!-- <AdvantagesSection :model="currentProduct.model" /> -->
 
       <!-- TECHNICAL SPECIFICATIONS -->
       <div class="specs-section" id="specs-section">
@@ -379,7 +182,7 @@
         </div>
         <div class="specs-container">
           <div class="section-header">
-            <h2>Технические характеристики</h2>
+            <h2>ТЕХНИЧЕСКИЕ <span class="specs-title-highlight">ХАРАКТЕРИСТИКИ</span></h2>
             <p class="section-subtitle">Подробные спецификации STD-3300</p>
           </div>
           
@@ -479,13 +282,118 @@
         </div>
       </div>
 
+      <!-- APPLICATIONS SECTION -->
+      <div class="applications-section">
+        <div class="applications-background">
+          <div class="industry-pattern"></div>
+          <div class="applications-bg-image" :class="activeApplicationTab"></div>
+        </div>
+        <div class="applications-container">
+          <div class="section-header">
+            <h2>ОБЛАСТИ <span class="title-highlight">ПРИМЕНЕНИЯ</span></h2>
+            <p class="section-subtitle">Профессиональные решения для критически важных отраслей</p>
+          </div>
+          
+          <div class="applications-tabs">
+            <button 
+              v-for="tab in applicationTabs" 
+              :key="tab.id"
+              class="application-tab"
+              :class="{ active: activeApplicationTab === tab.id }"
+              @click="setActiveApplicationTab(tab.id)"
+              @mouseenter="setHoverTab(tab.id)"
+              @mouseleave="setHoverTab(null)">
+              <div class="tab-content">
+                <div class="tab-title">{{ tab.title }}</div>
+                <div class="tab-subtitle">{{ tab.subtitle }}</div>
+              </div>
+            </button>
+          </div>
+          
+          <div class="application-content">
+            <Transition name="tab-content" mode="out-in">
+              <div :key="activeApplicationTab" class="tab-panel">
+                <div class="panel-description">
+                  <h3>{{ currentTab.title }}</h3>
+                  <p>{{ currentTab.description }}</p>
+                </div>
+                <div class="advantages-grid">
+                  <div v-for="(advantage, index) in currentTab.advantages" 
+                       :key="`${activeApplicationTab}-${index}`"
+                       class="advantage-item"
+                       :class="{ 'animate-in': contentVisible }"
+                       :style="{ animationDelay: `${index * 0.15}s` }">
+                    <div class="advantage-icon">
+                <component :is="advantage.icon" />
+              </div>
+                    <div class="advantage-content">
+                      <h4>{{ advantage.title }}</h4>
+                      <p>{{ advantage.description }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Transition>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- SOFTWARE COMPATIBILITY -->
+      <div class="software-section">
+        <div class="software-background">
+          <div class="code-lines"></div>
+        </div>
+        <div class="software-container">
+          <div class="section-header">
+            <h2>ПРОГРАММНАЯ <span class="title-highlight">СОВМЕСТИМОСТЬ</span></h2>
+            <p class="section-subtitle">Интеграция с профессиональными системами</p>
+          </div>
+          
+          <div class="software-grid">
+            <AnimatedCard :delay="0.1">
+              <div class="software-card">
+                <div class="software-icon">
+                  <ComputerIcon />
+                </div>
+                <div class="software-content">
+                  <h3>Вибродизайнер-Эксперт</h3>
+                  <p>Полная совместимость с диагностическим ПО</p>
+                  <div class="compatibility-badge">100% совместимость</div>
+                </div>
+              </div>
+            </AnimatedCard>
+
+            <AnimatedCard :delay="0.2">
+              <div class="software-card">
+                <div class="software-icon">
+                  <LinkIcon />
+                </div>
+                <div class="software-content">
+                  <h3>Системы мониторинга</h3>
+                  <p>Подключение к штатным системам виброконтроля</p>
+                  <div class="systems-list">
+                    <span class="system-badge">Bently Nevada</span>
+                    <span class="system-badge">Metrix</span>
+                    <span class="system-badge">SKF</span>
+                  </div>
+                </div>
+              </div>
+            </AnimatedCard>
+          </div>
+        </div>
+      </div>
+
+
+
       <div class="documents-section" id="docs-section">
         <div class="documents-background">
           <div class="docs-pattern"></div>
         </div>
         <div class="documents-container">
           <div class="section-header">
-            <h2>Техническая документация</h2>
+            <h2>ТЕХНИЧЕСКАЯ <span class="title-highlight">ДОКУМЕНТАЦИЯ</span></h2>
             <div class="section-subtitle">Полный комплект документов для работы с оборудованием</div>
           </div>
           
@@ -553,7 +461,7 @@
         <div class="related-background"></div>
         <div class="related-container">
           <div class="section-header">
-            <h2>Сопутствующие товары</h2>
+            <h2>СОПУТСТВУЮЩИЕ <span class="title-highlight">ТОВАРЫ</span></h2>
             <div class="section-subtitle">Дополните свой комплект профессионального оборудования</div>
           </div>
           <div class="products-showcase">
@@ -577,6 +485,7 @@
 
     </main>
     <AppFooter />
+    <ScrollToTop />
   </div>
 </template>
 
@@ -588,6 +497,7 @@ import AppFooter from '@/components/AppFooter.vue';
 import ProductCard from "@/components/ProductCard.vue";
 import DocumentCard from '@/components/DocumentCard.vue';
 import AnimatedCard from '@/components/AnimatedCard.vue';
+// import AdvantagesSection from '@/components/AdvantagesSection.vue'; // Для использования на других страницах продуктов
 import SignalIcon from '@/components/icons/SignalIcon.vue';
 import FrequencyIcon from '@/components/icons/FrequencyIcon.vue';
 import AccuracyIcon from '@/components/icons/AccuracyIcon.vue';
@@ -617,6 +527,7 @@ import ExplosionIcon from '@/components/icons/ExplosionIcon.vue';
 import MachineIcon from '@/components/icons/MachineIcon.vue';
 import CrossIcon from '@/components/icons/CrossIcon.vue';
 import ConveyorIcon from '@/components/icons/ConveyorIcon.vue';
+import ScrollToTop from '@/components/ScrollToTop.vue';
 
 // Получаем параметры маршрута
 const route = useRoute();
@@ -721,7 +632,6 @@ const keyFeatures = [
 ];
 
 // Интерактивные состояния
-const activeAdvantage = ref(-1);
 const highlightedCategory = ref(-1);
 const highlightedComparison = ref(-1);
 const activeApplicationTab = ref('energy');
@@ -729,63 +639,7 @@ const hoverTab = ref(null);
 const contentVisible = ref(true);
 const activeTab = ref('');
 
-// Преимущества анализатора
-const advantages = [
-  {
-    icon: PowerIcon,
-    title: "Молниеносная скорость анализа",
-    description: "Мгновенный спектральный анализ в реальном времени с высоким разрешением до 25 600 линий",
-    stats: [
-      { value: "0.1с", label: "Время анализа" },
-      { value: "25.6К", label: "Линий спектра" }
-    ]
-  },
-  {
-    icon: TargetIcon,
-    title: "Непревзойденная точность",
-    description: "24-битные АЦП и динамический диапазон 109 дБ обеспечивают исключительную точность измерений",
-    stats: [
-      { value: "±1%", label: "Точность" },
-      { value: "109 дБ", label: "Динамический диапазон" }
-    ]
-  },
-  {
-    icon: RefreshIcon,
-    title: "Универсальная совместимость",
-    description: "Работа с любыми типами датчиков и интеграция с существующими системами мониторинга",
-    stats: [
-      { value: "8+", label: "Типов датчиков" },
-      { value: "100%", label: "Совместимость" }
-    ]
-  },
-  {
-    icon: ShieldIcon,
-    title: "Промышленная надежность",
-    description: "Взрывозащищенное исполнение IP54 для работы в самых сложных условиях",
-    stats: [
-      { value: "IP54", label: "Защита" },
-      { value: "-20°+50°", label: "Температурный диапазон" }
-    ]
-  },
-  {
-    icon: BatteryIcon,
-    title: "Экстремальная автономность",
-    description: "До 18 часов непрерывной работы позволяет проводить длительные измерения",
-    stats: [
-      { value: "18ч", label: "Время работы" },
-      { value: "700г", label: "Вес устройства" }
-    ]
-  },
-  {
-    icon: ControlIcon,
-    title: "Интуитивное управление",
-    description: "Простой и понятный интерфейс с цветным дисплеем и логичной навигацией",
-    stats: [
-      { value: "320x240", label: "Разрешение экрана" },
-      { value: "3мин", label: "Время обучения" }
-    ]
-  }
-];
+// Преимущества анализатора - перенесены в компонент AdvantagesSection
 
 // Области применения - новая интерактивная версия
 const applicationTabs = [
@@ -937,13 +791,6 @@ const deactivateFeature = (index) => {
 };
 
 // Методы для новых интерактивных блоков
-const activateAdvantage = (index) => {
-  activeAdvantage.value = index;
-};
-
-const deactivateAdvantage = (index) => {
-  activeAdvantage.value = -1;
-};
 
 const highlightCategory = (index) => {
   highlightedCategory.value = index;
@@ -1459,13 +1306,26 @@ onUnmounted(() => {
 
 .description-text {
   p {
-    font-size: 1.1rem;
-    line-height: 1.7;
+    font-size: 1.6rem;
+    line-height: 1.8;
     color: $text-muted;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
     
     &:last-child {
       margin-bottom: 0;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 1.4rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 1.3rem;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
     }
   }
 }
@@ -1479,8 +1339,8 @@ onUnmounted(() => {
 .feature-highlight {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
-  padding: 1.5rem;
+  gap: 1.5rem;
+  padding: 2rem;
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -1492,12 +1352,17 @@ onUnmounted(() => {
     box-shadow: 0 8px 32px rgba(42, 208, 162, 0.15);
     border-color: rgba(42, 208, 162, 0.2);
   }
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
 }
 
 .highlight-icon {
   flex-shrink: 0;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   background: linear-gradient(135deg, $primary-color 0%, $primary-accent 100%);
   border-radius: 50%;
   display: flex;
@@ -1506,25 +1371,46 @@ onUnmounted(() => {
   color: white;
   
   svg {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     color: white;
+  }
+  
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    
+    svg {
+      width: 24px;
+      height: 24px;
+    }
   }
 }
 
 .highlight-content {
   h4 {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: $text-secondary;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+    
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+    }
   }
   
   p {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     color: $text-muted;
-    line-height: 1.5;
+    line-height: 1.6;
     margin: 0;
+    font-weight: 400;
+    
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
   }
 }
 
@@ -1589,10 +1475,22 @@ onUnmounted(() => {
     font-weight: 700;
     color: $text-secondary;
     margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
     
     @media (max-width: 768px) {
       font-size: 2.5rem;
     }
+    
+    @media (max-width: 480px) {
+      font-size: 2rem;
+    }
+  }
+  
+  .title-highlight {
+    color: $primary-color;
+    font-weight: 900;
+    text-shadow: 0 0 20px rgba(42, 208, 162, 0.3);
   }
   
   .section-subtitle {
@@ -1792,6 +1690,11 @@ onUnmounted(() => {
 
 .specs-section .section-header h2 {
   color: white;
+  
+  .specs-title-highlight {
+    color: $primary-accent;
+    font-weight: 900;
+  }
 }
 
 .specs-section .section-subtitle {
@@ -1812,9 +1715,10 @@ onUnmounted(() => {
   border-collapse: collapse;
   
   td {
-    padding: 1rem 1.5rem;
+    padding: 1.2rem 1.8rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     vertical-align: top;
+    font-size: 1.1rem;
     
     &:first-child {
       width: 35%;
@@ -1855,7 +1759,8 @@ onUnmounted(() => {
 /* SOFTWARE SECTION */
 .software-section {
   padding: 6rem 0;
-  background: #f8fafc;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: white;
   position: relative;
   overflow: hidden;
 }
@@ -1888,6 +1793,19 @@ onUnmounted(() => {
   }
 }
 
+.software-section .section-header h2 {
+  color: white;
+  
+  .title-highlight {
+    color: $primary-accent;
+    font-weight: 900;
+  }
+}
+
+.software-section .section-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+}
+
 .software-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1904,11 +1822,11 @@ onUnmounted(() => {
 }
 
 .software-card {
-  background: white;
+  background: rgba(15, 23, 42, 0.9);
   border-radius: 1.5rem;
   padding: 2.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(42, 208, 162, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(42, 208, 162, 0.25);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -1916,6 +1834,7 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  backdrop-filter: blur(15px);
   
   &::before {
     content: '';
@@ -1930,8 +1849,10 @@ onUnmounted(() => {
   
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(42, 208, 162, 0.15);
-    border-color: rgba(42, 208, 162, 0.2);
+    box-shadow: 
+      0 16px 48px rgba(0, 0, 0, 0.4),
+      0 0 40px rgba(42, 208, 162, 0.2);
+    border-color: rgba(42, 208, 162, 0.4);
     
     &::before {
       left: 100%;
@@ -1948,7 +1869,7 @@ onUnmounted(() => {
   font-size: 3rem;
   margin-bottom: 1.5rem;
   display: block;
-  color: $primary-color;
+  color: $primary-accent;
 }
 
 .software-content {
@@ -1959,12 +1880,12 @@ onUnmounted(() => {
   h3 {
     font-size: 1.4rem;
     font-weight: 600;
-    color: $text-secondary;
+    color: white;
     margin-bottom: 1rem;
   }
   
   p {
-    color: $text-muted;
+    color: rgba(255, 255, 255, 0.8);
     line-height: 1.6;
     margin-bottom: 1.5rem;
     flex-grow: 1;
@@ -1992,17 +1913,17 @@ onUnmounted(() => {
 }
 
 .system-badge {
-  background: rgba(42, 208, 162, 0.1);
-  color: $primary-color;
+  background: rgba(42, 208, 162, 0.15);
+  color: $primary-accent;
   padding: 0.4rem 0.8rem;
   border-radius: 15px;
   font-size: 0.8rem;
   font-weight: 500;
-  border: 1px solid rgba(42, 208, 162, 0.2);
+  border: 1px solid rgba(42, 208, 162, 0.3);
   transition: all 0.3s ease;
   
   &:hover {
-    background: rgba(42, 208, 162, 0.15);
+    background: rgba(42, 208, 162, 0.25);
     transform: translateY(-2px);
   }
 }
@@ -2440,353 +2361,11 @@ onUnmounted(() => {
 
 /* NEW INTERACTIVE SECTIONS */
 
-/* ADVANTAGES SECTION */
-.advantages-section {
-  padding: 8rem 0;
-  background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
-  position: relative;
-  overflow: hidden;
-}
+/* ADVANTAGES SECTION - MOVED TO COMPONENT */
 
-.advantages-background {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
 
-.floating-elements {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 20%, rgba(42, 208, 162, 0.1) 0%, transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(34, 197, 94, 0.08) 0%, transparent 40%);
-  animation: floatElements 25s ease-in-out infinite;
-}
 
-.gradient-overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, transparent 30%, rgba(42, 208, 162, 0.03) 50%, transparent 70%);
-  animation: gradientShift 20s linear infinite;
-}
 
-.advantages-container {
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 3rem;
-  color: white;
-  
-  @media (max-width: 768px) {
-    padding: 0 2rem;
-  }
-}
-
-.advantages-header {
-  text-align: center;
-  margin-bottom: 5rem;
-  
-  @media (max-width: 768px) {
-    margin-bottom: 3rem;
-  }
-}
-
-.main-title-wrapper {
-  margin-bottom: 1.5rem;
-  position: relative;
-  display: inline-block;
-}
-
-.title-accent {
-  font-size: 1rem;
-  font-weight: 500;
-  color: rgba(42, 208, 162, 0.9);
-  letter-spacing: 0.3em;
-  margin-bottom: 0.5rem;
-  display: block;
-  text-transform: uppercase;
-  
-  @media (max-width: 768px) {
-    font-size: 0.9rem;
-  }
-}
-
-.main-title {
-  font-size: 3.5rem;
-  font-weight: 900;
-  color: white;
-  line-height: 1.1;
-  margin: 0;
-  letter-spacing: -0.02em;
-  position: relative;
-  display: block;
-  
-  @media (max-width: 768px) {
-    font-size: 2.5rem;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 2rem;
-  }
-  
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #2ad0a2, transparent);
-    border-radius: 2px;
-  }
-}
-
-.title-model {
-  font-size: 2.8rem;
-  font-weight: 900;
-  background: linear-gradient(135deg, #2ad0a2 0%, #22c55e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 0 0 40px rgba(42, 208, 162, 0.4);
-  letter-spacing: 0.1em;
-  margin-top: 0.8rem;
-  display: block;
-  position: relative;
-  
-  @media (max-width: 768px) {
-    font-size: 2.2rem;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 1.8rem;
-  }
-}
-
-.section-subtitle {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 300;
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.5;
-  
-  @media (max-width: 768px) {
-    font-size: 1.1rem;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 1rem;
-  }
-}
-
-.advantages-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  justify-items: center;
-  
-  @media (max-width: 1400px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
-}
-
-.advantage-card {
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(42, 208, 162, 0.25);
-  border-radius: 1.2rem;
-  padding: 2.5rem;
-  position: relative;
-  backdrop-filter: blur(15px);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-  cursor: pointer;
-  width: 100%;
-  height: 420px;
-  display: flex;
-  flex-direction: column;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(42, 208, 162, 0.05) 0%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: inherit;
-  }
-  
-  &:hover,
-  &.active {
-    transform: translateY(-12px) scale(1.02);
-    border-color: rgba(42, 208, 162, 0.6);
-    box-shadow: 
-      0 25px 50px rgba(0, 0, 0, 0.4),
-      0 0 40px rgba(42, 208, 162, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    
-    &::before {
-      opacity: 1;
-    }
-    
-    .icon-glow {
-      opacity: 1;
-      transform: scale(1.3);
-    }
-    
-    .ripple-effect {
-      animation: ripple 2s ease-out infinite;
-    }
-    
-    .particle-burst {
-      animation: particleBurst 1.5s ease-out infinite;
-    }
-  }
-}
-
-.advantage-icon {
-  text-align: center;
-  margin-bottom: 2rem;
-  
-  .icon-wrapper {
-    position: relative;
-    display: inline-block;
-    
-    .icon {
-      width: 60px;
-      height: 60px;
-      color: #2ad0a2;
-      display: block;
-      position: relative;
-      z-index: 2;
-    }
-    
-    .icon-glow {
-      position: absolute;
-      inset: -15px;
-      background: radial-gradient(circle, rgba(42, 208, 162, 0.4) 0%, transparent 70%);
-      border-radius: 50%;
-      opacity: 0;
-      transition: all 0.4s ease;
-      z-index: 1;
-    }
-  }
-}
-
-.advantage-content {
-  flex-grow: 1;
-  text-align: center;
-  
-  h3 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 1rem;
-    line-height: 1.3;
-  }
-  
-  p {
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    font-size: 0.95rem;
-  }
-}
-
-.advantage-stats {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: auto;
-}
-
-.stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  min-width: 80px;
-  
-  .stat-value {
-    font-size: 1.6rem;
-    font-weight: 900;
-    color: #2ad0a2;
-    margin-bottom: 0.3rem;
-    text-shadow: 0 0 20px rgba(42, 208, 162, 0.5);
-  }
-  
-  .stat-label {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.7);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-weight: 500;
-  }
-}
-
-.advantage-animation {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.ripple-effect {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100px;
-  height: 100px;
-  border: 2px solid rgba(42, 208, 162, 0.4);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-}
-
-.particle-burst {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 4px;
-  height: 4px;
-  background: rgba(42, 208, 162, 0.9);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-}
-
-/* Адаптивность для карточек преимуществ */
-@media (max-width: 768px) {
-  .advantage-card {
-    height: 380px;
-    padding: 2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .advantage-card {
-    height: 360px;
-    padding: 1.8rem;
-  }
-}
 
 /* APPLICATIONS SECTION - NEW INTERACTIVE VERSION */
 .applications-section {
@@ -3461,42 +3040,7 @@ onUnmounted(() => {
 }
 
 /* NEW ANIMATIONS */
-@keyframes floatElements {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
-}
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes ripple {
-  0% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(0);
-  }
-  70% {
-    opacity: 0.7;
-    transform: translate(-50%, -50%) scale(4);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(5);
-  }
-}
-
-@keyframes particleBurst {
-  0% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(20);
-  }
-}
 
 @keyframes patternMove {
   0% { transform: translate(0, 0); }
@@ -3681,7 +3225,7 @@ onUnmounted(() => {
 /* BREADCRUMB SECTION */
 .breadcrumb-section {
   background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-  padding: 1.5rem 0;
+  padding: 2.5rem 0;
   border-bottom: 1px solid rgba(42, 208, 162, 0.1);
 }
 
@@ -3692,7 +3236,7 @@ onUnmounted(() => {
 }
 
 .breadcrumb {
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   color: #64748b;
   
   .breadcrumb-link {
@@ -3700,21 +3244,31 @@ onUnmounted(() => {
     text-decoration: none;
     transition: color 0.3s ease;
     font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
     
     &:hover {
       color: #2ad0a2;
+      background: rgba(42, 208, 162, 0.1);
+      transform: translateY(-1px);
     }
   }
   
   .breadcrumb-separator {
-    margin: 0 0.75rem;
+    margin: 0 1rem;
     opacity: 0.6;
     color: #94a3b8;
+    font-size: 1.1rem;
   }
   
   .breadcrumb-current {
     color: #2ad0a2;
     font-weight: 600;
+    padding: 0.5rem 0.75rem;
+    background: rgba(42, 208, 162, 0.1);
+    border-radius: 6px;
+    border: 1px solid rgba(42, 208, 162, 0.2);
   }
 }
 

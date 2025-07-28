@@ -109,7 +109,7 @@ onUnmounted(() => {
 
 .hero {
   position: relative;
-  min-height: 75vh;
+  min-height: 50vh;
   background: linear-gradient(135deg, $primary-color 0%, $primary-light 100%);
   background-size: cover;
   background-position: center;
@@ -118,11 +118,11 @@ onUnmounted(() => {
   @include transition-all;
   
   @include respond-to(tablet) {
-    min-height: 80vh;
+    min-height: 55vh;
   }
   
   @include respond-to(desktop) {
-    min-height: 85vh;
+    min-height: 60vh;
   }
 
   &__overlay {

@@ -1,0 +1,222 @@
+// Унификация контейнеров для всех страниц
+.container-header-width {
+  width: 60%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  
+  @include respond-to(tablet) { 
+    padding: 0 3rem; 
+  }
+  
+  @include respond-to(desktop) { 
+    padding: 0 4rem; 
+  }
+  
+  @include respond-to(large) { 
+    padding: 0 5rem; 
+  }
+  
+  @include respond-to(mobile) {
+    width: 90%;
+    padding: 0 1rem;
+  }
+}
+
+// Унификация отступов для секций
+.section {
+  width: 100%;
+  padding: 4rem 0;
+  
+  @include respond-to(tablet) {
+    padding: 5rem 0;
+  }
+  
+  @include respond-to(desktop) {
+    padding: 6rem 0;
+  }
+  
+  @include respond-to(large) {
+    padding: 8rem 0;
+  }
+}
+
+// Унификация заголовков секций
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: $text-secondary;
+    margin-bottom: 1rem;
+    @include uppercase-text;
+    
+    @include respond-to(mobile) {
+      font-size: 2rem;
+    }
+    
+    @include respond-to(tablet) {
+      font-size: 3rem;
+    }
+    
+    @include respond-to(desktop) {
+      font-size: 3.5rem;
+    }
+  }
+  
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: $text-muted;
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+    
+    @include respond-to(mobile) {
+      font-size: 1rem;
+    }
+  }
+}
+
+// Унификация сеток
+.grid {
+  display: grid;
+  gap: 2rem;
+  
+  &--2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  &--3 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  &--4 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  @include respond-to(mobile) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+// Унификация карточек
+.card {
+  background: white;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-soft;
+  transition: all $transition-normal $ease-out;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-soft-lg;
+  }
+}
+
+// Унификация кнопок
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: $radius;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all $transition-normal $ease-out;
+  border: none;
+  cursor: pointer;
+  
+  &--primary {
+    background: linear-gradient(135deg, $primary-color 0%, $primary-accent 100%);
+    color: white;
+    box-shadow: $shadow-primary;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-primary-lg;
+    }
+  }
+  
+  &--secondary {
+    background: white;
+    color: $text-secondary;
+    border: 2px solid $border-light;
+    
+    &:hover {
+      border-color: $primary-color;
+      color: $primary-color;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Унификация текста
+.text {
+  &--center {
+    text-align: center;
+  }
+  
+  &--left {
+    text-align: left;
+  }
+  
+  &--right {
+    text-align: right;
+  }
+  
+  &--muted {
+    color: $text-muted;
+  }
+  
+  &--primary {
+    color: $primary-color;
+  }
+  
+  &--small {
+    font-size: $font-body-small;
+  }
+  
+  &--large {
+    font-size: $font-subtitle;
+  }
+}
+
+// Унификация отступов
+.mt {
+  &--1 { margin-top: $space-1; }
+  &--2 { margin-top: $space-2; }
+  &--3 { margin-top: $space-3; }
+  &--4 { margin-top: $space-4; }
+  &--5 { margin-top: $space-5; }
+  &--6 { margin-top: $space-6; }
+  &--8 { margin-top: $space-8; }
+  &--10 { margin-top: $space-10; }
+  &--12 { margin-top: $space-12; }
+}
+
+.mb {
+  &--1 { margin-bottom: $space-1; }
+  &--2 { margin-bottom: $space-2; }
+  &--3 { margin-bottom: $space-3; }
+  &--4 { margin-bottom: $space-4; }
+  &--5 { margin-bottom: $space-5; }
+  &--6 { margin-bottom: $space-6; }
+  &--8 { margin-bottom: $space-8; }
+  &--10 { margin-bottom: $space-10; }
+  &--12 { margin-bottom: $space-12; }
+}
+
+.p {
+  &--1 { padding: $space-1; }
+  &--2 { padding: $space-2; }
+  &--3 { padding: $space-3; }
+  &--4 { padding: $space-4; }
+  &--5 { padding: $space-5; }
+  &--6 { padding: $space-6; }
+  &--8 { padding: $space-8; }
+  &--10 { padding: $space-10; }
+  &--12 { padding: $space-12; }
+} 
