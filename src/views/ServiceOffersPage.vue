@@ -10,8 +10,9 @@
     />
 
     <main class="offers-main">
-      <!-- Services Grid -->
-      <section class="services-grid">
+      <div class="container-header-width">
+        <!-- Services Grid -->
+        <section class="services-grid">
         <div v-for="(service, index) in services" :key="service.id" class="service-wrapper">
           <div class="service-card" 
                :class="{ 'expanded': openId === service.id }"
@@ -144,6 +145,7 @@
           </router-link>
         </div>
       </section>
+      </div>
     </main>
 
     <AppFooter />
@@ -412,7 +414,7 @@ onMounted(() => {
   .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 1200px;
+    /* max-width: 1200px - убрано, используем container-header-width */
     margin: 0 auto;
     text-align: center;
     color: $text-dark;
@@ -487,7 +489,7 @@ onMounted(() => {
 // Services Grid
 .services-grid {
   padding: 4rem 1rem;
-  max-width: 1200px;
+  /* max-width: 1200px - убрано, используем container-header-width */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -794,7 +796,7 @@ onMounted(() => {
   }
 
   .cta-content {
-    max-width: 800px;
+    /* max-width: 800px - убрано, используем container-header-width */
     margin: 0 auto;
     text-align: center;
     position: relative;

@@ -10,7 +10,7 @@
     />
 
     <main class="equipment-main">
-      <div class="equipment-container">
+      <div class="container-header-width">
         <AnimatedGroup 
           v-for="group in groups" 
           :key="group.id"
@@ -175,6 +175,7 @@ onMounted(() => AOS.refresh())
   grid-template-columns: repeat(auto-fit, minmax(314px, max-content));
   gap: 2.5rem;
   justify-content: center;
+  align-items: stretch;
 }
 
 .item-link {

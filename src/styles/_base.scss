@@ -14,8 +14,42 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
   overflow-x: hidden;
-  font-size: 12px;
   background: $background-light;
+  
+  // Базовый размер шрифта адаптивный
+  font-size: 14px;
+  
+  // Оптимизация для очень маленьких экранов
+  @include respond-below(small) {
+    font-size: 13px;
+  }
+  
+  @include respond-to(small) {
+    font-size: 14px;
+  }
+  
+  @include respond-to(mobile) {
+    font-size: 16px;
+  }
+  
+  @include respond-to(tablet) {
+    font-size: 16px;
+  }
+  
+  @include respond-to(desktop) {
+    font-size: 16px;
+  }
+}
+
+// Убираем zoom на iOS
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+// Убираем highlight при тапе на мобильных
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
 *,
@@ -59,60 +93,111 @@ button {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  
+  // Grid для лучшей стабильности макета
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  
+  // Оптимизация для очень маленьких экранов
+  @include respond-to(xs) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 100%;
+  }
+
+  @include respond-to(small) {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    max-width: 100%;
+  }
 
   @include respond-to(mobile) {
-    max-width: 640px;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    max-width: 100%;
   }
 
   @include respond-to(tablet) {
     max-width: 768px;
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   @include respond-to(desktop) {
     max-width: 1024px;
-    padding-left: 3.5rem;
-    padding-right: 3.5rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 
   @include respond-to(large) {
-    max-width: 1280px;
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
-
-  @include respond-to(xl) {
-    max-width: 1536px;
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
-}
-
-.container-header-width {
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
-
-  @include respond-to(tablet) {
+    max-width: 1200px;
     padding-left: 3rem;
     padding-right: 3rem;
   }
 
+  @include respond-to(xl) {
+    max-width: 1200px;
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+  }
+}
+
+.container-header-width {
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  
+  // Flexbox для стабильности
+  display: flex;
+  flex-direction: column;
+
+  // Очень маленькие экраны (до 375px)
+  @include respond-to(xs) {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    max-width: 100%;
+  }
+
+  @include respond-to(small) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 100%;
+  }
+
+  @include respond-to(mobile) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    max-width: 100%;
+  }
+
+  @include respond-to(tablet) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 768px;
+  }
+
   @include respond-to(desktop) {
-    padding-left: 4rem;
-    padding-right: 4rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    max-width: 1024px;
   }
 
   @include respond-to(large) {
-    padding-left: 5rem;
-    padding-right: 5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    max-width: 1280px;
+  }
+
+  @include respond-to(xl) {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+    max-width: 1400px;
   }
 }
 

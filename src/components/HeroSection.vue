@@ -31,17 +31,7 @@
         />
       </div>
 
-      <!-- Navigation Arrows -->
-      <button class="hero__arrow hero__arrow--prev" @click="previousSlide">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      <button class="hero__arrow hero__arrow--next" @click="nextSlide">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
+
     </div>
   </section>
 </template>
@@ -64,11 +54,6 @@ const setCurrentSlide = (index: number) => {
 
 const nextSlide = () => {
   currentSlide.value = (currentSlide.value + 1) % newsList.length;
-  resetAutoSlide();
-};
-
-const previousSlide = () => {
-  currentSlide.value = currentSlide.value === 0 ? newsList.length - 1 : currentSlide.value - 1;
   resetAutoSlide();
 };
 
@@ -148,21 +133,33 @@ onUnmounted(() => {
   &__container {
     position: relative;
     z-index: 3;
-    min-height: 75vh;
+    min-height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    
+    @include respond-to(small) {
+      min-height: 55vh;
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+    }
+    
+    @include respond-to(mobile) {
+      min-height: 60vh;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
     
     @include respond-to(tablet) {
-      min-height: 80vh;
+      min-height: 70vh;
       padding-top: 4rem;
       padding-bottom: 4rem;
     }
     
     @include respond-to(desktop) {
-      min-height: 85vh;
+      min-height: 75vh;
       padding-top: 5rem;
       padding-bottom: 5rem;
     }
@@ -205,25 +202,41 @@ onUnmounted(() => {
   }
 
   &__title {
-    font-size: $font-page-title;
+    font-size: $font-section-title;
     font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     color: white;
     
+    // Оптимизируем для очень маленьких экранов
+    @include respond-below(small) {
+      font-size: $font-body;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    
+    @include respond-to(small) {
+      font-size: $font-page-title;
+      margin-bottom: 1.25rem;
+      line-height: 1.25;
+    }
+    
     @include respond-to(mobile) {
-      font-size: $font-section-title;
-      line-height: 1.3;
+      font-size: $font-hero-subtitle;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
     }
     
     @include respond-to(tablet) {
       font-size: $font-hero-title;
-      line-height: 1.2;
+      margin-bottom: 1.75rem;
+      line-height: 1.15;
     }
     
     @include respond-to(desktop) {
       font-size: $font-display;
+      margin-bottom: 2rem;
       line-height: 1.1;
     }
   }
@@ -256,9 +269,9 @@ onUnmounted(() => {
     background: rgba(255, 255, 255, 0.15);
     border: 2px solid rgba(255, 255, 255, 0.3);
     color: white;
-    padding: 1rem 2rem;
+    padding: 0.875rem 1.75rem;
     border-radius: 50px;
-    font-size: $font-body;
+    font-size: $font-body-small;
     font-weight: 600;
     cursor: pointer;
     @include transition-all;
@@ -268,6 +281,10 @@ onUnmounted(() => {
     align-items: center;
     gap: 0.5rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    min-height: 48px;
+    font-family: inherit;
+    border: none;
+    text-decoration: none;
     
     &:hover {
       background: rgba(255, 255, 255, 0.25);
@@ -280,18 +297,48 @@ onUnmounted(() => {
       }
     }
     
+    &:active {
+      transform: translateY(0);
+    }
+    
     svg {
       @include transition-all;
+      flex-shrink: 0;
+    }
+    
+    @include respond-to(small) {
+      padding: 1rem 2rem;
+      font-size: $font-body;
+    }
+    
+    @include respond-to(mobile) {
+      padding: 1.125rem 2.25rem;
+      font-size: $font-subtitle;
+      border-radius: 60px;
     }
     
     @include respond-to(tablet) {
       padding: 1.25rem 2.5rem;
-      font-size: $font-subtitle;
+      font-size: $font-section-title;
     }
     
     @include respond-to(desktop) {
       padding: 1.5rem 3rem;
-      font-size: $font-section-title;
+      font-size: $font-page-title;
+    }
+    
+    // Мобильная версия может быть полной ширины
+    @include respond-below(mobile) {
+      align-self: stretch;
+      justify-content: center;
+      padding: 0.875rem 1.25rem;
+      font-size: $font-body-small;
+    }
+    
+    // Для очень маленьких экранов
+    @include respond-below(small) {
+      padding: 0.75rem 1rem;
+      font-size: $font-caption;
     }
   }
 
@@ -375,7 +422,8 @@ onUnmounted(() => {
       }
     }
     
-    @include respond-to(mobile) {
+    // Скрываем на маленьких экранах (до 475px)
+    @include respond-below(mobile) {
       display: none;
     }
     

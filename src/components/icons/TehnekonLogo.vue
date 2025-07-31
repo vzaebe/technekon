@@ -19,13 +19,17 @@
   </svg>
 </template>
 
-<script setup lang="ts">
-interface Props {
-  className?: string;
-}
+<script lang="ts">
+import { defineComponent } from 'vue';
 
-withDefaults(defineProps<Props>(), {
-  className: "tehnekon-logo",
+export default defineComponent({
+  name: 'TehnekonLogo',
+  props: {
+    className: {
+      type: String,
+      default: 'tehnekon-logo'
+    }
+  }
 });
 </script>
 

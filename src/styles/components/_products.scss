@@ -24,12 +24,18 @@
     font-size: $font-page-title;
     font-weight: 700;
     @include uppercase-text;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     line-height: 1.2;
+    
+    // Оптимизация для очень маленьких экранов
+    @include respond-below(small) {
+      font-size: $font-subtitle;
+      margin-bottom: 2rem;
+    }
 
     @include respond-to(mobile) {
       font-size: $font-hero-subtitle;
-      margin-bottom: 4rem;
+      margin-bottom: 3rem;
     }
 
     @include respond-to(tablet) {
@@ -54,18 +60,48 @@
   }
 
   &__grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
+    display: grid;
+    gap: 0.75rem;
     max-width: 100%;
-    justify-content: center;
-    align-items: stretch;
+    
+    // Mobile first - одна колонка для очень маленьких экранов
+    grid-template-columns: 1fr;
+    
+    // Два столбца начиная с 360px
+    @include respond-to(xs) {
+      gap: 0.875rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include respond-to(small) {
+      gap: 1rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include respond-to(mobile) {
+      gap: 1.5rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include respond-to(tablet) {
+      gap: 2rem;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    @include respond-to(desktop) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    @include respond-to(large) {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
   }
 
   &__card {
     width: 100%;
-    height: 280px;
-    border-radius: $radius-xl;
+    aspect-ratio: 3 / 4;
+    min-height: 250px;
+    border-radius: $radius-lg;
     box-shadow: $shadow-lg;
     background: white;
     position: relative;
@@ -73,41 +109,68 @@
     overflow: hidden;
 
     &:hover {
-      transform: translateY(-8px);
+      transform: translateY(-4px);
       box-shadow: $shadow-xl;
     }
 
+    // Оптимизация для очень маленьких экранов
+    @include respond-below(small) {
+      min-height: 240px;
+      border-radius: $radius-md;
+      
+      &:hover {
+        transform: translateY(-3px);
+      }
+    }
+    
+    @include respond-to(small) {
+      border-radius: $radius-xl;
+      min-height: 280px;
+      
+      &:hover {
+        transform: translateY(-6px);
+      }
+    }
+
     @include respond-to(mobile) {
-      height: 320px;
+      min-height: 300px;
+      
+      &:hover {
+        transform: translateY(-8px);
+      }
     }
 
     @include respond-to(tablet) {
-      height: 350px;
+      min-height: 320px;
     }
 
     @include respond-to(desktop) {
-      height: 380px;
-    }
-
-    @include respond-to(large) {
-      height: 400px;
+      min-height: 350px;
     }
   }
 
   &__card-content {
-    padding: 2rem;
+    padding: 1rem;
     height: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
+    @include respond-to(small) {
+      padding: 1.25rem;
+    }
+
     @include respond-to(mobile) {
-      padding: 2.5rem;
+      padding: 1.5rem;
     }
 
     @include respond-to(tablet) {
-      padding: 3rem;
+      padding: 2rem;
+    }
+
+    @include respond-to(desktop) {
+      padding: 2.5rem;
     }
   }
 
@@ -198,12 +261,12 @@
 
   &__cta-button {
     width: 100%;
-    max-width: 220px;
-    height: 3.5rem;
-    border-radius: $radius-xl;
+    max-width: 200px;
+    height: 3rem;
+    border-radius: $radius-lg;
     background: white;
     color: $text-dark;
-    font-size: $font-body;
+    font-size: $font-body-small;
     font-weight: 600;
     @include uppercase-text;
     border: none;
@@ -214,6 +277,14 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    
+    // Оптимизация для очень маленьких экранов
+    @include respond-below(small) {
+      height: 2.75rem;
+      font-size: $font-caption;
+      max-width: 180px;
+      border-radius: $radius;
+    }
 
     &:hover {
       background: $background-light;

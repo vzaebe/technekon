@@ -35,6 +35,9 @@ export default {
   animation: slideInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
   &::before {
     content: '';

@@ -4,7 +4,7 @@
     
     <!-- BREADCRUMB SECTION -->
     <div class="breadcrumb-section">
-      <div class="breadcrumb-container">
+      <div class="container-header-width">
         <div class="breadcrumb">
           <router-link to="/" class="breadcrumb-link">Главная</router-link>
           <span class="breadcrumb-separator">→</span>
@@ -23,7 +23,8 @@
           <div class="floating-particles"></div>
           <div class="gradient-mesh"></div>
         </div>
-        <div class="hero-content">
+        <div class="container-header-width">
+          <div class="hero-content">
           <div class="hero-text-block">
             <div class="hero-title">
               <h1>
@@ -41,6 +42,7 @@
               <img :src="currentProduct.imageUrl" :alt="`${currentProduct.title} ${currentProduct.model}`" />
               <div class="image-glow"></div>
             </div>
+          </div>
           </div>
         </div>
         <div class="hero-navigation">
@@ -72,10 +74,7 @@
       
       <!-- DESCRIPTION SECTION -->
       <div class="description-section" id="description-section">
-        <div class="description-background">
-          <div class="tech-pattern"></div>
-        </div>
-        <div class="description-container">
+        <div class="container-header-width">
           <div class="section-header">
             <h2>ОПИСАНИЕ <span class="title-highlight">ПРОДУКТА</span></h2>
             <p class="section-subtitle">Профессиональный виброанализатор для диагностики промышленного оборудования</p>
@@ -141,11 +140,7 @@
       
       <!-- KEY FEATURES SECTION -->
       <div class="key-features-section">
-        <div class="features-background">
-          <div class="tech-grid"></div>
-          <div class="signal-waves"></div>
-        </div>
-        <div class="features-container">
+        <div class="container-header-width">
           <div class="section-header">
             <h2>КЛЮЧЕВЫЕ <span class="title-highlight">ТЕХНИЧЕСКИЕ</span> ОСОБЕННОСТИ</h2>
             <p class="section-subtitle">Уникальные возможности для профессиональной вибродиагностики</p>
@@ -177,10 +172,7 @@
 
       <!-- TECHNICAL SPECIFICATIONS -->
       <div class="specs-section" id="specs-section">
-        <div class="specs-background">
-          <div class="spectrum-grid"></div>
-        </div>
-        <div class="specs-container">
+        <div class="container-header-width">
           <div class="section-header">
             <h2>ТЕХНИЧЕСКИЕ <span class="specs-title-highlight">ХАРАКТЕРИСТИКИ</span></h2>
             <p class="section-subtitle">Подробные спецификации STD-3300</p>
@@ -284,11 +276,7 @@
 
       <!-- APPLICATIONS SECTION -->
       <div class="applications-section">
-        <div class="applications-background">
-          <div class="industry-pattern"></div>
-          <div class="applications-bg-image" :class="activeApplicationTab"></div>
-        </div>
-        <div class="applications-container">
+        <div class="container-header-width">
           <div class="section-header">
             <h2>ОБЛАСТИ <span class="title-highlight">ПРИМЕНЕНИЯ</span></h2>
             <p class="section-subtitle">Профессиональные решения для критически важных отраслей</p>
@@ -342,10 +330,8 @@
 
       <!-- SOFTWARE COMPATIBILITY -->
       <div class="software-section">
-        <div class="software-background">
-          <div class="code-lines"></div>
-        </div>
-        <div class="software-container">
+        
+        <div class="container-header-width">
           <div class="section-header">
             <h2>ПРОГРАММНАЯ <span class="title-highlight">СОВМЕСТИМОСТЬ</span></h2>
             <p class="section-subtitle">Интеграция с профессиональными системами</p>
@@ -388,10 +374,7 @@
 
 
       <div class="documents-section" id="docs-section">
-        <div class="documents-background">
-          <div class="docs-pattern"></div>
-        </div>
-        <div class="documents-container">
+        <div class="container-header-width">
           <div class="section-header">
             <h2>ТЕХНИЧЕСКАЯ <span class="title-highlight">ДОКУМЕНТАЦИЯ</span></h2>
             <div class="section-subtitle">Полный комплект документов для работы с оборудованием</div>
@@ -458,8 +441,7 @@
       </div>
       
       <div class="related-products-section">
-        <div class="related-background"></div>
-        <div class="related-container">
+        <div class="container-header-width">
           <div class="section-header">
             <h2>СОПУТСТВУЮЩИЕ <span class="title-highlight">ТОВАРЫ</span></h2>
             <div class="section-subtitle">Дополните свой комплект профессионального оборудования</div>
@@ -973,11 +955,7 @@ onUnmounted(() => {
   background: transparent;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
+/* Удален - используем container-header-width */
 
 .hero-section {
   position: relative;
@@ -1027,7 +1005,7 @@ onUnmounted(() => {
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 1400px;
+  /* max-width: 1400px; - убрано, используем container-header-width */
   margin: 0 auto;
   padding: 4rem 3rem 2rem;
   display: grid;
@@ -1280,17 +1258,7 @@ onUnmounted(() => {
   animation: patternFloat 30s linear infinite;
 }
 
-.description-container {
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 3rem;
-  
-  @media (max-width: 768px) {
-    padding: 0 2rem;
-  }
-}
+/* description-container удален - стили перенесены в container-header-width */
 
 .description-content {
   display: grid;
@@ -1454,17 +1422,7 @@ onUnmounted(() => {
   animation: waveFlow 20s ease-in-out infinite;
 }
 
-.features-container {
-  position: relative;
-  z-index: 2;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 3rem;
-  
-  @media (max-width: 768px) {
-    padding: 0 2rem;
-  }
-}
+/* features-container - теперь используем container-header-width */
 
 .section-header {
   text-align: center;
@@ -1504,6 +1462,7 @@ onUnmounted(() => {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
+  align-items: stretch;
   
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -1521,6 +1480,9 @@ onUnmounted(() => {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   
   &::before {
     content: '';
@@ -1585,6 +1547,9 @@ onUnmounted(() => {
 .feature-content {
   position: relative;
   z-index: 2;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   
   h3 {
     font-size: 1.4rem;
@@ -1598,6 +1563,7 @@ onUnmounted(() => {
     color: $text-muted;
     line-height: 1.6;
     margin-bottom: 1rem;
+    flex-grow: 1;
   }
   
   .feature-highlight {
@@ -1609,6 +1575,7 @@ onUnmounted(() => {
     border-radius: 20px;
     display: inline-block;
     border: 1px solid rgba(42, 208, 162, 0.2);
+    margin-top: auto;
   }
 }
 
@@ -1676,17 +1643,7 @@ onUnmounted(() => {
   animation: spectrumFlow 15s linear infinite;
 }
 
-.specs-container {
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 3rem;
-  
-  @media (max-width: 768px) {
-    padding: 0 2rem;
-  }
-}
+/* specs-container - теперь используем container-header-width */
 
 .specs-section .section-header h2 {
   color: white;
@@ -1781,17 +1738,7 @@ onUnmounted(() => {
   background-size: 30px 30px;
 }
 
-.software-container {
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 3rem;
-  
-  @media (max-width: 768px) {
-    padding: 0 2rem;
-  }
-}
+/* software-container удален - используем container-header-width */
 
 .software-section .section-header h2 {
   color: white;
@@ -1809,15 +1756,17 @@ onUnmounted(() => {
 .software-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin-top: 3rem;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
+  gap: 2.5rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  align-items: stretch;
+  /* max-width убран - используем единую ширину container-header-width */
   
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    max-width: 500px;
+    gap: 2rem;
+    margin-top: 3rem;
+    /* max-width убран - используем единую ширину */
   }
 }
 
@@ -1830,7 +1779,7 @@ onUnmounted(() => {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  height: 280px;
+  height: 360px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1861,7 +1810,8 @@ onUnmounted(() => {
   
   @media (max-width: 768px) {
     height: auto;
-    min-height: 240px;
+    min-height: 320px;
+    padding: 2rem;
   }
 }
 
@@ -1870,12 +1820,14 @@ onUnmounted(() => {
   margin-bottom: 1.5rem;
   display: block;
   color: $primary-accent;
+  text-align: center; /* Центрируем иконку */
 }
 
 .software-content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  text-align: center; /* Центрируем весь текст в карточке */
   
   h3 {
     font-size: 1.4rem;
@@ -1889,35 +1841,37 @@ onUnmounted(() => {
     line-height: 1.6;
     margin-bottom: 1.5rem;
     flex-grow: 1;
+    font-size: 0.95rem;
   }
 }
 
 .compatibility-badge {
   background: linear-gradient(135deg, $primary-color, $primary-accent);
   color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 18px;
+  font-size: 0.85rem;
   font-weight: 600;
   display: inline-block;
   margin-top: auto;
-  align-self: flex-start;
+  align-self: center; /* Центрируем бейдж */
 }
 
 .systems-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.4rem;
   margin-top: auto;
-  align-self: flex-start;
+  align-self: center; /* Центрируем список систем */
+  justify-content: center; /* Центрируем бейджи внутри */
 }
 
 .system-badge {
   background: rgba(42, 208, 162, 0.15);
   color: $primary-accent;
-  padding: 0.4rem 0.8rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
   border: 1px solid rgba(42, 208, 162, 0.3);
   transition: all 0.3s ease;
@@ -2315,9 +2269,7 @@ onUnmounted(() => {
     font-size: 0.85rem;
   }
   
-  .features-container,
-  .specs-container,
-  .software-container {
+  .container-header-width {
     padding: 0 1rem;
   }
   
@@ -2381,6 +2333,7 @@ onUnmounted(() => {
     background: rgba(0, 0, 0, 0.02);
     transition: all 0.5s ease;
     z-index: 1;
+    pointer-events: none;
   }
 }
 
@@ -2388,6 +2341,7 @@ onUnmounted(() => {
   position: absolute;
   inset: 0;
   z-index: 1;
+  pointer-events: none;
 }
 
 .industry-pattern {
@@ -2399,6 +2353,7 @@ onUnmounted(() => {
     linear-gradient(0deg, rgba(42, 208, 162, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
   animation: patternMove 40s linear infinite;
+  pointer-events: none;
 }
 
 .applications-bg-image {
@@ -2411,6 +2366,7 @@ onUnmounted(() => {
   background-position: center;
   background-repeat: no-repeat;
   z-index: 1;
+  pointer-events: none;
   filter: var(--bg-filter, brightness(1.4) contrast(1.08) saturate(1.15) grayscale(8%));
 
   &::after {
@@ -2437,16 +2393,10 @@ onUnmounted(() => {
   }
 }
 
-.applications-container {
+/* applications-container - теперь используем container-header-width */
+.container-header-width {
   position: relative;
-  z-index: 10;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 3rem;
-  
-  @media (max-width: 768px) {
-    padding: 0 2rem;
-  }
+  z-index: 2;
 }
 
 .applications-tabs {
@@ -3273,15 +3223,5 @@ onUnmounted(() => {
 }
 
 /* === УНИФИКАЦИЯ КОНТЕЙНЕРОВ === */
-.description-container,
-.advantages-container,
-.specs-container,
-.software-container,
-.documents-container,
-.features-container,
-.applications-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
+/* Используем container-header-width для единообразия со всем сайтом */
 </style>

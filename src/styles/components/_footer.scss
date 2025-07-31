@@ -18,28 +18,34 @@
   &__content {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3rem;
-    margin-bottom: 3rem;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    @include respond-to(small) {
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
 
     @include respond-to(mobile) {
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    @include respond-to(tablet) {
+      grid-template-columns: repeat(2, 1fr);
       gap: 3.5rem;
       margin-bottom: 3.5rem;
     }
 
-    @include respond-to(tablet) {
+    @include respond-to(desktop) {
+      grid-template-columns: repeat(3, 1fr);
       gap: 4rem;
       margin-bottom: 4rem;
     }
 
-    @include respond-to(desktop) {
-      grid-template-columns: repeat(3, 1fr);
+    @include respond-to(large) {
       gap: 5rem;
       margin-bottom: 5rem;
-    }
-
-    @include respond-to(large) {
-      gap: 6rem;
-      margin-bottom: 6rem;
     }
   }
 
@@ -67,32 +73,38 @@
 
   &__phone {
     color: $text-light;
-    font-size: calc($font-subtitle / 2);
+    font-size: $font-body-small;
     font-weight: 600;
+    font-family: inherit;
     @include uppercase-text;
     line-height: 1.2;
 
+    @include respond-to(small) {
+      font-size: $font-body;
+    }
+
     @include respond-to(mobile) {
-      font-size: calc($font-section-title / 2);
+      font-size: $font-subtitle;
     }
 
     @include respond-to(tablet) {
-      font-size: calc($font-page-title / 2);
+      font-size: $font-section-title;
     }
 
     @include respond-to(desktop) {
-      font-size: calc($font-hero-subtitle / 2);
+      font-size: $font-page-title;
     }
 
     @include respond-to(large) {
-      font-size: calc($font-hero-title / 2);
+      font-size: $font-hero-subtitle;
     }
   }
 
   &__email {
     color: $text-light;
-    font-size: calc($font-subtitle / 2);
+    font-size: $font-body-small;
     font-weight: 600;
+    font-family: inherit;
     @include uppercase-text;
     text-decoration: underline;
     line-height: 1.2;
@@ -104,45 +116,54 @@
       transform: translateY(-1px);
     }
 
+    @include respond-to(small) {
+      font-size: $font-body;
+    }
+
     @include respond-to(mobile) {
-      font-size: calc($font-section-title / 2);
+      font-size: $font-subtitle;
     }
 
     @include respond-to(tablet) {
-      font-size: calc($font-page-title / 2);
+      font-size: $font-section-title;
     }
 
     @include respond-to(desktop) {
-      font-size: calc($font-hero-subtitle / 2);
+      font-size: $font-page-title;
     }
 
     @include respond-to(large) {
-      font-size: calc($font-hero-title / 2);
+      font-size: $font-hero-subtitle;
     }
   }
 
   &__address {
     color: $text-light;
-    font-size: calc($font-body / 2);
+    font-size: $font-caption;
     font-weight: 500;
+    font-family: inherit;
     @include uppercase-text;
     font-style: normal;
     line-height: 1.4;
 
+    @include respond-to(small) {
+      font-size: $font-body-small;
+    }
+
     @include respond-to(mobile) {
-      font-size: calc($font-subtitle / 2);
+      font-size: $font-body;
     }
 
     @include respond-to(tablet) {
-      font-size: calc($font-section-title / 2);
+      font-size: $font-subtitle;
     }
 
     @include respond-to(desktop) {
-      font-size: calc($font-page-title / 2);
+      font-size: $font-section-title;
     }
 
     @include respond-to(large) {
-      font-size: calc($font-hero-subtitle / 2);
+      font-size: $font-page-title;
     }
 
     div {
@@ -178,17 +199,25 @@
 
   &__menu-item {
     color: $text-light;
-    font-size: calc($font-subtitle / 2);
+    font-size: $font-body-small;
     font-weight: 600;
+    font-family: inherit;
     @include uppercase-text;
     cursor: pointer;
     background: none;
     border: none;
     text-align: left;
     @include transition-colors;
-    padding: 0.5rem 0;
+    padding: 0.75rem 1rem;
     border-radius: $radius;
     transition: all $transition-normal $ease-out;
+    text-decoration: none;
+    display: block;
+    
+    // Touch-friendly размеры
+    min-height: 44px;
+    display: flex;
+    align-items: center;
 
     &:hover {
       color: $text-light;
@@ -196,20 +225,29 @@
       transform: translateX(4px);
     }
 
+    @include respond-to(small) {
+      font-size: $font-body;
+      padding: 0.875rem 1.125rem;
+    }
+
     @include respond-to(mobile) {
-      font-size: calc($font-section-title / 2);
+      font-size: $font-subtitle;
+      padding: 1rem 1.25rem;
     }
 
     @include respond-to(tablet) {
-      font-size: calc($font-page-title / 2);
+      font-size: $font-section-title;
+      padding: 1.125rem 1.5rem;
     }
 
     @include respond-to(desktop) {
-      font-size: calc($font-hero-subtitle / 2);
+      font-size: $font-page-title;
+      padding: 1.25rem 1.75rem;
     }
 
     @include respond-to(large) {
-      font-size: calc($font-hero-title / 2);
+      font-size: $font-hero-subtitle;
+      padding: 1.375rem 2rem;
     }
   }
 

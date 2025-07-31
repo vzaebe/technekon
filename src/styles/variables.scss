@@ -45,14 +45,15 @@ $space-20: 5rem;
 $space-24: 6rem;
 $space-32: 8rem;
 
-// Breakpoints (improved)
-$xs: 475px;
-$mobile: 640px;
-$tablet: 768px;
-$desktop: 1024px;
-$large: 1280px;
-$xl: 1536px;
-$xxl: 1920px;
+// Breakpoints (improved for mobile-first)
+$xs: 320px;         // очень маленькие телефоны
+$small: 375px;      // маленькие телефоны
+$mobile: 475px;     // большие телефоны
+$tablet: 768px;     // планшеты
+$desktop: 1024px;   // десктопы
+$large: 1280px;     // большие десктопы
+$xl: 1536px;        // очень большие десктопы
+$xxl: 1920px;       // ультра широкие экраны
 
 // Container sizes
 $container-xs: 100%;
@@ -113,6 +114,11 @@ $glow-white: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.1
       @content;
     }
   }
+  @if $breakpoint == small {
+    @media (min-width: $small) {
+      @content;
+    }
+  }
   @if $breakpoint == mobile {
     @media (min-width: $mobile) {
       @content;
@@ -140,6 +146,30 @@ $glow-white: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.1
   }
   @if $breakpoint == xxl {
     @media (min-width: $xxl) {
+      @content;
+    }
+  }
+}
+
+// Добавляем миксин для max-width (mobile-first подход)
+@mixin respond-below($breakpoint) {
+  @if $breakpoint == small {
+    @media (max-width: #{$small - 1}) {
+      @content;
+    }
+  }
+  @if $breakpoint == mobile {
+    @media (max-width: #{$mobile - 1}) {
+      @content;
+    }
+  }
+  @if $breakpoint == tablet {
+    @media (max-width: #{$tablet - 1}) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop {
+    @media (max-width: #{$desktop - 1}) {
       @content;
     }
   }

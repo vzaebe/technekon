@@ -9,12 +9,7 @@
       theme="about"
     />
 
-    <!-- Animated Background -->
-    <div class="wave-background">
-      <div class="wave wave-1"></div>
-      <div class="wave wave-2"></div>
-      <div class="wave wave-3"></div>
-    </div>
+
 
     <main class="about-main">
       <!-- Live Statistics Dashboard -->

@@ -12,7 +12,7 @@
     <main class="news-main">
       <!-- News Grid -->
       <section class="news-grid" data-aos="fade-up">
-        <div class="container">
+        <div class="container-header-width">
           <div class="news-cards">
             <article
               v-for="item in newsList"

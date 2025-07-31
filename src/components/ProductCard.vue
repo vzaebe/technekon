@@ -67,6 +67,11 @@ export default {};
     }
   }
 
+  // Оптимизация для очень маленьких экранов
+  @include respond-below(small) {
+    height: 240px;
+  }
+  
   @include respond-to(mobile) {
     height: 320px;
   }
@@ -161,6 +166,11 @@ export default {};
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    // Меньше отступов на маленьких экранах
+    @include respond-below(small) {
+      padding: 0.5rem;
+    }
   }
 
   &__title {
@@ -175,6 +185,11 @@ export default {};
     &-main {
       font-size: $font-body;
       font-weight: 600;
+      
+      // Меньший шрифт для очень маленьких экранов
+      @include respond-below(small) {
+        font-size: $font-body-small;
+      }
 
       @include respond-to(tablet) {
         font-size: $font-subtitle;
@@ -185,6 +200,10 @@ export default {};
       font-size: $font-menu;
       font-weight: 700;
       color: $primary-color;
+      
+      @include respond-below(small) {
+        font-size: $font-caption;
+      }
 
       @include respond-to(tablet) {
         font-size: $font-body;

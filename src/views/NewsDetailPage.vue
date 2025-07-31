@@ -9,7 +9,7 @@
           <div class="hero-gradient"></div>
           <div class="hero-pattern"></div>
         </div>
-        <div class="container">
+        <div class="container-header-width">
           <div class="hero-content">
             <div class="breadcrumb" data-aos="fade-right" data-aos-delay="200">
               <router-link to="/news" class="breadcrumb-link">Новости</router-link>
@@ -47,7 +47,7 @@
 
       <!-- Main Content -->
       <section class="news-content-section">
-        <div class="container">
+        <div class="container-header-width">
           <div class="content-grid">
             <!-- Article Content -->
             <article class="article-content" data-aos="fade-up">

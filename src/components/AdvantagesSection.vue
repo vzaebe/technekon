@@ -16,10 +16,6 @@
 
 <template>
   <div class="advantages-section">
-    <div class="advantages-background">
-      <div class="floating-elements"></div>
-      <div class="gradient-overlay"></div>
-    </div>
     <div class="advantages-container">
       <div class="advantages-header">
         <div class="main-title-wrapper">
@@ -292,6 +288,7 @@ const deactivateAdvantage = (index) => {
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   justify-items: center;
+  align-items: stretch;
   
   @media (max-width: 1400px) {
     grid-template-columns: repeat(2, 1fr);

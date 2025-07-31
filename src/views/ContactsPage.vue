@@ -10,7 +10,8 @@
     />
 
     <main class="contacts-main">
-      <section class="contacts-grid" data-aos="fade-up" data-aos-delay="200">
+      <div class="container-header-width">
+        <section class="contacts-grid" data-aos="fade-up" data-aos-delay="200">
         <!-- Sales Contact Card -->
         <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
           <div class="contact-icon">
@@ -97,6 +98,7 @@
           <p class="note-highlight">Торговый дом «Технекон»</p>
         </div>
       </section>
+      </div>
     </main>
 
     <AppFooter />
@@ -261,9 +263,7 @@ onMounted(async () => {
   grid-template-columns: 1fr;
   gap: $space-6;
   margin-bottom: $space-16;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  /* max-width убран - используем container-header-width */
   
   @include respond-to(tablet) {
     grid-template-columns: repeat(2, 1fr);
@@ -353,9 +353,7 @@ onMounted(async () => {
 /* Address Section */
 .address-section {
   margin-bottom: $space-16;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
+  /* max-width убран - используем container-header-width */
 }
 
 .section-title {
@@ -432,7 +430,7 @@ onMounted(async () => {
   background: linear-gradient(135deg, rgba($primary-color, 0.1), rgba($secondary-color, 0.1));
   border-radius: $radius-lg;
   border: 1px solid rgba($primary-color, 0.2);
-  max-width: 600px;
+  max-width: 600px; /* эту ширину оставим для красоты блока */
   margin: 0 auto;
 }
 
@@ -457,9 +455,7 @@ onMounted(async () => {
 /* Map Section */
 .map-section {
   margin-bottom: $space-16;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  /* max-width убран - используем container-header-width */
 }
 
 .map-container {

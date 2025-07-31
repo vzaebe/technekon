@@ -10,9 +10,10 @@
     />
 
     <main class="services-main">
-      <!-- Search and Controls -->
-      <section class="search-section" data-aos="fade-up">
-        <div class="search-container">
+      <div class="container-header-width">
+        <!-- Search and Controls -->
+        <section class="search-section" data-aos="fade-up">
+          <div class="search-container">
           <div class="search-box">
                           <span class="search-icon">
                 <SearchIcon />
@@ -109,6 +110,7 @@
           </template>
         </AnimatedGroup>
       </section>
+      </div>
     </main>
 
     <AppFooter />
@@ -261,14 +263,14 @@ onMounted(() => AOS.refresh())
   font-weight: 500;
   text-transform: uppercase;
   color: $text-dark;
-  max-width: 900px;
+  /* max-width убран - используем container-header-width */
   margin: 0 auto 3rem;
   line-height: 1.4;
 }
 
 // Search Section
 .search-section {
-  max-width: 900px;
+  /* max-width убран - используем container-header-width */
   margin: 0 auto 3rem;
 }
 
@@ -355,7 +357,7 @@ onMounted(() => AOS.refresh())
 
 // Search Results
 .search-results {
-  max-width: 1200px;
+  /* max-width убран - используем container-header-width */
   margin: 0 auto 3rem;
   text-align: left;
 }
@@ -371,6 +373,7 @@ onMounted(() => AOS.refresh())
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem;
+  align-items: stretch;
 }
 
 .result-card {
@@ -379,6 +382,9 @@ onMounted(() => AOS.refresh())
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   padding: 1.5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   
   &:hover {
     transform: translateY(-2px);
@@ -434,7 +440,7 @@ onMounted(() => AOS.refresh())
 
 // Services List
 .services-list {
-  max-width: 1200px;
+  /* max-width убран - используем container-header-width */
   margin: 0 auto;
   text-align: left;
   display: flex;
