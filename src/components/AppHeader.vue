@@ -82,11 +82,10 @@ const isMobileMenuOpen = ref(false);
 
 const navigationItems = [
   { name: 'About', label: 'О КОМПАНИИ', path: '/about' },
-  { name: 'Contacts', label: 'КОНТАКТЫ', path: '/contacts' },
   { name: 'Equipment', label: 'ПРОДУКЦИЯ', path: '/equipment' },
-  { name: 'News', label: 'НОВОСТИ', path: '/news' },
-  { name: 'Services', label: 'ТЕХНИЧЕСКАЯ ПОДДЕРЖКА', path: '/services' },
   { name: 'Offers', label: 'УСЛУГИ', path: '/offers' },
+  { name: 'Services', label: 'ПОДДЕРЖКА', path: '/services' },
+  { name: 'Contacts', label: 'КОНТАКТЫ', path: '/contacts' },
 ];
 
 const toggleMobileMenu = () => {
@@ -184,7 +183,7 @@ onUnmounted(() => {
   &__divider {
     width: 100%;
     height: 3px;
-    background: linear-gradient(90deg, $primary-color 0%, $primary-accent 100%);
+    background: $primary-color;
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba($primary-color, 0.08);
     &--top { margin-bottom: 1.25rem; }
