@@ -201,7 +201,7 @@ onUnmounted(() => {
 
   &__contact-info {
     color: $text-dark;
-    font-size: $font-caption;
+    font-size: $font-subtitle; // 18px fixed to match menu
     font-weight: 500;
     @include uppercase-text;
     text-align: center;
@@ -212,27 +212,10 @@ onUnmounted(() => {
       display: none;
     }
     
-    @include respond-to(small) { 
-      font-size: $font-caption;
-    }
-    
-    @include respond-to(mobile) { 
-      font-size: $font-body-small; 
-    }
-    
     @include respond-to(tablet) {
       position: absolute;
       right: 0;
       text-align: right;
-      font-size: $font-body;
-    }
-    
-    @include respond-to(desktop) { 
-      font-size: $font-subtitle; 
-    }
-    
-    @include respond-to(large) { 
-      font-size: $font-section-title; 
     }
     div {
       line-height: 1.2;
@@ -258,19 +241,19 @@ onUnmounted(() => {
     @include respond-to(desktop) {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      gap: 1rem;
+      gap: 1rem; // fixed
       width: 100%;
-      margin: 0 auto 1.25rem auto;
+      margin: 0 auto 1.25rem auto; // fixed
     }
     @include respond-to(large) {
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 1.25rem;
-      margin-bottom: 1.5rem;
+      gap: 1rem; // keep consistent
+      margin-bottom: 1.25rem; // keep consistent
     }
     @include respond-to(xl) {
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
+      gap: 1rem; // keep consistent
+      margin-bottom: 1.25rem; // keep consistent
     }
     &-item {
       color: $text-dark;

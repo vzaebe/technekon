@@ -1,108 +1,39 @@
 .footer {
   width: 100%;
   background: linear-gradient(135deg, $primary-color 0%, $primary-light 100%);
-  padding: 4rem 0;
-
-  @include respond-to(tablet) {
-    padding: 5rem 0;
-  }
-
-  @include respond-to(desktop) {
-    padding: 6rem 0;
-  }
-
-  @include respond-to(large) {
-    padding: 7rem 0;
-  }
+  padding: 1.5rem 0; // significantly reduced height
 
   &__content {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
-
-    @include respond-to(small) {
-      gap: 2.5rem;
-      margin-bottom: 2.5rem;
-    }
-
-    @include respond-to(mobile) {
-      gap: 3rem;
-      margin-bottom: 3rem;
-    }
+    gap: 1rem;
+    margin-bottom: 1rem;
 
     @include respond-to(tablet) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 3.5rem;
-      margin-bottom: 3.5rem;
-    }
-
-    @include respond-to(desktop) {
       grid-template-columns: repeat(3, 1fr);
-      gap: 4rem;
-      margin-bottom: 4rem;
-    }
-
-    @include respond-to(large) {
-      gap: 5rem;
-      margin-bottom: 5rem;
+      gap: 1rem;
+      margin-bottom: 1rem;
     }
   }
 
   &__contact {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-
-    @include respond-to(mobile) {
-      gap: 2.5rem;
-    }
-
-    @include respond-to(tablet) {
-      gap: 3rem;
-    }
-
-    @include respond-to(desktop) {
-      gap: 3.5rem;
-    }
-
-    @include respond-to(large) {
-      gap: 4rem;
-    }
+    gap: 0.5rem;
   }
 
   &__phone {
     color: $text-light;
-    font-size: $font-body-small;
+    font-size: $font-subtitle; // 18px
     font-weight: 600;
     font-family: inherit;
     @include uppercase-text;
     line-height: 1.2;
-
-    @include respond-to(small) {
-      font-size: $font-body;
-    }
-
-    @include respond-to(mobile) {
-      font-size: $font-subtitle;
-    }
-
-    @include respond-to(tablet) {
-      font-size: $font-section-title;
-    }
-
-    @include respond-to(desktop) {
-      font-size: $font-page-title;
-    }
-
-    @include respond-to(large) {
-      font-size: $font-hero-subtitle;
-    }
   }
 
   &__email {
     color: $text-light;
-    font-size: $font-body-small;
+    font-size: $font-subtitle; // 18px
     font-weight: 600;
     font-family: inherit;
     @include uppercase-text;
@@ -115,59 +46,19 @@
       text-decoration: none;
       transform: translateY(-1px);
     }
-
-    @include respond-to(small) {
-      font-size: $font-body;
-    }
-
-    @include respond-to(mobile) {
-      font-size: $font-subtitle;
-    }
-
-    @include respond-to(tablet) {
-      font-size: $font-section-title;
-    }
-
-    @include respond-to(desktop) {
-      font-size: $font-page-title;
-    }
-
-    @include respond-to(large) {
-      font-size: $font-hero-subtitle;
-    }
   }
 
   &__address {
     color: $text-light;
-    font-size: $font-caption;
+    font-size: $font-body-small; // 14px base
     font-weight: 500;
     font-family: inherit;
     @include uppercase-text;
     font-style: normal;
     line-height: 1.4;
 
-    @include respond-to(small) {
-      font-size: $font-body-small;
-    }
-
-    @include respond-to(mobile) {
-      font-size: $font-body;
-    }
-
-    @include respond-to(tablet) {
-      font-size: $font-subtitle;
-    }
-
-    @include respond-to(desktop) {
-      font-size: $font-section-title;
-    }
-
-    @include respond-to(large) {
-      font-size: $font-page-title;
-    }
-
     div {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
 
       &:last-child {
         margin-bottom: 0;
@@ -178,28 +69,12 @@
   &__menu {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-
-    @include respond-to(mobile) {
-      gap: 2rem;
-    }
-
-    @include respond-to(tablet) {
-      gap: 2.5rem;
-    }
-
-    @include respond-to(desktop) {
-      gap: 3rem;
-    }
-
-    @include respond-to(large) {
-      gap: 3.5rem;
-    }
+    gap: 0.5rem;
   }
 
   &__menu-item {
     color: $text-light;
-    font-size: $font-body-small;
+    font-size: $font-subtitle; // 18px
     font-weight: 600;
     font-family: inherit;
     @include uppercase-text;
@@ -208,46 +83,20 @@
     border: none;
     text-align: left;
     @include transition-colors;
-    padding: 0.75rem 1rem;
+    padding: 0.25rem 0.5rem;
     border-radius: $radius;
     transition: all $transition-normal $ease-out;
     text-decoration: none;
     display: block;
     
-    // Touch-friendly размеры
-    min-height: 44px;
+    min-height: 32px;
     display: flex;
     align-items: center;
 
     &:hover {
       color: $text-light;
       background: rgba(255, 255, 255, 0.1);
-      transform: translateX(4px);
-    }
-
-    @include respond-to(small) {
-      font-size: $font-body;
-      padding: 0.875rem 1.125rem;
-    }
-
-    @include respond-to(mobile) {
-      font-size: $font-subtitle;
-      padding: 1rem 1.25rem;
-    }
-
-    @include respond-to(tablet) {
-      font-size: $font-section-title;
-      padding: 1.125rem 1.5rem;
-    }
-
-    @include respond-to(desktop) {
-      font-size: $font-page-title;
-      padding: 1.25rem 1.75rem;
-    }
-
-    @include respond-to(large) {
-      font-size: $font-hero-subtitle;
-      padding: 1.375rem 2rem;
+      transform: translateX(2px);
     }
   }
 
@@ -255,28 +104,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    @include respond-to(desktop) {
-      justify-content: flex-end;
-    }
   }
 
   &__logo {
     width: 100%;
-    max-width: 300px;
+    max-width: 320px;
     height: auto;
     filter: brightness(0) invert(1);
-
-    @include respond-to(mobile) {
-      max-width: 350px;
-    }
-
-    @include respond-to(tablet) {
-      max-width: 400px;
-    }
-
-    @include respond-to(desktop) {
-      max-width: 443px;
-    }
   }
 }
