@@ -50,7 +50,8 @@
 
   &__address {
     color: $text-light;
-    font-size: $font-body-small; // 14px base
+    // увеличили адрес до 16px
+    font-size: $font-body; // 16px
     font-weight: 500;
     font-family: inherit;
     @include uppercase-text;

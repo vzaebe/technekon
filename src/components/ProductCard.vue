@@ -15,7 +15,7 @@
       <div class="product-card__info">
         <div class="product-card__title">
           <div class="product-card__title-main">{{ title }}</div>
-          <div class="product-card__title-model">{{ model }}</div>
+          <div v-if="model" class="product-card__title-model">{{ model }}</div>
         </div>
       </div>
     </div>
@@ -112,7 +112,9 @@ export default {};
   &__image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    // изображение полностью внутри карточки
+    object-fit: contain;
+    padding: 0.75rem;
   }
 
   &__image-placeholder {
@@ -183,6 +185,7 @@ export default {};
     gap: 0.25rem;
 
     &-main {
+      // базовый текст 16px
       font-size: $font-body;
       font-weight: 600;
       
@@ -197,7 +200,8 @@ export default {};
     }
 
     &-model {
-      font-size: $font-menu;
+      // увеличили с 12px до 16px
+      font-size: $font-body;
       font-weight: 700;
       color: $primary-color;
       
@@ -206,7 +210,7 @@ export default {};
       }
 
       @include respond-to(tablet) {
-        font-size: $font-body;
+        font-size: $font-subtitle;
       }
     }
   }

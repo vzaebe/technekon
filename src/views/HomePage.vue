@@ -5,7 +5,7 @@
       <section class="section section--hero">
         <HeroSection />
       </section>
-      <Divider />
+      <Divider spacing="tight" />
       <section class="section">
         <ProductsSection />
       </section>

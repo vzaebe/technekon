@@ -1,21 +1,22 @@
 .products {
   width: 100%;
-  margin: 0 auto 5rem;
-  padding: 3rem 0;
+  // уменьшили внешние отступы секции, чтобы сократить расстояния до разделительных линий
+  margin: 0 auto 3.5rem;
+  padding: 1rem 0 3rem;
 
   @include respond-to(tablet) {
-    margin-bottom: 6rem;
-    padding: 4rem 0;
+    margin-bottom: 5rem;
+    padding: 1.5rem 0 4rem;
   }
 
   @include respond-to(desktop) {
-    margin-bottom: 7rem;
-    padding: 5rem 0;
+    margin-bottom: 6rem;
+    padding: 2rem 0 5rem;
   }
 
   @include respond-to(large) {
-    margin-bottom: 9rem;
-    padding: 6rem 0;
+    margin-bottom: 7rem;
+    padding: 2.5rem 0 6rem;
   }
 
   &__title {
@@ -24,33 +25,34 @@
     font-size: $font-page-title;
     font-weight: 700;
     @include uppercase-text;
-    margin-bottom: 2.5rem;
+    // уменьшили расстояние B под заголовком ~в 1.5 раза
+    margin-bottom: 1.75rem;
     line-height: 1.2;
     
     // Оптимизация для очень маленьких экранов
     @include respond-below(small) {
       font-size: $font-subtitle;
-      margin-bottom: 2rem;
+      margin-bottom: 1.25rem;
     }
 
     @include respond-to(mobile) {
       font-size: $font-hero-subtitle;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
 
     @include respond-to(tablet) {
       font-size: $font-hero-title;
-      margin-bottom: 5rem;
+      margin-bottom: 3.5rem;
     }
 
     @include respond-to(desktop) {
       font-size: $font-display;
-      margin-bottom: 6rem;
+      margin-bottom: 4rem;
     }
 
     @include respond-to(large) {
       font-size: $font-display;
-      margin-bottom: 7rem;
+      margin-bottom: 4.75rem;
     }
     
     &-highlight {

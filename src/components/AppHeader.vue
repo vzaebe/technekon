@@ -187,7 +187,8 @@ onUnmounted(() => {
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba($primary-color, 0.08);
     &--top { margin-bottom: 1.25rem; }
-    &--bottom { margin-top: 1.25rem; }
+    // уменьшили нижний отступ линии для выравнивания расстояния Б
+    &--bottom { margin-top: 0.625rem; }
   }
 
   &__top-row {
@@ -243,17 +244,18 @@ onUnmounted(() => {
       grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
       gap: 1rem; // fixed
       width: 100%;
-      margin: 0 auto 1.25rem auto; // fixed
+      // уменьшили нижний отступ навигации, чтобы расстояние Б стало в 2 раза меньше
+      margin: 0 auto 0.625rem auto; // fixed
     }
     @include respond-to(large) {
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
       gap: 1rem; // keep consistent
-      margin-bottom: 1.25rem; // keep consistent
+      margin-bottom: 0.625rem; // keep consistent
     }
     @include respond-to(xl) {
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 1rem; // keep consistent
-      margin-bottom: 1.25rem; // keep consistent
+      margin-bottom: 0.625rem; // keep consistent
     }
     &-item {
       color: $text-dark;

@@ -7,7 +7,7 @@
         <router-link
           v-for="product in productItems"
           :key="product.id"
-          :to="{ name: 'ProductDetail', params: { productId: product.slug } }"
+          :to="{ name: 'Equipment' }"
           class="product-link"
         >
           <ProductCard
@@ -42,53 +42,46 @@ interface Product {
 }
 
 const productItems: Product[] = [
-  { 
-    id: 1, 
-    title: "Виброанализатор",
-    model: "STD-3300",
-    slug: "std-3300",
-            imageUrl: new URL('@/assets/products/STD-3300.png', import.meta.url).href
-  },
-  { 
-    id: 2, 
-    title: "Виброанализатор",
-    model: "STD-500",
-    slug: "std-500",
+  {
+    id: 1,
+    title: "Системы виброконтроля / мониторинга / диагностики",
+    model: "",
+    slug: "systems-monitoring",
     imageUrl: "/placeholder.svg"
   },
-  { 
-    id: 3, 
-    title: "Виброанализатор",
-    model: "STD-1000",
-    slug: "std-1000",
+  {
+    id: 2,
+    title: "Переносные виброизмерительные приборы",
+    model: "",
+    slug: "portable-instruments",
     imageUrl: "/placeholder.svg"
   },
-  { 
-    id: 4, 
-    title: "Виброанализатор",
-    model: "STD-2000",
-    slug: "std-2000",
+  {
+    id: 3,
+    title: "Поверочное оборудование",
+    model: "",
+    slug: "calibration-equipment",
     imageUrl: "/placeholder.svg"
   },
-  { 
-    id: 5, 
-    title: "Система мониторинга",
-    model: "SMS-100",
-    slug: "sms-100",
+  {
+    id: 4,
+    title: "Датчики и первичные преобразователи",
+    model: "",
+    slug: "sensors-transducers",
     imageUrl: "/placeholder.svg"
   },
-  { 
-    id: 6, 
-    title: "Датчик вибрации",
-    model: "VS-200",
-    slug: "vs-200",
+  {
+    id: 5,
+    title: "Элементы системы / Контроллеры",
+    model: "",
+    slug: "system-elements-controllers",
     imageUrl: "/placeholder.svg"
   },
-  { 
-    id: 7, 
-    title: "Виброанализатор",
-    model: "STD-500",
-    slug: "std-500",
+  {
+    id: 6,
+    title: "Аксессуары",
+    model: "",
+    slug: "accessories",
     imageUrl: "/placeholder.svg"
   }
 ];
